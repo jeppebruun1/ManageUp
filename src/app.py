@@ -5,12 +5,13 @@ Run with:  streamlit run src/app.py
 import os
 import sys
 import tempfile
+from datetime import datetime
 
 import pandas as pd
 import streamlit as st
 
 sys.path.insert(0, os.path.dirname(__file__))
-from metrics import load_and_clean
+from metrics import load_and_clean, logo_highlights
 from report import build_report
 
 # ---------------------------------------------------------------------------
@@ -20,8 +21,37 @@ st.set_page_config(
     page_title="ManageUp",
     page_icon="📊",
     layout="centered",
+    initial_sidebar_state="collapsed",
 )
 
+# ---------------------------------------------------------------------------
+# Hide Streamlit chrome + CSS polish
+# ---------------------------------------------------------------------------
+st.markdown("""
+<style>
+#MainMenu                        { visibility: hidden; }
+footer                           { visibility: hidden; }
+[data-testid="stDeployButton"]   { display: none; }
+
+/* Breathing room at the top */
+.main .block-container           { padding-top: 1rem; }
+
+/* Slightly smaller default h1 */
+h1                               { font-size: 2rem !important; }
+
+/* Primary button — dark fill */
+[data-testid="stBaseButton-primary"],
+button[kind="primary"] {
+    background-color: #0F172A !important;
+    color: white !important;
+    border: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# ---------------------------------------------------------------------------
+# Required CSV columns
+# ---------------------------------------------------------------------------
 REQUIRED_COLUMNS = {
     "customer_name", "customer_domain", "mrr_usd",
     "signup_date", "end_date", "acquisition_channel",
@@ -29,120 +59,160 @@ REQUIRED_COLUMNS = {
 }
 
 # ---------------------------------------------------------------------------
-# Session state — keeps the PDF alive across Streamlit reruns so the
-# download button doesn't vanish as soon as the user clicks it.
+# Session state
 # ---------------------------------------------------------------------------
-if "pdf_bytes" not in st.session_state:
-    st.session_state.pdf_bytes = None
-if "pdf_month" not in st.session_state:
-    st.session_state.pdf_month = None
+_defaults = {
+    "last_filename": None,
+    "pdf_bytes":     None,
+    "pdf_month":     None,
+    "pdf_timestamp": None,
+    "pdf_size_kb":   None,
+}
+for k, v in _defaults.items():
+    if k not in st.session_state:
+        st.session_state[k] = v
 
-# ---------------------------------------------------------------------------
-# Header
-# ---------------------------------------------------------------------------
+# ============================================================================
+# STAGE 1 — UPLOAD
+# ============================================================================
 st.title("ManageUp")
-st.markdown(
-    "Upload a B2B SaaS transaction CSV, pick a reporting month, "
-    "and download a PDF investor report."
-)
-st.divider()
+st.markdown("Turn transaction data into an investor-ready report.")
 
-# ---------------------------------------------------------------------------
-# Step 1 — Upload
-# ---------------------------------------------------------------------------
-st.subheader("Step 1 — Upload your CSV")
-uploaded = st.file_uploader("", type="csv", label_visibility="collapsed")
-
-if uploaded is None:
-    st.info("Drag and drop a CSV here, or click Browse.")
-    st.stop()
-
-# Reset any previously generated PDF when a new file is uploaded
-if st.session_state.get("last_filename") != uploaded.name:
-    st.session_state.pdf_bytes = None
-    st.session_state.pdf_month = None
-    st.session_state["last_filename"] = uploaded.name
-
-# Write to a temp file so load_and_clean can read it by path
-with tempfile.NamedTemporaryFile(suffix=".csv", delete=False) as tmp_csv:
-    tmp_csv.write(uploaded.getvalue())
-    csv_path = tmp_csv.name
-
-# Validate columns
-try:
-    raw = pd.read_csv(csv_path, nrows=0)
-    missing = REQUIRED_COLUMNS - set(raw.columns)
-    if missing:
-        st.error(f"CSV is missing required columns: {', '.join(sorted(missing))}")
-        st.stop()
-    df = load_and_clean(csv_path)
-except Exception as e:
-    st.error(f"Could not read the CSV: {e}")
-    st.stop()
-
-# Quick data preview
-with st.expander("Preview data", expanded=False):
-    st.dataframe(df.head(10), use_container_width=True)
-
-# Quick stats row — use today as the reference point for the preview display
-_today = pd.Timestamp.today().normalize()
-_active_today = df[df["end_date"].isna() | (df["end_date"] > _today)]
-_churned_today = df[df["end_date"].notna() & (df["end_date"] <= _today)]
-active_mrr = _active_today["mrr_usd"].sum()
-col1, col2, col3, col4 = st.columns(4)
-col1.metric("Rows loaded",       len(df))
-col2.metric("Active customers",  len(_active_today))
-col3.metric("Churned",           len(_churned_today))
-col4.metric("Active MRR",        f"${active_mrr:,.0f}")
-
-st.divider()
-
-# ---------------------------------------------------------------------------
-# Step 2 — Pick reporting month
-# ---------------------------------------------------------------------------
-st.subheader("Step 2 — Choose the reporting month")
-available_months = sorted(
-    df["signup_date"].dt.to_period("M").dropna().unique().astype(str),
-    reverse=True,
-)
-
-if not available_months:
-    st.error("No valid signup dates found in the CSV.")
-    st.stop()
-
-as_of_month = st.selectbox(
-    "Reporting month",
-    available_months,
-    help="The report will show metrics for the month you select.",
+uploaded = st.file_uploader(
+    "Transaction data CSV",
+    type="csv",
     label_visibility="collapsed",
 )
 
+if uploaded is None:
+    st.info("Drag and drop a CSV file here, or click Browse.")
+    st.stop()
+
+# Reset PDF when a new file is uploaded
+if st.session_state.last_filename != uploaded.name:
+    for k in ("pdf_bytes", "pdf_month", "pdf_timestamp", "pdf_size_kb"):
+        st.session_state[k] = None
+    st.session_state.last_filename = uploaded.name
+
+# Write to a temp file so pandas can read it by path
+with tempfile.NamedTemporaryFile(suffix=".csv", delete=False) as _tmp:
+    _tmp.write(uploaded.getvalue())
+    csv_path = _tmp.name
+
+# Validate columns, then load
+try:
+    _raw_cols = set(pd.read_csv(csv_path, nrows=0).columns)
+    missing   = REQUIRED_COLUMNS - _raw_cols
+    if missing:
+        st.error(f"CSV is missing columns: {', '.join(sorted(missing))}")
+        st.stop()
+    df = load_and_clean(csv_path)
+except Exception as exc:
+    st.error(f"Could not read CSV: {exc}")
+    st.stop()
+
+# ============================================================================
+# STAGE 2 — REVIEW
+# ============================================================================
 st.divider()
 
-# ---------------------------------------------------------------------------
-# Step 3 — Generate
-# ---------------------------------------------------------------------------
-st.subheader("Step 3 — Generate & download")
+_min_m     = df["signup_date"].dt.to_period("M").min()
+_max_m     = df["signup_date"].dt.to_period("M").max()
+_total_mrr = df["mrr_usd"].sum()
+st.caption(
+    f"Loaded {len(df):,} rows  ·  "
+    f"{_min_m} to {_max_m}  ·  "
+    f"Total MRR ${_total_mrr:,.0f}"
+)
 
-if st.button("Generate Report", type="primary", use_container_width=True):
-    st.session_state.pdf_bytes = None   # clear stale result while generating
+st.dataframe(df.head(5), use_container_width=True)
+
+# Month selector — displays "October 2024", returns "2024-10"
+_months = sorted(
+    df["signup_date"].dt.to_period("M").dropna().unique().astype(str),
+    reverse=True,
+)
+as_of_month = st.selectbox(
+    "Reporting month",
+    options=_months,
+    format_func=lambda x: datetime.strptime(x, "%Y-%m").strftime("%B %Y"),
+)
+
+# ============================================================================
+# STAGE 3 — ADD CONTEXT
+# ============================================================================
+st.divider()
+
+commentary = st.text_area(
+    "Founder commentary",
+    height=150,
+    max_chars=800,
+    placeholder=(
+        "Share context on this month's performance. "
+        "What went well? What's changed? What are you focused on next?"
+    ),
+)
+
+top5 = logo_highlights(df, as_of_month, n=5)
+logo_notes: dict = {}
+if top5:
+    st.markdown("**Notes on new signups this month**")
+    for lg in top5:
+        note = st.text_input(
+            f"Note on {lg['name']}",
+            max_chars=140,
+            placeholder="Optional: why this signup matters...",
+            key=f"note_{lg['name']}_{as_of_month}",
+        )
+        if note.strip():
+            logo_notes[lg["name"]] = note.strip()
+
+# ============================================================================
+# STAGE 4 — GENERATE
+# ============================================================================
+st.divider()
+
+if st.button("Generate report PDF", type="primary", width="stretch"):
+    st.session_state.pdf_bytes = None
     try:
-        with st.spinner("Crunching numbers and building charts…"):
-            with tempfile.TemporaryDirectory() as tmp_dir:
-                pdf_path = os.path.join(tmp_dir, "report.pdf")
-                build_report(csv_path, as_of_month, pdf_path)
-                with open(pdf_path, "rb") as f:
-                    st.session_state.pdf_bytes = f.read()
-                st.session_state.pdf_month = as_of_month
-        st.success("Report ready — click Download below.")
-    except Exception as e:
-        st.error(f"Report generation failed: {e}")
+        with st.status("Generating report...", expanded=True) as _status:
+            st.write("Crunching numbers...")
+            st.write("Rendering charts...")
+            st.write("Building PDF...")
+            with tempfile.TemporaryDirectory() as _tmpdir:
+                _pdf_path = os.path.join(_tmpdir, "report.pdf")
+                build_report(
+                    csv_path,
+                    as_of_month,
+                    _pdf_path,
+                    commentary=commentary,
+                    logo_notes=logo_notes,
+                )
+                with open(_pdf_path, "rb") as _f:
+                    st.session_state.pdf_bytes = _f.read()
+            st.session_state.pdf_month     = as_of_month
+            st.session_state.pdf_timestamp = datetime.now().strftime("%H:%M:%S")
+            st.session_state.pdf_size_kb   = round(
+                len(st.session_state.pdf_bytes) / 1024
+            )
+            _status.update(
+                label="Report ready!", state="complete", expanded=False
+            )
+    except Exception as exc:
+        st.error(f"Report generation failed: {exc}")
 
 if st.session_state.pdf_bytes:
+    _month_label = datetime.strptime(
+        st.session_state.pdf_month, "%Y-%m"
+    ).strftime("%B %Y")
     st.download_button(
-        label=f"Download PDF  —  {st.session_state.pdf_month}",
+        label=f"Download PDF  —  {_month_label}",
         data=st.session_state.pdf_bytes,
         file_name=f"manageup_{st.session_state.pdf_month}.pdf",
         mime="application/pdf",
-        use_container_width=True,
+        width="stretch",
+    )
+    st.caption(
+        f"Generated {st.session_state.pdf_timestamp}  ·  "
+        f"{st.session_state.pdf_size_kb} KB"
     )

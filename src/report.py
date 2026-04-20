@@ -242,7 +242,8 @@ def _data_table(headers: list, rows: list, col_widths: list) -> Table:
 # Section builders
 # ---------------------------------------------------------------------------
 
-def _section_summary(story: list, kpis: dict, arr_chart_path: str) -> None:
+def _section_summary(story: list, kpis: dict, arr_chart_path: str,
+                     commentary: str = "") -> None:
     arr     = kpis["current_arr"]
     arr_str = f"${arr/1e6:.2f}M" if arr >= 1_000_000 else f"${arr/1e3:.0f}K"
     dp      = kpis["arr_change_pct"]
@@ -279,12 +280,14 @@ def _section_summary(story: list, kpis: dict, arr_chart_path: str) -> None:
         _gap(14),
         Paragraph("Founder commentary", S_SUBHEAD),
         Paragraph(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
-            "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
-            "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. "
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore "
-            "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, "
-            "sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            commentary.strip() if commentary.strip() else (
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
+                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+                "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. "
+                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore "
+                "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, "
+                "sunt in culpa qui officia deserunt mollit anim id est laborum."
+            ),
             S_LOREM,
         ),
     ]
@@ -408,7 +411,8 @@ def _section_icp(story: list, icp: dict) -> None:
 # ---------------------------------------------------------------------------
 
 def build_report(csv_path: str, as_of_month: str,
-                 output_path: str = "output/report.pdf") -> str:
+                 output_path: str = "output/report.pdf",
+                 commentary: str = "", logo_notes: dict = None) -> str:
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     chart_dir = os.path.join(
         os.path.dirname(os.path.abspath(output_path)), "charts"
@@ -454,7 +458,7 @@ def build_report(csv_path: str, as_of_month: str,
 
     # Page 2 — Executive Summary
     story += _section_header(1, "Executive summary")
-    _section_summary(story, kpis, arr_png)
+    _section_summary(story, kpis, arr_png, commentary=commentary)
 
     # Page 3 — Cohort Retention
     story.append(PageBreak())
@@ -479,7 +483,7 @@ def build_report(csv_path: str, as_of_month: str,
     # Page 7 — Logo Highlights
     story.append(PageBreak())
     story += _section_header(6, "Logo highlights")
-    _section_logos(story, logos)
+    _section_logos(story, logos, notes=logo_notes)
 
     # Page 8 — ICP Snapshot
     story.append(PageBreak())
