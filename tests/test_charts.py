@@ -24,7 +24,7 @@ df = load_and_clean(CSV)
 
 print("Generating charts...")
 
-path = plot_arr_trend(df, OUTDIR)
+path = plot_arr_trend(df, AS_OF, OUTDIR)
 size = os.path.getsize(path)
 print(f"  [1/5] ARR trend       -> {path}  ({size:,} bytes)")
 assert size > 5_000, "File suspiciously small"

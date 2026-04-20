@@ -6,42 +6,14 @@ and returns the file path. Nothing is displayed on screen.
 import os
 
 import matplotlib
-matplotlib.use("Agg")  # must be before pyplot import — no display needed
+matplotlib.use("Agg")  # must be before pyplot — no display needed
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
 import pandas as pd
 
-# ---------------------------------------------------------------------------
-# Shared style
-# ---------------------------------------------------------------------------
-
-PALETTE = [
-    "#2563EB",  # blue
-    "#16A34A",  # green
-    "#9333EA",  # purple
-    "#EA580C",  # orange
-    "#0891B2",  # teal
-    "#CA8A04",  # amber
-    "#DC2626",  # red
-    "#059669",  # emerald
-]
-
-C_POSITIVE = "#16A34A"
-C_NEGATIVE = "#DC2626"
-C_NEUTRAL  = "#6B7280"
-C_PRIMARY  = "#2563EB"
-
-plt.rcParams.update({
-    "font.family": "sans-serif",
-    "axes.spines.top":   False,
-    "axes.spines.right": False,
-    "axes.grid":         True,
-    "axes.grid.axis":    "y",
-    "grid.linestyle":    "--",
-    "grid.alpha":        0.4,
-})
-
+from chart_style import apply_style, PALETTE
 
 # ---------------------------------------------------------------------------
 # Private helpers
@@ -50,13 +22,13 @@ plt.rcParams.update({
 def _save(fig: plt.Figure, output_dir: str, filename: str) -> str:
     os.makedirs(output_dir, exist_ok=True)
     path = os.path.join(output_dir, filename)
-    fig.savefig(path, dpi=150, bbox_inches="tight")
+    fig.savefig(path)   # dpi and bbox set globally via savefig.dpi / savefig.bbox
     plt.close(fig)
     return path
 
 
-def _dollar_formatter(max_val: float):
-    """Pick K vs M label scale based on the data range."""
+def _arr_formatter(max_val: float):
+    """$2.5M style for large values, $800K for smaller."""
     if max_val >= 1_000_000:
         return mticker.FuncFormatter(lambda x, _: f"${x/1e6:.1f}M")
     return mticker.FuncFormatter(lambda x, _: f"${x/1e3:.0f}K")
@@ -66,13 +38,16 @@ def _dollar_formatter(max_val: float):
 # 1. ARR trend
 # ---------------------------------------------------------------------------
 
-def plot_arr_trend(df: pd.DataFrame, output_dir: str = "output") -> str:
+def plot_arr_trend(df: pd.DataFrame, as_of_month: str,
+                   output_dir: str = "output") -> str:
     """
-    Line chart of ending ARR for every month in the data window.
-    Computes the series internally from the full DataFrame.
+    Line chart of ending ARR from first signup month up to as_of_month.
+    Capped at as_of_month so the end label matches the KPI card ARR.
     """
+    apply_style()
+
     min_m = df["signup_date"].min().to_period("M")
-    max_m = df["signup_date"].max().to_period("M")
+    max_m = pd.Period(as_of_month, freq="M")
     months = pd.period_range(min_m, max_m, freq="M")
 
     arr_values = []
@@ -85,16 +60,32 @@ def plot_arr_trend(df: pd.DataFrame, output_dir: str = "output") -> str:
         arr_values.append(float(active["mrr_usd"].sum() * 12))
 
     labels = [str(m) for m in months]
+    x = range(len(labels))
 
     fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(labels, arr_values, color=C_PRIMARY, linewidth=2.5,
-            marker="o", markersize=5, zorder=3)
-    ax.fill_between(labels, arr_values, alpha=0.08, color=C_PRIMARY)
 
-    ax.set_title("ARR Over Time", fontsize=14, fontweight="bold", pad=12)
-    ax.set_ylabel("ARR (USD)", fontsize=11)
-    ax.yaxis.set_major_formatter(_dollar_formatter(max(arr_values)))
-    ax.tick_params(axis="x", rotation=45, labelsize=9)
+    ax.plot(labels, arr_values, color="#2E5FE8", linewidth=2,
+            marker="o", markersize=5, zorder=3)
+
+    # End label — positioned just right of the last point
+    ax.annotate(
+        f"${arr_values[-1]/1e6:.2f}M",
+        xy=(len(labels) - 1, arr_values[-1]),
+        xytext=(6, 0),
+        textcoords="offset points",
+        va="center",
+        ha="left",
+        fontsize=9,
+        color="#2E5FE8",
+        fontweight="medium",
+    )
+
+    ax.set_title("")   # section header in the PDF covers this
+    ax.set_ylabel("ARR")
+    ax.yaxis.set_major_formatter(_arr_formatter(max(arr_values)))
+    ax.tick_params(axis="x", rotation=45)
+    # Give the end label a little room on the right
+    ax.set_xlim(-0.5, len(labels) - 0.2)
 
     fig.tight_layout()
     return _save(fig, output_dir, "arr_trend.png")
@@ -107,33 +98,44 @@ def plot_arr_trend(df: pd.DataFrame, output_dir: str = "output") -> str:
 def plot_arr_waterfall(wf: dict, as_of_month: str,
                        output_dir: str = "output") -> str:
     """
-    Waterfall chart: Starting ARR → New → Expansion → Churn → Ending ARR.
-    Floating bars show each movement; totals sit on the baseline.
+    Waterfall: Starting ARR → New → Expansion → Churn → Ending ARR.
+    Each movement floats at the right baseline; totals sit on the x-axis.
     """
-    # Each entry: (label, bar_height, bottom, bar_color, label_sign)
-    running = wf["starting_arr"]
+    apply_style()
+
+    C_GRAY  = "#5F5E5A"
+    C_TEAL  = "#17A583"
+    C_AMBER = "#D97706"
+    C_RED   = "#E24B4A"
+    C_BLUE  = "#2E5FE8"
+
+    peak = wf["starting_arr"] + wf["new_arr"] + wf["expansion_arr"]
+
+    # (label, bar_height, bottom, color, sign_for_label)
     segments = [
-        ("Starting\nARR",  wf["starting_arr"],  0,       C_NEUTRAL,  ""),
-        ("New",            wf["new_arr"],        running, C_POSITIVE, "+"),
-        ("Expansion",      wf["expansion_arr"],  running + wf["new_arr"], C_POSITIVE, "+"),
+        ("Starting\nARR",  wf["starting_arr"],  0,       C_GRAY,  ""),
+        ("New",            wf["new_arr"],        wf["starting_arr"],  C_TEAL,  "+"),
+        ("Expansion",      wf["expansion_arr"],  wf["starting_arr"] + wf["new_arr"],  C_AMBER, "+"),
         ("Churn",          wf["churn_arr"],
-            running + wf["new_arr"] + wf["expansion_arr"] - wf["churn_arr"],
-            C_NEGATIVE, "-"),
-        ("Ending\nARR",    wf["ending_arr"],     0,       C_PRIMARY,  ""),
+            wf["starting_arr"] + wf["new_arr"] + wf["expansion_arr"] - wf["churn_arr"],
+            C_RED,  "-"),
+        ("Ending\nARR",    wf["ending_arr"],     0,       C_BLUE, ""),
     ]
 
     fig, ax = plt.subplots(figsize=(9, 5))
-    peak = wf["starting_arr"] + wf["new_arr"] + wf["expansion_arr"]
 
     for i, (label, height, bottom, color, sign) in enumerate(segments):
-        if height == 0:
+        if height == 0 and sign:   # skip zero-value movement bars
             continue
-        ax.bar(i, height, bottom=bottom, color=color, alpha=0.85,
-               width=0.5, zorder=3)
+        ax.bar(i, height, bottom=bottom, color=color, width=0.5, zorder=3)
         top = bottom + height
-        ax.text(i, top + peak * 0.015,
-                f"{sign}${height/1e3:.0f}K",
-                ha="center", va="bottom", fontsize=9, fontweight="bold")
+        label_str = f"{sign}${height/1e3:.0f}K"
+        ax.text(
+            i, top + peak * 0.012,
+            label_str,
+            ha="center", va="bottom",
+            fontsize=9, fontweight=500,
+        )
 
     # Dashed connectors between bars
     connector_tops = [
@@ -143,16 +145,20 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
         wf["ending_arr"],
     ]
     for i, top in enumerate(connector_tops):
-        ax.plot([i + 0.25, i + 0.75], [top, top],
-                color="#9CA3AF", linewidth=0.8, linestyle="--", zorder=2)
+        ax.plot(
+            [i + 0.25, i + 0.75], [top, top],
+            color="#B4B2A9", linewidth=0.5,
+            linestyle=(0, (2, 2)),   # dashes (2 on, 2 off)
+            zorder=2,
+        )
 
-    ax.set_title(f"ARR Waterfall  —  {as_of_month}",
-                 fontsize=14, fontweight="bold", pad=12)
-    ax.set_ylabel("ARR (USD)", fontsize=11)
+    ax.set_title(f"ARR waterfall — {as_of_month}")
+    ax.set_ylabel("ARR")
     ax.set_xticks(range(len(segments)))
     ax.set_xticklabels([s[0] for s in segments], fontsize=10)
-    ax.yaxis.set_major_formatter(_dollar_formatter(peak))
-    ax.set_ylim(0, peak * 1.2)
+    ax.yaxis.set_major_formatter(_arr_formatter(peak))
+    ax.set_ylim(0, peak * 1.22)
+    ax.grid(axis="y")
 
     fig.tight_layout()
     return _save(fig, output_dir, "arr_waterfall.png")
@@ -165,84 +171,94 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
 def plot_cohort_heatmap(retention_df: pd.DataFrame,
                         output_dir: str = "output") -> str:
     """
-    Color-coded heatmap of cohort retention percentages.
-    Red = low retention, green = high. NaN cells are light gray.
+    Single-hue green heatmap. NaN cells are plain gray, no label.
+    No colorbar — the percentages in each cell are self-explanatory.
     """
+    apply_style()
+
+    GREEN_CMAP = LinearSegmentedColormap.from_list(
+        "manageup_green", ["#E1F5EE", "#0F6E56"]
+    )
+    GREEN_CMAP.set_bad(color="#F1EFE8")
+
     pct_cols = [c for c in retention_df.columns if c.startswith("month_")]
     data = retention_df[pct_cols].copy()
+    col_labels = [f"Month {c.split('_')[1]}" for c in pct_cols]
 
     mat = data.values.astype(float)
     masked = np.ma.masked_invalid(mat)
 
-    cmap = plt.cm.RdYlGn.copy()
-    cmap.set_bad(color="#E5E7EB")  # light gray for NaN / not-yet-measurable
+    n_rows = mat.shape[0]
+    fig_h = max(3.5, n_rows * 0.52)
+    fig, ax = plt.subplots(figsize=(7, fig_h))
 
-    n_rows, n_cols = mat.shape
-    fig_height = max(3.5, n_rows * 0.55)
-    fig, ax = plt.subplots(figsize=(7, fig_height))
+    ax.imshow(masked, cmap=GREEN_CMAP, vmin=0, vmax=100, aspect="auto")
 
-    im = ax.imshow(masked, cmap=cmap, vmin=0, vmax=100, aspect="auto")
-
-    # Annotate each cell
-    for row in range(n_rows):
-        for col in range(n_cols):
+    # Annotate non-NaN cells only
+    for row in range(mat.shape[0]):
+        for col in range(mat.shape[1]):
             v = mat[row, col]
-            if np.isnan(v):
-                ax.text(col, row, "n/a", ha="center", va="center",
-                        fontsize=8, color="#9CA3AF")
-            else:
-                text_color = "white" if (v < 35 or v > 80) else "#1F2937"
-                ax.text(col, row, f"{v:.0f}%", ha="center", va="center",
-                        fontsize=9, color=text_color, fontweight="bold")
+            if not np.isnan(v):
+                text_color = "white" if v > 50 else "#1A3A2E"
+                ax.text(col, row, f"{v:.0f}%",
+                        ha="center", va="center",
+                        fontsize=9, fontweight="medium",
+                        color=text_color)
+            # NaN cells: no label, background handled by cmap.set_bad
 
-    col_labels = [c.replace("month_", "Mo ") for c in pct_cols]
-    ax.set_xticks(range(n_cols))
+    ax.set_xticks(range(len(col_labels)))
     ax.set_xticklabels(col_labels, fontsize=10)
     ax.set_yticks(range(n_rows))
     ax.set_yticklabels(data.index.tolist(), fontsize=9)
-    ax.set_title("Cohort Retention (%)", fontsize=14,
-                 fontweight="bold", pad=12)
-    ax.grid(False)  # heatmap looks cleaner without grid lines
+    ax.set_title("Cohort retention by signup month")
+    ax.grid(False)
 
-    plt.colorbar(im, ax=ax, label="% Retained", fraction=0.03, pad=0.04)
     fig.tight_layout()
     return _save(fig, output_dir, "cohort_heatmap.png")
 
 
 # ---------------------------------------------------------------------------
-# 4 & 5. Stacked bar charts (geography + industry share the same logic)
+# 4 & 5. Geography and industry stacked bars
 # ---------------------------------------------------------------------------
 
 def _stacked_bar(df: pd.DataFrame, title: str, ylabel: str,
                  filename: str, output_dir: str) -> str:
+    """Shared stacked bar logic. Legend sits outside the plot area."""
+    apply_style()
+
     fig, ax = plt.subplots(figsize=(11, 5))
     x = np.arange(len(df))
     bottoms = np.zeros(len(df))
 
     for i, col in enumerate(df.columns):
         heights = df[col].values.astype(float)
-        ax.bar(x, heights, bottom=bottoms, label=col,
-               color=PALETTE[i % len(PALETTE)], alpha=0.88)
+        ax.bar(x, heights, bottom=bottoms,
+               label=col, color=PALETTE[i % len(PALETTE)])
         bottoms += heights
 
-    ax.set_title(title, fontsize=14, fontweight="bold", pad=12)
-    ax.set_ylabel(ylabel, fontsize=11)
+    ax.set_title(title)
+    ax.set_ylabel(ylabel)
     ax.set_xticks(x)
-    ax.set_xticklabels(df.index.tolist(), rotation=45,
-                       ha="right", fontsize=9)
-    ax.legend(loc="upper left", fontsize=9, framealpha=0.7)
+    ax.set_xticklabels(df.index.tolist(), rotation=45, ha="right", fontsize=9)
+
+    ax.legend(
+        bbox_to_anchor=(1.02, 1),
+        loc="upper left",
+        frameon=False,
+        fontsize=9,
+    )
 
     fig.tight_layout()
+    fig.subplots_adjust(right=0.82)   # room for the outside legend
     return _save(fig, output_dir, filename)
 
 
 def plot_geography_mix(geo_df: pd.DataFrame,
                        output_dir: str = "output") -> str:
-    """Stacked bar: active customers by country per month."""
     return _stacked_bar(
         geo_df,
-        title="Active Customers by Country",
-        ylabel="Active Customers",
+        title="Active customers by country",
+        ylabel="Active customers",
         filename="geography_mix.png",
         output_dir=output_dir,
     )
@@ -250,11 +266,10 @@ def plot_geography_mix(geo_df: pd.DataFrame,
 
 def plot_industry_mix(ind_df: pd.DataFrame,
                       output_dir: str = "output") -> str:
-    """Stacked bar: active customers by industry per month."""
     return _stacked_bar(
         ind_df,
-        title="Active Customers by Industry",
-        ylabel="Active Customers",
+        title="Active customers by industry",
+        ylabel="Active customers",
         filename="industry_mix.png",
         output_dir=output_dir,
     )
