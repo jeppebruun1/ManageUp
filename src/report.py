@@ -190,16 +190,16 @@ def _chart(path: str, max_w: float = None, max_h: float = None) -> Image:
     return img
 
 
-def _kpi_row(items: list) -> Table:
+def _kpi_row(items: list, col_widths: list = None) -> Table:
     n   = len(items)
-    w   = CONTENT_W / n
+    cw  = col_widths if col_widths else [CONTENT_W / n] * n
     tbl = Table(
         [
             [Paragraph(lbl, S_KPI_LABEL) for lbl, _, _ in items],
             [Paragraph(val, S_KPI_VALUE) for _, val, _ in items],
             [Paragraph(dlt, S_KPI_DELTA) for _, _, dlt in items],
         ],
-        colWidths=[w] * n,
+        colWidths=cw,
     )
     tbl.setStyle(TableStyle([
         ("BACKGROUND",    (0, 0), (-1, -1), C_BG),
@@ -280,12 +280,11 @@ def _section_summary(story: list, kpis: dict, arr_chart_path: str) -> None:
         Paragraph("Founder commentary", S_SUBHEAD),
         Paragraph(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
-            "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br/>"
-            "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br/>"
-            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu<br/>"
-            "fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in<br/>"
-            "culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde<br/>"
-            "omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.",
+            "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+            "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. "
+            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore "
+            "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, "
+            "sunt in culpa qui officia deserunt mollit anim id est laborum.",
             S_LOREM,
         ),
     ]
@@ -382,22 +381,25 @@ def _section_icp(story: list, icp: dict) -> None:
         f"Your highest-MRR customers skew toward {icp['top_industry']} companies "
         f"in {icp['top_country']}, acquired mostly via {dominant} ({pct:.0f}%)."
     )
+    # Column widths: MRR values are short; industry/country can be long.
+    # 87 + 87 + 155 + 175 = 504 = CONTENT_W
+    icp_cw = [87, 87, 155, 175]
     story += [
         Paragraph(caption, S_CAPTION),
         _gap(12),
         _kpi_row([
             ("Avg MRR",      f"${icp['avg_mrr']:,.0f}",   ""),
             ("Median MRR",   f"${icp['median_mrr']:,.0f}", ""),
-            ("Top Industry", icp["top_industry"] or "-",   ""),
-            ("Top Country",  icp["top_country"]  or "-",   ""),
-        ]),
+            ("Top industry", icp["top_industry"] or "-",   ""),
+            ("Top country",  icp["top_country"]  or "-",   ""),
+        ], col_widths=icp_cw),
         _gap(12),
         _kpi_row([
             ("Inbound",      f"{icp['inbound_pct']:.0f}%",  ""),
             ("Outbound",     f"{icp['outbound_pct']:.0f}%", ""),
             ("Sample size",  str(icp["sample_size"]),        ""),
             ("",             "",                             ""),
-        ]),
+        ], col_widths=icp_cw),
     ]
 
 
@@ -451,37 +453,37 @@ def build_report(csv_path: str, as_of_month: str,
     story.append(PageBreak())
 
     # Page 2 — Executive Summary
-    story += _section_header(1, "Executive Summary")
+    story += _section_header(1, "Executive summary")
     _section_summary(story, kpis, arr_png)
 
     # Page 3 — Cohort Retention
     story.append(PageBreak())
-    story += _section_header(2, "Cohort Retention")
+    story += _section_header(2, "Cohort retention")
     _section_cohort(story, coh_png)
 
     # Page 4 — ARR Waterfall
     story.append(PageBreak())
-    story += _section_header(3, "ARR Waterfall")
+    story += _section_header(3, "ARR waterfall")
     _section_waterfall(story, wf, wfall_png)
 
     # Page 5 — Geography Mix
     story.append(PageBreak())
-    story += _section_header(4, "Geography Mix")
+    story += _section_header(4, "Geography mix")
     story.append(_chart(geo_png, max_h=CONTENT_H * 0.78))
 
     # Page 6 — Industry Mix
     story.append(PageBreak())
-    story += _section_header(5, "Industry Mix")
+    story += _section_header(5, "Industry mix")
     story.append(_chart(ind_png, max_h=CONTENT_H * 0.78))
 
     # Page 7 — Logo Highlights
     story.append(PageBreak())
-    story += _section_header(6, "Logo Highlights")
+    story += _section_header(6, "Logo highlights")
     _section_logos(story, logos)
 
     # Page 8 — ICP Snapshot
     story.append(PageBreak())
-    story += _section_header(7, "ICP Snapshot")
+    story += _section_header(7, "ICP snapshot")
     _section_icp(story, icp)
 
     cover_fn = lambda c, d: _draw_cover(c, month_label, prepared_str)

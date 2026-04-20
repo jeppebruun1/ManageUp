@@ -152,7 +152,7 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
             zorder=2,
         )
 
-    ax.set_title(f"ARR waterfall — {as_of_month}")
+    ax.set_title("")
     ax.set_ylabel("ARR")
     ax.set_xticks(range(len(segments)))
     ax.set_xticklabels([s[0] for s in segments], fontsize=10)
@@ -226,7 +226,7 @@ def _stacked_bar(df: pd.DataFrame, title: str, ylabel: str,
     """Shared stacked bar logic. Legend sits outside the plot area."""
     apply_style()
 
-    fig, ax = plt.subplots(figsize=(11, 5))
+    fig, ax = plt.subplots(figsize=(7, 6))
     x = np.arange(len(df))
     bottoms = np.zeros(len(df))
 
