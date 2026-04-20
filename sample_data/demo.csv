@@ -1,0 +1,151 @@
+customer_name,customer_domain,mrr_usd,signup_date,end_date,acquisition_channel,country,industry
+Grant AI,grantai.ai,600,2024-10-29,2024-12-29,outbound,United States,Fintech
+Vertex AI,vertexai.io,4600,2024-04-22,,outbound,United Kingdom,Fintech
+Iris Pro,irispro.ai,650,2024-02-17,,outbound,United States,Healthcare
+Orbit Analytics,orbitanalytics.co,2800,2024-11-17,,outbound,United Kingdom,Logistics
+Mosaic Networks,mosaicnetworks.com,2200,2024-08-20,,outbound,United States,Healthcare
+Peak Cloud,peakcloud.io,3850,2024-07-13,,outbound,France,Fintech
+Delta Link,deltalink.com,900,2024-04-18,,outbound,United Kingdom,Logistics
+Torque HQ,torquehq.ai,3150,2024-10-26,2024-12-26,outbound,Canada,Healthcare
+Vibe Systems,vibesystems.com,1050,2024-12-14,,outbound,United States,E-commerce
+Trek Tech,trektech.ai,1000,2024-12-15,,outbound,Germany,Fintech
+Iris Solutions,irissolutions.com,1750,2024-09-16,,inbound,United Kingdom,Logistics
+Lumen HQ,lumenhq.ai,900,2024-11-02,,outbound,Australia,Fintech
+Signal Networks,signalnetworks.io,550,2024-09-05,2024-12-04,inbound,France,Fintech
+Willow IO,willowio.ai,1900,2024-10-03,,inbound,United Kingdom,E-commerce
+Slate Solutions,slatesolutions.co,2450,2024-01-11,2024-04-10,inbound,United Kingdom,Fintech
+Mosaic Cloud,mosaiccloud.com,1350,2024-05-22,2024-12-14,outbound,United Kingdom,SaaS
+Zenith Systems,zenithsystems.io,900,2024-02-19,,outbound,Germany,E-commerce
+Crest Data,crestdata.com,1750,2024-04-08,2024-07-23,inbound,France,E-commerce
+Pillar Solutions,pillarsolutions.io,950,2024-01-26,2024-11-29,inbound,United States,Fintech
+Vault Labs,vaultlabs.co,950,2024-07-18,,outbound,Australia,Healthcare
+Xeno Systems,xenosystems.io,600,2024-06-09,,inbound,United States,SaaS
+Volt IO,voltio.com,1000,2024-10-31,2024-12-30,inbound,United Kingdom,E-commerce
+Zephyr Analytics,zephyranalytics.com,3200,2024-05-13,,inbound,Germany,Fintech
+Harbor Networks,harbornetworks.co,3500,2024-11-14,,inbound,United States,SaaS
+Orbit HQ,orbithq.ai,2500,2024-03-21,,outbound,France,Logistics
+Volt AI,voltai.ai,2200,2024-02-29,,inbound,France,Fintech
+Maven One,mavenone.io,4550,2024-05-08,,inbound,United States,Logistics
+Pillar Analytics,pillaranalytics.com,2250,2024-03-23,,outbound,France,Logistics
+Apex Data,apexdata.com,1000,2024-07-08,2024-10-22,inbound,Canada,Fintech
+Core Ops,coreops.io,3350,2024-10-13,,outbound,United States,Fintech
+Lark Pro,larkpro.com,1750,2024-05-16,,inbound,United States,E-commerce
+Truss Link,trusslink.io,2950,2024-04-26,2024-09-17,inbound,United States,Logistics
+Pillar Cloud,pillarcloud.ai,3050,2024-01-15,,inbound,United Kingdom,Fintech
+Global Pro,globalpro.ai,850,2024-07-16,,inbound,United Kingdom,Fintech
+Acme Tech,acmetech.io,2150,2024-11-15,,outbound,United States,Logistics
+Vertex Networks,vertexnetworks.co,1400,2024-04-08,,outbound,Canada,Logistics
+Lark Networks,larknetworks.co,2000,2024-04-17,,outbound,Germany,E-commerce
+Merit Tech,merittech.co,900,2024-05-25,,outbound,United States,Fintech
+Mint Labs,mintlabs.io,500,2024-08-21,,outbound,United Kingdom,Logistics
+Velo Platforms,veloplatforms.io,600,2024-08-05,,inbound,United States,Logistics
+Crest Works,crestworks.io,1850,2024-08-25,,outbound,Australia,SaaS
+Vertex Pro,vertexpro.co,2950,2024-05-06,,outbound,France,E-commerce
+Ember Networks,embernetworks.io,650,2024-03-11,,inbound,United Kingdom,E-commerce
+Merit Cloud,meritcloud.co,4450,2024-02-01,,inbound,Canada,E-commerce
+Zephyr AI,zephyrai.co,4100,2024-08-02,,inbound,Australia,Fintech
+Veil AI,veilai.co,1700,2024-08-27,,inbound,France,Fintech
+Yield AI,yieldai.com,1450,2024-01-26,2024-09-09,outbound,Canada,Healthcare
+Sage Platforms,sageplatforms.ai,900,2024-08-28,,inbound,France,Fintech
+Scout Link,scoutlink.com,900,2024-05-06,2024-08-06,inbound,United States,SaaS
+Truss Data,trussdata.io,1700,2024-11-06,,inbound,United States,Healthcare
+Cedar Networks,cedarnetworks.co,700,2024-10-30,,inbound,United States,Logistics
+Grid Analytics,gridanalytics.ai,750,2024-09-16,,outbound,United States,E-commerce
+Signal Solutions,signalsolutions.io,3050,2024-11-11,,outbound,Australia,E-commerce
+Peak One,peakone.io,4050,2024-05-04,2024-09-24,outbound,Canada,Healthcare
+Leap Systems,leapsystems.io,2550,2024-11-01,,outbound,France,Fintech
+Lens Cloud,lenscloud.io,1400,2024-12-19,,outbound,Australia,E-commerce
+Forge Networks,forgenetworks.io,2500,2024-08-30,,outbound,Canada,Logistics
+Seraph Solutions,seraphsolutions.ai,1250,2024-06-10,2024-10-03,inbound,France,Logistics
+Vault Logic,vaultlogic.ai,1850,2024-07-03,,inbound,United Kingdom,Fintech
+Harbor Logic,harborlogic.com,1050,2024-11-22,,outbound,United States,Fintech
+Truss Systems,trusssystems.co,4000,2024-02-28,2024-10-06,inbound,Canada,E-commerce
+Crest HQ,cresthq.io,1600,2024-03-01,,outbound,United Kingdom,SaaS
+Titan Networks,titannetworks.co,650,2024-04-16,2024-08-15,inbound,United Kingdom,Logistics
+Lark Works,larkworks.com,4400,2024-05-29,,inbound,United Kingdom,Healthcare
+Torque Cloud,torquecloud.io,1250,2024-08-05,,inbound,France,Fintech
+Peak HQ,peakhq.com,2650,2024-08-12,,inbound,Australia,Logistics
+Stack Logic,stacklogic.co,3600,2024-06-14,,outbound,United States,Fintech
+Zenith AI,zenithai.ai,4450,2024-05-22,,inbound,Canada,Logistics
+Forge Systems,forgesystems.ai,700,2024-03-23,,outbound,Canada,Logistics
+Stack Works,stackworks.com,2650,2024-02-29,,outbound,France,Fintech
+Waypoint Solutions,waypointsolutions.co,4250,2024-11-16,,outbound,United States,Fintech
+Titan Systems,titansystems.com,2000,2024-12-29,,inbound,United Kingdom,SaaS
+Stratum Cloud,stratumcloud.io,950,2024-11-27,,inbound,Australia,Logistics
+Peak Pro,peakpro.co,1250,2024-07-15,,inbound,France,Logistics
+Edge Logic,edgelogic.co,650,2024-05-24,,outbound,Australia,Fintech
+Vault Ops,vaultops.ai,4250,2024-06-13,,inbound,United Kingdom,SaaS
+Stratum Analytics,stratumanalytics.ai,4300,2024-12-05,,inbound,Australia,Fintech
+Ridge Data,ridgedata.co,1550,2024-07-28,,inbound,United States,E-commerce
+Orbit One,orbitone.co,4900,2024-06-11,,outbound,France,Fintech
+Nexus Networks,nexusnetworks.io,900,2024-08-15,2024-10-21,inbound,United Kingdom,Fintech
+Prism Ops,prismops.ai,4600,2024-10-16,2024-12-27,inbound,United States,Fintech
+Nexus Systems,nexussystems.io,4000,2024-05-10,,inbound,Australia,Healthcare
+Iris Cloud,iriscloud.co,4100,2024-12-19,,outbound,Australia,Healthcare
+Sphere Systems,spheresystems.com,3150,2024-12-24,,outbound,United States,Logistics
+Apex Analytics,apexanalytics.co,2600,2024-04-22,,inbound,United Kingdom,Logistics
+Helix Data,helixdata.com,2900,2024-03-08,,inbound,United Kingdom,Healthcare
+Lark Labs,larklabs.io,2750,2024-03-25,,outbound,Australia,Healthcare
+Sage Data,sagedata.co,3950,2024-10-12,2024-12-28,outbound,United States,E-commerce
+Grid Solutions,gridsolutions.ai,4050,2024-11-22,,outbound,United States,Logistics
+Cedar Works,cedarworks.ai,950,2024-11-21,,outbound,United Kingdom,Logistics
+Helix Analytics,helixanalytics.com,1500,2024-10-02,,inbound,Canada,E-commerce
+Waypoint Pro,waypointpro.io,3700,2024-11-11,,outbound,United Kingdom,Fintech
+Merit Solutions,meritsolutions.co,2750,2024-10-05,,outbound,United States,E-commerce
+Forge Labs,forgelabs.com,1800,2024-10-16,2024-12-21,inbound,United States,SaaS
+Mosaic One,mosaicone.io,3200,2024-03-15,,inbound,France,Healthcare
+Harbor AI,harborai.ai,2500,2024-01-09,2024-10-10,inbound,United Kingdom,Fintech
+Volt Data,voltdata.com,750,2024-08-19,,inbound,United States,Logistics
+Vista Networks,vistanetworks.co,3600,2024-07-24,,outbound,United States,E-commerce
+Titan Cloud,titancloud.com,1600,2024-05-20,,outbound,Canada,SaaS
+Torque Tech,torquetech.co,1800,2024-08-08,,outbound,United Kingdom,E-commerce
+Torque Platforms,torqueplatforms.co,2650,2024-12-06,,outbound,Germany,Fintech
+Truss Cloud,trusscloud.com,900,2024-07-09,,inbound,France,Fintech
+Xeno Works,xenoworks.ai,4200,2024-01-27,2024-12-11,outbound,United Kingdom,Healthcare
+Merit HQ,merithq.co,2200,2024-02-28,,outbound,United Kingdom,E-commerce
+Xeno AI,xenoai.ai,2550,2024-06-22,,outbound,United States,Fintech
+Yield Platforms,yieldplatforms.com,550,2024-09-28,,inbound,Canada,E-commerce
+Iris Ops,irisops.ai,850,2024-01-27,2024-05-07,inbound,United States,SaaS
+Peak Solutions,peaksolutions.co,2900,2024-04-20,2024-12-09,inbound,Germany,E-commerce
+Veil Tech,veiltech.ai,500,2024-01-04,,inbound,United Kingdom,Fintech
+Onyx Networks,onyxnetworks.ai,1000,2024-03-07,,outbound,France,Logistics
+Xeno Ops,xenoops.com,700,2024-08-23,,inbound,Germany,SaaS
+Stack Pro,stackpro.ai,1400,2024-11-12,,outbound,Germany,Fintech
+Global Link,globallink.co,3650,2024-06-07,,outbound,United Kingdom,Healthcare
+Ember Tech,embertech.com,2400,2024-11-26,,inbound,United Kingdom,Fintech
+Lumen IO,lumenio.io,1800,2024-11-17,,outbound,Australia,SaaS
+Token One,tokenone.ai,4450,2024-11-19,,outbound,United Kingdom,SaaS
+Vertex Cloud,vertexcloud.ai,2100,2024-05-26,,inbound,United States,SaaS
+Sphere Solutions,spheresolutions.com,1950,2024-06-13,,outbound,France,Fintech
+Token Data,tokendata.ai,1100,2024-01-21,,inbound,Australia,E-commerce
+Slate Networks,slatenetworks.co,700,2024-11-19,,outbound,United States,Healthcare
+Sphere Networks,spherenetworks.ai,1850,2024-06-19,,inbound,United States,Healthcare
+Sprint HQ,sprinthq.com,2750,2024-03-06,,inbound,Canada,SaaS
+Leap Labs,leaplabs.ai,1800,2024-03-11,,inbound,United States,Healthcare
+Frost Tech,frosttech.com,3750,2024-03-19,,inbound,United States,Logistics
+Kite Solutions,kitesolutions.com,1350,2024-08-15,,outbound,Australia,Fintech
+Quest Systems,questsystems.io,4400,2024-05-24,,outbound,France,SaaS
+Iris Labs,irislabs.io,4800,2024-07-09,,inbound,France,Fintech
+Iris Logic,irislogic.co,950,2024-04-23,,outbound,Germany,Fintech
+Sprint Tech,sprinttech.ai,1400,2024-01-15,,outbound,United States,Logistics
+Horizon HQ,horizonhq.com,1950,2024-12-27,,outbound,Australia,SaaS
+Flux AI,fluxai.ai,4600,2024-02-26,2024-06-26,outbound,United Kingdom,Healthcare
+Summit Solutions,summitsolutions.com,550,2024-11-19,,inbound,United States,Healthcare
+Seraph Link,seraphlink.co,3350,2024-02-04,2024-10-19,inbound,Canada,E-commerce
+Slate Logic,slatelogic.com,1800,2024-12-02,,inbound,Germany,Fintech
+Waypoint One,waypointone.io,4450,2024-11-19,,inbound,United States,Fintech
+Torque Analytics,torqueanalytics.ai,2400,2024-06-07,,outbound,France,E-commerce
+Lens Networks,lensnetworks.ai,2100,2024-05-19,,inbound,Germany,E-commerce
+Titan Platforms,titanplatforms.ai,4900,2024-07-07,,outbound,United States,Logistics
+Synth IO,synthio.ai,2150,2024-06-05,,outbound,Canada,Fintech
+Scout Solutions,scoutsolutions.com,4750,2024-05-20,,inbound,United States,Logistics
+Signal Tech,signaltech.io,4750,2024-01-18,,inbound,United States,Fintech
+Signal Ops,signalops.co,1600,2024-12-13,,outbound,Germany,Healthcare
+Ember HQ,emberhq.ai,1300,2024-02-28,,inbound,United States,E-commerce
+Xeno Data,xenodata.ai,1250,2024-11-09,,outbound,Australia,Fintech
+Ember Solutions,embersolutions.io,2900,2024-12-07,,outbound,United States,SaaS
+Pulse IO,pulseio.io,900,2024-04-12,2024-10-30,inbound,United Kingdom,E-commerce
+Zenith Ops,zenithops.co,900,2024-02-03,,outbound,Canada,Logistics
+Volt Pro,voltpro.co,2150,2024-11-24,,inbound,Australia,E-commerce
+Scout HQ,scouthq.io,900,2024-03-04,2024-12-28,inbound,United Kingdom,Fintech
+Mint Ops,mintops.ai,2500,2024-03-05,,outbound,France,Fintech
