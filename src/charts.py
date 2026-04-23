@@ -46,18 +46,20 @@ def plot_arr_trend(df: pd.DataFrame, as_of_month: str,
     """
     apply_style()
 
-    min_m = df["signup_date"].min().to_period("M")
+    min_m = df["month"].min()
     max_m = pd.Period(as_of_month, freq="M")
     months = pd.period_range(min_m, max_m, freq="M")
 
     arr_values = []
     for month in months:
-        month_end = month.to_timestamp() + pd.offsets.MonthEnd(0)
-        active = df[
-            (df["signup_date"] <= month_end)
-            & (df["end_date"].isna() | (df["end_date"] > month_end))
-        ]
-        arr_values.append(float(active["mrr_usd"].sum() * 12))
+        active = df[df["month"] == month]
+        # one row per customer (last charge if duplicates)
+        active = (
+            active.sort_values("transaction_date")
+                  .groupby("customer_name", as_index=False)
+                  .last()
+        )
+        arr_values.append(float(active["amount_usd"].sum() * 12))
 
     labels = [str(m) for m in months]
     x = range(len(labels))
@@ -109,17 +111,25 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
     C_RED   = "#E24B4A"
     C_BLUE  = "#2E5FE8"
 
-    peak = wf["starting_arr"] + wf["new_arr"] + wf["expansion_arr"]
+    net_exp = wf["net_expansion_arr"]
+    peak    = wf["starting_arr"] + wf["new_arr"] + max(0.0, net_exp)
+
+    if net_exp >= 0:
+        exp_height, exp_bottom, exp_color, exp_sign = (
+            net_exp, wf["starting_arr"] + wf["new_arr"], C_TEAL, "+"
+        )
+    else:
+        exp_height, exp_bottom, exp_color, exp_sign = (
+            -net_exp, wf["starting_arr"] + wf["new_arr"] + net_exp, C_AMBER, "-"
+        )
 
     # (label, bar_height, bottom, color, sign_for_label)
     segments = [
-        ("Starting\nARR",  wf["starting_arr"],  0,       C_GRAY,  ""),
-        ("New",            wf["new_arr"],        wf["starting_arr"],  C_TEAL,  "+"),
-        ("Expansion",      wf["expansion_arr"],  wf["starting_arr"] + wf["new_arr"],  C_AMBER, "+"),
-        ("Churn",          wf["churn_arr"],
-            wf["starting_arr"] + wf["new_arr"] + wf["expansion_arr"] - wf["churn_arr"],
-            C_RED,  "-"),
-        ("Ending\nARR",    wf["ending_arr"],     0,       C_BLUE, ""),
+        ("Starting\nARR",   wf["starting_arr"], 0,                   C_GRAY, ""),
+        ("New",             wf["new_arr"],       wf["starting_arr"],  C_TEAL, "+"),
+        ("Net\nExpansion",  exp_height,          exp_bottom,          exp_color, exp_sign),
+        ("Churn",           wf["churn_arr"],     wf["ending_arr"],    C_RED,  "-"),
+        ("Ending\nARR",     wf["ending_arr"],    0,                   C_BLUE, ""),
     ]
 
     fig, ax = plt.subplots(figsize=(9, 5))
@@ -141,7 +151,7 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
     connector_tops = [
         wf["starting_arr"],
         wf["starting_arr"] + wf["new_arr"],
-        wf["starting_arr"] + wf["new_arr"] + wf["expansion_arr"],
+        wf["starting_arr"] + wf["new_arr"] + wf["net_expansion_arr"],
         wf["ending_arr"],
     ]
     for i, top in enumerate(connector_tops):
@@ -189,8 +199,10 @@ def plot_cohort_heatmap(retention_df: pd.DataFrame,
     masked = np.ma.masked_invalid(mat)
 
     n_rows = mat.shape[0]
-    fig_h = max(3.5, n_rows * 0.52)
-    fig, ax = plt.subplots(figsize=(7, fig_h))
+    n_cols = mat.shape[1]
+    fig_h  = max(3.5, n_rows * 0.52)
+    fig_w  = max(7.0, n_cols * 0.75)
+    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
 
     ax.imshow(masked, cmap=GREEN_CMAP, vmin=0, vmax=100, aspect="auto")
 
@@ -273,3 +285,56 @@ def plot_industry_mix(ind_df: pd.DataFrame,
         filename="industry_mix.png",
         output_dir=output_dir,
     )
+
+
+# ---------------------------------------------------------------------------
+# 6. Pipeline funnel (optional — only when pipeline CSV is provided)
+# ---------------------------------------------------------------------------
+
+def plot_pipeline_funnel(by_stage: dict,
+                         output_dir: str = "output") -> str:
+    """
+    Horizontal funnel chart. One bar per stage, width = ARR in that stage.
+    Stages are plotted top-to-bottom: Discovery -> Verbal Agreement.
+    """
+    apply_style()
+
+    STAGES = ["Discovery", "Demo", "Proposal", "Negotiation", "Verbal Agreement"]
+    FUNNEL_COLORS = ["#BFDBFE", "#93C5FD", "#60A5FA", "#3B82F6", "#1E40AF"]
+
+    amounts = [by_stage[s]["amount_arr"] for s in STAGES]
+    counts  = [by_stage[s]["count"]      for s in STAGES]
+
+    fig, ax = plt.subplots(figsize=(9, 4.5))
+    y_pos = np.arange(len(STAGES))
+
+    ax.barh(y_pos, amounts, color=FUNNEL_COLORS, height=0.62, zorder=3)
+
+    max_amt = max(amounts) if amounts and max(amounts) > 0 else 1.0
+    for i, (amt, cnt) in enumerate(zip(amounts, counts)):
+        if amt >= 1_000_000:
+            amt_str = f"${amt/1e6:.2f}M"
+        elif amt > 0:
+            amt_str = f"${amt/1e3:.0f}K"
+        else:
+            amt_str = "$0"
+        label = f"{cnt} deals  ·  {amt_str}"
+        ax.text(
+            amt + max_amt * 0.01, i, label,
+            va="center", ha="left",
+            fontsize=9, fontweight="medium",
+        )
+
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(STAGES, fontsize=10)
+    ax.invert_yaxis()
+    ax.xaxis.set_major_formatter(_arr_formatter(max_amt))
+    ax.set_xlabel("Pipeline ARR")
+    ax.set_xlim(0, max_amt * 1.38)
+
+    # Horizontal-bar chart: want grid on x-axis, not y
+    ax.grid(axis="x", zorder=0)
+    ax.yaxis.grid(False)
+
+    fig.tight_layout()
+    return _save(fig, output_dir, "pipeline_funnel.png")

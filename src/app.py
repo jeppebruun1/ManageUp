@@ -53,20 +53,25 @@ button[kind="primary"] {
 # Required CSV columns
 # ---------------------------------------------------------------------------
 REQUIRED_COLUMNS = {
-    "customer_name", "customer_domain", "mrr_usd",
-    "signup_date", "end_date", "acquisition_channel",
+    "customer_name", "customer_domain", "amount_usd",
+    "transaction_date", "acquisition_channel",
     "country", "industry",
+}
+PIPELINE_REQUIRED_COLUMNS = {
+    "opportunity_name", "company_name", "stage",
+    "amount_usd", "expected_close_date",
 }
 
 # ---------------------------------------------------------------------------
 # Session state
 # ---------------------------------------------------------------------------
 _defaults = {
-    "last_filename": None,
-    "pdf_bytes":     None,
-    "pdf_month":     None,
-    "pdf_timestamp": None,
-    "pdf_size_kb":   None,
+    "last_filename":          None,
+    "last_pipeline_filename": None,
+    "pdf_bytes":              None,
+    "pdf_month":              None,
+    "pdf_timestamp":          None,
+    "pdf_size_kb":            None,
 }
 for k, v in _defaults.items():
     if k not in st.session_state:
@@ -87,6 +92,16 @@ uploaded = st.file_uploader(
 if uploaded is None:
     st.info("Drag and drop a CSV file here, or click Browse.")
     st.stop()
+
+pipeline_uploaded = st.file_uploader(
+    "Sales pipeline CSV (optional)",
+    type="csv",
+    help=(
+        "Optional. If provided, the report will include a sales pipeline page. "
+        "Required columns: opportunity_name, company_name, stage, amount_usd, "
+        "expected_close_date."
+    ),
+)
 
 # Reset PDF when a new file is uploaded
 if st.session_state.last_filename != uploaded.name:
@@ -111,25 +126,54 @@ except Exception as exc:
     st.error(f"Could not read CSV: {exc}")
     st.stop()
 
+# Optional pipeline CSV
+pipeline_csv_path = None
+if pipeline_uploaded is not None:
+    if st.session_state.last_pipeline_filename != pipeline_uploaded.name:
+        st.session_state.last_pipeline_filename = pipeline_uploaded.name
+
+    with tempfile.NamedTemporaryFile(suffix=".csv", delete=False) as _ptmp:
+        _ptmp.write(pipeline_uploaded.getvalue())
+        _pipe_path = _ptmp.name
+
+    try:
+        _p_cols   = set(pd.read_csv(_pipe_path, nrows=0).columns)
+        _p_miss   = PIPELINE_REQUIRED_COLUMNS - _p_cols
+        if _p_miss:
+            st.error(
+                f"Pipeline CSV is missing columns: {', '.join(sorted(_p_miss))}. "
+                "The report will be generated without the sales pipeline page."
+            )
+        else:
+            pipeline_csv_path = _pipe_path
+            _pipe_preview = pd.read_csv(_pipe_path)
+            st.caption(
+                f"Pipeline loaded: {len(_pipe_preview):,} opportunities"
+            )
+    except Exception as exc:
+        st.error(f"Could not read pipeline CSV: {exc}")
+else:
+    st.session_state.last_pipeline_filename = None
+
 # ============================================================================
 # STAGE 2 — REVIEW
 # ============================================================================
 st.divider()
 
-_min_m     = df["signup_date"].dt.to_period("M").min()
-_max_m     = df["signup_date"].dt.to_period("M").max()
-_total_mrr = df["mrr_usd"].sum()
+_min_m            = df["month"].min()
+_max_m            = df["month"].max()
+_unique_customers = df["customer_name"].nunique()
 st.caption(
-    f"Loaded {len(df):,} rows  ·  "
-    f"{_min_m} to {_max_m}  ·  "
-    f"Total MRR ${_total_mrr:,.0f}"
+    f"Loaded {len(df):,} transactions  ·  "
+    f"{_unique_customers:,} customers  ·  "
+    f"{_min_m} to {_max_m}"
 )
 
 st.dataframe(df.head(5), use_container_width=True)
 
 # Month selector — displays "October 2024", returns "2024-10"
 _months = sorted(
-    df["signup_date"].dt.to_period("M").dropna().unique().astype(str),
+    df["month"].dropna().unique().astype(str),
     reverse=True,
 )
 as_of_month = st.selectbox(
@@ -187,6 +231,7 @@ if st.button("Generate report PDF", type="primary", width="stretch"):
                     _pdf_path,
                     commentary=commentary,
                     logo_notes=logo_notes,
+                    pipeline_csv_path=pipeline_csv_path,
                 )
                 with open(_pdf_path, "rb") as _f:
                     st.session_state.pdf_bytes = _f.read()

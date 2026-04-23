@@ -1,0 +1,51 @@
+customer_name,customer_domain,mrr_usd,signup_date,end_date,acquisition_channel,country,industry
+Acorn Analytics,acornanalytics.io,1200,2025-01-05,,inbound,United States,Fintech
+BluePeak Software,bluepeak.software,3400,2025-01-12,,outbound,United Kingdom,SaaS
+Crestline Data,crestlinedata.com,800,2025-01-18,2025-04-18,inbound,Canada,Healthcare
+Dune Systems,dunesystems.io,2100,2025-01-22,,inbound,United States,SaaS
+Ember Cloud,embercloud.co,900,2025-01-28,,outbound,Germany,Fintech
+Foxridge Tech,foxridgetech.com,5000,2025-02-03,,outbound,United States,Enterprise
+Glint Payments,glintpayments.io,1500,2025-02-07,,inbound,United States,Fintech
+Harbor AI,harborai.co,2800,2025-02-11,,inbound,United Kingdom,SaaS
+Ironwood Labs,ironwoodlabs.com,700,2025-02-14,2025-05-14,inbound,Australia,Healthcare
+Jetstream HQ,jetstreamhq.io,3200,2025-02-19,,outbound,United States,SaaS
+Keystone ML,keystoneml.ai,1100,2025-02-24,,inbound,Canada,SaaS
+Lumen Ops,lumenops.com,4100,2025-03-03,,outbound,United States,Enterprise
+Marble Finance,marblefinance.io,950,2025-03-08,,inbound,Germany,Fintech
+Nightfall Data,nightfalldata.com,2600,2025-03-12,,inbound,United States,SaaS
+Onyx Security,onyxsecurity.io,3800,2025-03-17,,outbound,United Kingdom,Enterprise
+Prism Logistics,prismlogistics.co,1300,2025-03-21,,inbound,United States,Logistics
+Quartz HR,quartzhr.com,750,2025-03-26,2025-06-26,inbound,Canada,SaaS
+Ridgeline AI,ridgelineai.io,2200,2025-04-01,,inbound,United States,SaaS
+Summit Payroll,summitpayroll.com,1700,2025-04-07,,outbound,United States,Fintech
+Tidal Analytics,tidalanalytics.io,4500,2025-04-09,,inbound,United Kingdom,SaaS
+Uplift CRM,upliftcrm.com,1000,2025-04-14,,inbound,Australia,Enterprise
+Vantage Ops,vantageops.io,3100,2025-04-17,,outbound,United States,SaaS
+Wavefront Data,wavefrontdata.com,600,2025-04-22,2025-07-22,inbound,Germany,Healthcare
+Xero Dynamics,xerodynamics.io,2900,2025-05-02,,outbound,United States,SaaS
+Yarrow Health,yarrowhealth.com,1400,2025-05-06,,inbound,Canada,Healthcare
+Zenith Payments,zenithpayments.io,5000,2025-05-09,,outbound,United States,Fintech
+Alpine Software,alpinesoftware.com,2300,2025-05-13,,inbound,United Kingdom,SaaS
+Basalt Security,basaltsecurity.io,3600,2025-05-19,,outbound,United States,Enterprise
+Cobalt Logistics,cobaltlogistics.com,900,2025-05-23,2025-08-23,inbound,Australia,Logistics
+Drift Analytics,driftanalytics.io,1800,2025-05-28,,inbound,United States,SaaS
+Echo Finance,echofinance.co,2700,2025-06-03,,inbound,Germany,Fintech
+Fieldstone AI,fieldstonai.io,4200,2025-06-06,,outbound,United States,SaaS
+Granite HR,granitehr.com,1100,2025-06-11,,inbound,Canada,SaaS
+Haven Ops,havenops.io,3300,2025-06-16,,outbound,United Kingdom,Enterprise
+Inkwell Data,inkwelldata.com,800,2025-06-20,2025-09-20,inbound,United States,Healthcare
+Jubilee CRM,jubileecrm.io,2500,2025-06-25,,inbound,United States,SaaS
+Kelp Systems,kelpsystems.com,1600,2025-07-02,,outbound,Australia,SaaS
+Lattice ML,latticeml.ai,3900,2025-07-07,,inbound,United States,SaaS
+Mesa Payments,mesapayments.io,1000,2025-07-11,,inbound,Germany,Fintech
+Nova Logistics,novalogistics.com,2100,2025-07-15,,outbound,United States,Logistics
+Orbit Security,orbitsecurity.io,4700,2025-07-21,,outbound,United Kingdom,Enterprise
+Pebble Finance,pebblefinance.co,700,2025-07-25,2025-10-25,inbound,Canada,Fintech
+Quill Analytics,quillanalytics.io,2400,2025-08-01,,inbound,United States,SaaS
+Reef Cloud,reefcloud.io,3500,2025-08-05,,outbound,United States,SaaS
+Stone HR,stonehr.com,1200,2025-08-09,,inbound,Australia,SaaS
+Thorn Data,thorndata.io,2800,2025-08-14,,inbound,United States,SaaS
+Uplift AI,upliftai.co,5000,2025-08-19,,outbound,United Kingdom,SaaS
+Verdant Ops,verdantops.com,1500,2025-08-22,,inbound,Germany,Enterprise
+Willow CRM,willowcrm.io,3200,2025-08-27,,inbound,United States,SaaS
+Xenon Finance,xenonfinance.io,900,2025-08-30,2025-11-30,outbound,Canada,Fintech

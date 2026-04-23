@@ -15,8 +15,8 @@ from charts import (
     plot_geography_mix, plot_industry_mix,
 )
 
-AS_OF  = "2024-12"
-CSV    = "sample_data/demo.csv"
+AS_OF  = "2025-04"
+CSV    = "sample_data/demo_transactions.csv"
 OUTDIR = "output"
 
 print("Loading data...")
@@ -35,19 +35,19 @@ size = os.path.getsize(path)
 print(f"  [2/5] ARR waterfall   -> {path}  ({size:,} bytes)")
 assert size > 5_000, "File suspiciously small"
 
-ret  = cohort_retention(df)
+ret  = cohort_retention(df, AS_OF)
 path = plot_cohort_heatmap(ret, OUTDIR)
 size = os.path.getsize(path)
 print(f"  [3/5] Cohort heatmap  -> {path}  ({size:,} bytes)")
 assert size > 5_000, "File suspiciously small"
 
-geo  = geography_mix_by_month(df)
+geo  = geography_mix_by_month(df, AS_OF)
 path = plot_geography_mix(geo, OUTDIR)
 size = os.path.getsize(path)
 print(f"  [4/5] Geography mix   -> {path}  ({size:,} bytes)")
 assert size > 5_000, "File suspiciously small"
 
-ind  = industry_mix_by_month(df)
+ind  = industry_mix_by_month(df, AS_OF)
 path = plot_industry_mix(ind, OUTDIR)
 size = os.path.getsize(path)
 print(f"  [5/5] Industry mix    -> {path}  ({size:,} bytes)")

@@ -1,7 +1,8 @@
 """
-Metrics engine for ManageUp.
-All functions are pure: they take a DataFrame (or csv path) and return
-plain Python types or DataFrames. No side effects except the ARR warning.
+Metrics engine for ManageUp — transaction-based model.
+Input: one row per monthly charge (transaction_date, customer_name, customer_domain,
+       amount_usd, acquisition_channel, country, industry).
+All functions are pure: they take a DataFrame and return plain Python types or DataFrames.
 """
 import math
 import pandas as pd
@@ -18,20 +19,25 @@ def _month_bounds(as_of_month: str):
     return start, end
 
 
-def _active_at(df: pd.DataFrame, point: pd.Timestamp) -> pd.DataFrame:
-    """Customers active at a specific point in time (inclusive on start, exclusive on end_date)."""
-    return df[
-        (df["signup_date"] <= point)
-        & (df["end_date"].isna() | (df["end_date"] > point))
-    ]
+def _snapshot(df: pd.DataFrame, month: pd.Period) -> pd.DataFrame:
+    """
+    One row per customer with a charge in the given month.
+    If a customer somehow has multiple rows in one month, keeps the last by transaction_date.
+    """
+    rows = df[df["month"] == month]
+    if rows.empty:
+        return rows.copy()
+    return (
+        rows.sort_values("transaction_date")
+            .groupby("customer_name", as_index=False)
+            .last()
+            .reset_index(drop=True)
+    )
 
 
-def _active_during(df: pd.DataFrame, month_start: pd.Timestamp, month_end: pd.Timestamp) -> pd.DataFrame:
-    """Customers active at any point during a calendar month."""
-    return df[
-        (df["signup_date"] <= month_end)
-        & (df["end_date"].isna() | (df["end_date"] >= month_start))
-    ]
+def _first_months(df: pd.DataFrame) -> pd.Series:
+    """First charge month per customer (customer_name → pd.Period)."""
+    return df.groupby("customer_name")["month"].min()
 
 
 # ---------------------------------------------------------------------------
@@ -40,14 +46,12 @@ def _active_during(df: pd.DataFrame, month_start: pd.Timestamp, month_end: pd.Ti
 
 def load_and_clean(csv_path: str) -> pd.DataFrame:
     """
-    Load the CSV and parse dates.
-    Blank end_date → NaT (customer still active in the raw data).
-    No 'status' column is added here — active/churned is always evaluated
-    point-in-time by the calling function using _active_at().
+    Load the CSV and parse transaction_date.
+    Adds a 'month' Period column for fast grouping.
     """
     df = pd.read_csv(csv_path)
-    df["signup_date"] = pd.to_datetime(df["signup_date"], errors="coerce")
-    df["end_date"]    = pd.to_datetime(df["end_date"],    errors="coerce")
+    df["transaction_date"] = pd.to_datetime(df["transaction_date"], errors="coerce")
+    df["month"] = df["transaction_date"].dt.to_period("M")
     return df
 
 
@@ -56,48 +60,48 @@ def summary_kpis(df: pd.DataFrame, as_of_month: str) -> dict:
     Key metrics for a given month.
 
     Returns:
-        current_arr         – ARR of all active customers at month-end
-        prior_month_arr     – ARR at the end of the previous month
-        arr_change_pct      – MoM ARR growth (%)
-        net_new_customers   – customers who signed up this month
-        churned_this_month  – customers whose end_date fell in this month
-        churn_rate_pct      – churned / active-at-start-of-month (%)
-        top_3_new_signups   – list of dicts: name, mrr, industry
+        current_arr         - ARR of all active customers at month-end
+        prior_month_arr     - ARR at the end of the previous month
+        arr_change_pct      - MoM ARR growth (%)
+        net_new_customers   - customers with their first-ever charge this month
+        churned_this_month  - customers active last month with no charge this month
+        churn_rate_pct      - churned / active-last-month (%)
+        top_3_new_signups   - list of dicts: name, mrr, industry
     """
-    month_start, month_end = _month_bounds(as_of_month)
-    prior_month_end = month_start - pd.Timedelta(days=1)
+    period      = pd.Period(as_of_month, freq="M")
+    prev_period = period - 1
 
-    active_eom   = _active_at(df, month_end)
-    active_prior = _active_at(df, prior_month_end)
+    snap_curr = _snapshot(df, period)
+    snap_prev = _snapshot(df, prev_period)
 
-    current_arr  = float(active_eom["mrr_usd"].sum() * 12)
-    prior_arr    = float(active_prior["mrr_usd"].sum() * 12)
+    current_arr    = float(snap_curr["amount_usd"].sum() * 12)
+    prior_arr      = float(snap_prev["amount_usd"].sum() * 12)
     arr_change_pct = (
         round((current_arr - prior_arr) / prior_arr * 100, 1) if prior_arr else 0.0
     )
 
-    new_mask = (df["signup_date"] >= month_start) & (df["signup_date"] <= month_end)
-    new_this_month = df[new_mask]
-    net_new_customers = int(len(new_this_month))
+    curr_names = set(snap_curr["customer_name"])
+    prev_names = set(snap_prev["customer_name"])
+    fm         = _first_months(df)
 
-    churn_mask = (
-        df["end_date"].notna()
-        & (df["end_date"] >= month_start)
-        & (df["end_date"] <= month_end)
-    )
-    churned_this_month = int(churn_mask.sum())
-    active_at_start = len(active_prior)
+    new_names      = {n for n in curr_names if fm.get(n) == period}
+    churned_names  = prev_names - curr_names
+
+    net_new_customers  = len(new_names)
+    churned_this_month = len(churned_names)
+    active_at_start    = len(prev_names)
     churn_rate_pct = (
         round(churned_this_month / active_at_start * 100, 1) if active_at_start else 0.0
     )
 
+    new_rows = snap_curr[snap_curr["customer_name"].isin(new_names)]
     top3 = (
-        new_this_month
-        .sort_values(["mrr_usd", "customer_name"], ascending=[False, True])
+        new_rows
+        .sort_values(["amount_usd", "customer_name"], ascending=[False, True])
         .head(3)
     )
     top_3_new_signups = [
-        {"name": r["customer_name"], "mrr": r["mrr_usd"], "industry": r["industry"]}
+        {"name": r["customer_name"], "mrr": r["amount_usd"], "industry": r["industry"]}
         for _, r in top3.iterrows()
     ]
 
@@ -114,46 +118,44 @@ def summary_kpis(df: pd.DataFrame, as_of_month: str) -> dict:
 
 def cohort_retention(df: pd.DataFrame, as_of_month: str) -> pd.DataFrame:
     """
-    Cohort retention table, evaluated as of as_of_month.
+    Cohort retention table evaluated as of as_of_month.
 
-    Index  : signup month (YYYY-MM), only cohorts up to as_of_month
+    Index  : first charge month (YYYY-MM), only cohorts up to as_of_month
     Columns: cohort_size, month_1, month_3, month_6, month_12
-    Values : % of cohort still active at that age
-             NaN = milestone falls after as_of_month_end (future data)
-
-    "Surviving to month N" means end_date is NaT OR end_date > milestone.
-    Note: this uses actual end_date values, so for milestones that fall
-    after as_of_month we would "see the future" of any churn that has
-    already been recorded. In practice this only matters for cohorts whose
-    milestone dates exceed as_of_month_end — those cells are left NaN.
+    Values : % of cohort still active (has a charge) at that milestone age
+             NaN = milestone falls after as_of_month (future data)
     """
-    _, as_of_end = _month_bounds(as_of_month)
-
-    df = df.copy()
-    df["cohort"] = df["signup_date"].dt.to_period("M")
     as_of_period = pd.Period(as_of_month, freq="M")
-    milestones = [1, 3, 6, 12]
+    fm           = _first_months(df)
+
+    valid_cohorts = [c for c in fm.unique() if c <= as_of_period]
+    oldest        = min(valid_cohorts) if valid_cohorts else as_of_period
+    max_age       = min(as_of_period.ordinal - oldest.ordinal, 24)
+    milestones    = list(range(1, max_age + 1))
 
     records = []
-    for cohort in sorted(df["cohort"].dropna().unique()):
-        if cohort > as_of_period:
-            continue                          # skip cohorts that haven't started yet
-        cohort_start = cohort.to_timestamp()
-        cohort_df    = df[df["cohort"] == cohort]
-        cohort_size  = len(cohort_df)
-        if cohort_size == 0:
+    for cohort_period in sorted(fm.unique()):
+        if cohort_period > as_of_period:
             continue
 
-        row = {"cohort": str(cohort), "cohort_size": cohort_size}
+        cohort_customers = set(fm[fm == cohort_period].index)
+        cohort_size      = len(cohort_customers)
+
+        row = {"cohort": str(cohort_period), "cohort_size": cohort_size}
         for m in milestones:
-            milestone = cohort_start + pd.DateOffset(months=m)
-            if milestone > as_of_end:
-                row[f"month_{m}"] = float("nan")   # too early as of this report
+            milestone_period = cohort_period + m
+            if milestone_period > as_of_period:
+                row[f"month_{m}"] = float("nan")
             else:
-                survived = cohort_df[
-                    cohort_df["end_date"].isna() | (cohort_df["end_date"] > milestone)
-                ]
-                row[f"month_{m}"] = round(len(survived) / cohort_size * 100, 1)
+                active_at_milestone = set(
+                    df[
+                        (df["month"] == milestone_period)
+                        & df["customer_name"].isin(cohort_customers)
+                    ]["customer_name"]
+                )
+                row[f"month_{m}"] = round(
+                    len(active_at_milestone) / cohort_size * 100, 1
+                )
         records.append(row)
 
     if not records:
@@ -167,62 +169,79 @@ def arr_waterfall(df: pd.DataFrame, as_of_month: str) -> dict:
     """
     ARR waterfall for a given month.
 
-    starting_arr + new_arr + expansion_arr - churn_arr == ending_arr
-    Prints a warning to the console if this doesn't balance.
-    expansion_arr is always 0 for the MVP (no upsell data).
+    starting_arr + new_arr + net_expansion_arr - churn_arr == ending_arr
+
+    net_expansion_arr = sum of (current_amount - prior_amount) for customers
+    active in both this month and last month. Positive = net expansion,
+    negative = net contraction.
     """
-    month_start, month_end = _month_bounds(as_of_month)
-    prior_month_end = month_start - pd.Timedelta(days=1)
+    period      = pd.Period(as_of_month, freq="M")
+    prev_period = period - 1
 
-    starting_arr  = float(_active_at(df, prior_month_end)["mrr_usd"].sum() * 12)
-    expansion_arr = 0.0
+    snap_curr = _snapshot(df, period)
+    snap_prev = _snapshot(df, prev_period)
 
-    new_customers = df[
-        (df["signup_date"] >= month_start) & (df["signup_date"] <= month_end)
-    ]
-    new_arr = float(new_customers["mrr_usd"].sum() * 12)
+    curr_names = set(snap_curr["customer_name"])
+    prev_names = set(snap_prev["customer_name"])
+    fm         = _first_months(df)
 
-    churned = df[
-        df["end_date"].notna()
-        & (df["end_date"] >= month_start)
-        & (df["end_date"] <= month_end)
-    ]
-    churn_arr = float(churned["mrr_usd"].sum() * 12)
+    starting_arr = float(snap_prev["amount_usd"].sum() * 12)
+    ending_arr   = float(snap_curr["amount_usd"].sum() * 12)
 
-    ending_arr = float(_active_at(df, month_end)["mrr_usd"].sum() * 12)
+    new_names = {n for n in curr_names if fm.get(n) == period}
+    new_arr   = float(
+        snap_curr[snap_curr["customer_name"].isin(new_names)]["amount_usd"].sum() * 12
+    )
 
-    computed = starting_arr + new_arr + expansion_arr - churn_arr
+    churned_names = prev_names - curr_names
+    churn_arr     = float(
+        snap_prev[snap_prev["customer_name"].isin(churned_names)]["amount_usd"].sum() * 12
+    )
+
+    retained_names = curr_names & prev_names
+    if retained_names:
+        curr_amts = (
+            snap_curr[snap_curr["customer_name"].isin(retained_names)]
+            .set_index("customer_name")["amount_usd"]
+        )
+        prev_amts = (
+            snap_prev[snap_prev["customer_name"].isin(retained_names)]
+            .set_index("customer_name")["amount_usd"]
+        )
+        net_expansion_arr = float(curr_amts.subtract(prev_amts, fill_value=0).sum() * 12)
+    else:
+        net_expansion_arr = 0.0
+
+    computed = starting_arr + new_arr + net_expansion_arr - churn_arr
     if not math.isclose(computed, ending_arr, rel_tol=1e-6):
         print(
             f"WARNING [{as_of_month}] ARR waterfall doesn't balance: "
-            f"start+new-churn={computed:,.0f}  actual ending={ending_arr:,.0f}  "
+            f"computed={computed:,.0f}  actual={ending_arr:,.0f}  "
             f"gap={ending_arr - computed:,.0f}"
         )
 
     return {
-        "starting_arr":  starting_arr,
-        "new_arr":       new_arr,
-        "expansion_arr": expansion_arr,
-        "churn_arr":     churn_arr,
-        "ending_arr":    ending_arr,
+        "starting_arr":      starting_arr,
+        "new_arr":           new_arr,
+        "net_expansion_arr": net_expansion_arr,
+        "churn_arr":         churn_arr,
+        "ending_arr":        ending_arr,
     }
 
 
 def geography_mix_by_month(df: pd.DataFrame, as_of_month: str) -> pd.DataFrame:
     """
-    Active customer count by country, from the first signup month up to
-    and including as_of_month. Future months are excluded.
+    Active customer count by country per month, up to as_of_month.
     Rows = month (YYYY-MM), Columns = country, Values = integer count.
     """
-    min_m     = df["signup_date"].min().to_period("M")
-    max_m     = pd.Period(as_of_month, freq="M")
+    min_m = df["month"].min()
+    max_m = pd.Period(as_of_month, freq="M")
 
     records = []
     for month in pd.period_range(min_m, max_m, freq="M"):
-        ms = month.to_timestamp()
-        me = ms + pd.offsets.MonthEnd(0)
-        counts = _active_during(df, ms, me).groupby("country").size()
-        row = {"month": str(month)}
+        snap   = _snapshot(df, month)
+        counts = snap.groupby("country").size()
+        row    = {"month": str(month)}
         row.update(counts.to_dict())
         records.append(row)
 
@@ -234,19 +253,17 @@ def geography_mix_by_month(df: pd.DataFrame, as_of_month: str) -> pd.DataFrame:
 
 def industry_mix_by_month(df: pd.DataFrame, as_of_month: str) -> pd.DataFrame:
     """
-    Active customer count by industry, from the first signup month up to
-    and including as_of_month. Future months are excluded.
+    Active customer count by industry per month, up to as_of_month.
     Rows = month (YYYY-MM), Columns = industry, Values = integer count.
     """
-    min_m = df["signup_date"].min().to_period("M")
+    min_m = df["month"].min()
     max_m = pd.Period(as_of_month, freq="M")
 
     records = []
     for month in pd.period_range(min_m, max_m, freq="M"):
-        ms = month.to_timestamp()
-        me = ms + pd.offsets.MonthEnd(0)
-        counts = _active_during(df, ms, me).groupby("industry").size()
-        row = {"month": str(month)}
+        snap   = _snapshot(df, month)
+        counts = snap.groupby("industry").size()
+        row    = {"month": str(month)}
         row.update(counts.to_dict())
         records.append(row)
 
@@ -258,17 +275,17 @@ def industry_mix_by_month(df: pd.DataFrame, as_of_month: str) -> pd.DataFrame:
 
 def logo_highlights(df: pd.DataFrame, as_of_month: str, n: int = 5) -> list:
     """
-    Top N new customers in as_of_month, sorted by MRR desc (name asc for ties).
-    Returns a list of dicts: name, domain, mrr, industry, country.
+    Top N new customers in as_of_month (first-ever charge this month),
+    sorted by MRR desc (name asc for ties).
     """
-    month_start, month_end = _month_bounds(as_of_month)
-    new_this_month = df[
-        (df["signup_date"] >= month_start) & (df["signup_date"] <= month_end)
-    ]
+    period = pd.Period(as_of_month, freq="M")
+    snap   = _snapshot(df, period)
+    fm     = _first_months(df)
 
+    new_names = {name for name in snap["customer_name"] if fm.get(name) == period}
     top_n = (
-        new_this_month
-        .sort_values(["mrr_usd", "customer_name"], ascending=[False, True])
+        snap[snap["customer_name"].isin(new_names)]
+        .sort_values(["amount_usd", "customer_name"], ascending=[False, True])
         .head(n)
     )
 
@@ -276,7 +293,7 @@ def logo_highlights(df: pd.DataFrame, as_of_month: str, n: int = 5) -> list:
         {
             "name":     r["customer_name"],
             "domain":   r["customer_domain"],
-            "mrr":      r["mrr_usd"],
+            "mrr":      r["amount_usd"],
             "industry": r["industry"],
             "country":  r["country"],
         }
@@ -284,17 +301,100 @@ def logo_highlights(df: pd.DataFrame, as_of_month: str, n: int = 5) -> list:
     ]
 
 
+# ---------------------------------------------------------------------------
+# Sales pipeline
+# ---------------------------------------------------------------------------
+
+PIPELINE_STAGES = [
+    "Discovery", "Demo", "Proposal", "Negotiation", "Verbal Agreement",
+]
+STAGE_PROBABILITIES = {
+    "Discovery":         0.10,
+    "Demo":              0.25,
+    "Proposal":          0.50,
+    "Negotiation":       0.75,
+    "Verbal Agreement":  0.90,
+}
+
+
+def load_pipeline(csv_path: str) -> pd.DataFrame:
+    """Load a pipeline CSV and parse expected_close_date."""
+    df = pd.read_csv(csv_path)
+    df["expected_close_date"] = pd.to_datetime(
+        df["expected_close_date"], errors="coerce"
+    )
+    return df
+
+
+def pipeline_summary(pipeline_df: pd.DataFrame, current_arr: float = 0.0) -> dict:
+    """
+    Compute sales pipeline metrics.
+
+    Returns:
+        total_pipeline_arr      - sum(amount_usd) * 12 across all open opps
+        weighted_pipeline_arr   - probability-weighted pipeline ARR
+        open_opportunities      - count of open deals (in recognized stages)
+        avg_deal_size           - mean amount_usd (monthly)
+        coverage_ratio          - total_pipeline_arr / current_arr
+        by_stage                - dict: stage -> {count, amount_arr, weighted_arr}
+        top_5_deals             - list of dicts with opportunity, company, stage, mrr, close_date
+    """
+    df = pipeline_df[pipeline_df["stage"].isin(PIPELINE_STAGES)].copy()
+
+    total_mrr          = float(df["amount_usd"].sum())
+    total_pipeline_arr = total_mrr * 12
+
+    df["probability"]  = df["stage"].map(STAGE_PROBABILITIES)
+    weighted_mrr       = float((df["amount_usd"] * df["probability"]).sum())
+    weighted_pipeline_arr = weighted_mrr * 12
+
+    open_opportunities = len(df)
+    avg_deal_size      = float(df["amount_usd"].mean()) if open_opportunities else 0.0
+    coverage_ratio     = round(total_pipeline_arr / current_arr, 2) if current_arr > 0 else 0.0
+
+    by_stage = {}
+    for stage in PIPELINE_STAGES:
+        s_df = df[df["stage"] == stage]
+        by_stage[stage] = {
+            "count":        int(len(s_df)),
+            "amount_arr":   float(s_df["amount_usd"].sum() * 12),
+            "weighted_arr": float((s_df["amount_usd"] * STAGE_PROBABILITIES[stage]).sum() * 12),
+        }
+
+    top = (
+        df.sort_values(["amount_usd", "company_name"], ascending=[False, True]).head(5)
+    )
+    top_5_deals = []
+    for _, r in top.iterrows():
+        close = r["expected_close_date"]
+        close_str = close.strftime("%d %b %Y") if pd.notna(close) else ""
+        top_5_deals.append({
+            "opportunity": str(r.get("opportunity_name", "")),
+            "company":     str(r["company_name"]),
+            "stage":       str(r["stage"]),
+            "mrr":         float(r["amount_usd"]),
+            "close_date":  close_str,
+        })
+
+    return {
+        "total_pipeline_arr":    total_pipeline_arr,
+        "weighted_pipeline_arr": weighted_pipeline_arr,
+        "open_opportunities":    open_opportunities,
+        "avg_deal_size":         avg_deal_size,
+        "coverage_ratio":        coverage_ratio,
+        "by_stage":              by_stage,
+        "top_5_deals":           top_5_deals,
+    }
+
+
 def icp_snapshot(df: pd.DataFrame, as_of_month: str) -> dict:
     """
     Profile of the top quartile of customers active as of as_of_month.
-
-    Returns avg_mrr, median_mrr, top_industry, top_country,
-    inbound_pct, outbound_pct, sample_size.
     """
-    _, as_of_end = _month_bounds(as_of_month)
-    active = _active_at(df, as_of_end).copy()
+    period = pd.Period(as_of_month, freq="M")
+    snap   = _snapshot(df, period)
 
-    if active.empty:
+    if snap.empty:
         return {
             "avg_mrr": 0.0, "median_mrr": 0.0,
             "top_industry": None, "top_country": None,
@@ -302,18 +402,17 @@ def icp_snapshot(df: pd.DataFrame, as_of_month: str) -> dict:
             "sample_size": 0,
         }
 
-    threshold = active["mrr_usd"].quantile(0.75)
-    top_q = active[active["mrr_usd"] >= threshold]
-
+    threshold = snap["amount_usd"].quantile(0.75)
+    top_q = snap[snap["amount_usd"] >= threshold]
     if top_q.empty:
-        top_q = active
+        top_q = snap
 
-    total = len(top_q)
+    total          = len(top_q)
     channel_counts = top_q["acquisition_channel"].value_counts()
 
     return {
-        "avg_mrr":    round(float(top_q["mrr_usd"].mean()), 2),
-        "median_mrr": round(float(top_q["mrr_usd"].median()), 2),
+        "avg_mrr":      round(float(top_q["amount_usd"].mean()), 2),
+        "median_mrr":   round(float(top_q["amount_usd"].median()), 2),
         "top_industry": str(top_q["industry"].value_counts().idxmax()),
         "top_country":  str(top_q["country"].value_counts().idxmax()),
         "inbound_pct":  round(channel_counts.get("inbound",  0) / total * 100, 1),

@@ -1,0 +1,1489 @@
+transaction_date,customer_name,customer_domain,amount_usd,acquisition_channel,country,industry
+2024-01-03,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-01-10,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-01-13,Shade Solutions,shadesolutions.io,600,outbound,Canada,Healthcare
+2024-01-17,Zone Analytics,zoneanalytics.io,1800,outbound,United Kingdom,Healthcare
+2024-01-18,Tide Systems,tidesystems.io,900,inbound,Canada,Fintech
+2024-01-22,Hull Logic,hulllogic.io,2200,inbound,United States,Fintech
+2024-01-24,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-01-28,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-02-04,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-02-04,Lens Pro,lenspro.io,800,outbound,United States,SaaS
+2024-02-04,Shade Solutions,shadesolutions.io,600,outbound,Canada,Healthcare
+2024-02-05,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-02-06,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-02-08,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-02-15,Zone Analytics,zoneanalytics.io,1800,outbound,United Kingdom,Healthcare
+2024-02-16,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-02-16,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-02-18,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-02-20,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-02-21,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-02-21,Tide Systems,tidesystems.io,900,inbound,Canada,Fintech
+2024-02-26,Yard Tech,yardtech.io,1800,outbound,United States,Logistics
+2024-02-27,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-03-03,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-03-04,Stack Link,stacklink.io,900,inbound,United States,Enterprise
+2024-03-05,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-03-06,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-03-07,Shade Solutions,shadesolutions.io,600,outbound,Canada,Healthcare
+2024-03-08,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-03-08,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-03-09,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-03-10,Tide Systems,tidesystems.io,900,inbound,Canada,Fintech
+2024-03-15,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-03-15,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-03-15,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-03-16,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-03-16,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-03-16,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-03-17,Epoch Flow,epochflow.io,600,outbound,France,Fintech
+2024-03-17,Nova Data,novadata.io,1000,outbound,Australia,SaaS
+2024-03-20,Path Platform,pathplatform.io,1000,inbound,Germany,Logistics
+2024-03-22,Lens Pro,lenspro.io,800,outbound,United States,SaaS
+2024-03-22,Zone Analytics,zoneanalytics.io,1800,outbound,United Kingdom,Healthcare
+2024-03-23,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-03-26,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-03-26,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-04-01,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-04-03,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-04-03,Stack Link,stacklink.io,900,inbound,United States,Enterprise
+2024-04-04,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-04-04,Nova Data,novadata.io,1000,outbound,Australia,SaaS
+2024-04-05,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-04-05,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-04-06,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-04-06,Wire Logic,wirelogic.io,700,inbound,United States,SaaS
+2024-04-08,Epoch Flow,epochflow.io,600,outbound,France,Fintech
+2024-04-08,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-04-08,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-04-08,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-04-09,Ember IO,emberio.io,600,outbound,Germany,Fintech
+2024-04-11,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-04-12,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-04-12,Path Platform,pathplatform.io,1000,inbound,Germany,Logistics
+2024-04-15,Quartz Yield,quartzyield.io,2000,inbound,United States,Fintech
+2024-04-16,Tide Systems,tidesystems.io,900,inbound,Canada,Fintech
+2024-04-19,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-04-19,Lens Pro,lenspro.io,800,outbound,United States,SaaS
+2024-04-20,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-04-20,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-04-21,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-04-24,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-04-24,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-04-24,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-04-25,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-04-25,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-04-26,Shade Solutions,shadesolutions.io,600,outbound,Canada,Healthcare
+2024-04-27,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-04-28,Zone Analytics,zoneanalytics.io,1800,outbound,United Kingdom,Healthcare
+2024-05-01,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-05-01,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-05-01,Stage Solutions,stagesolutions.io,2500,inbound,United States,Healthcare
+2024-05-02,Level Solutions,levelsolutions.io,1200,inbound,Canada,Logistics
+2024-05-03,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-05-03,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-05-03,Wire Code,wirecode.io,800,inbound,United States,SaaS
+2024-05-05,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-05-05,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-05-06,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-05-07,Ember IO,emberio.io,600,outbound,Germany,Fintech
+2024-05-07,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-05-07,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-05-08,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-05-10,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-05-11,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-05-12,Cedar Link,cedarlink.io,1200,outbound,France,Fintech
+2024-05-14,Hive Yield,hiveyield.io,1500,outbound,United States,Fintech
+2024-05-14,Quartz Yield,quartzyield.io,2000,inbound,United States,Fintech
+2024-05-15,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-05-15,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-05-15,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-05-15,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-05-18,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-05-18,Lens Pro,lenspro.io,800,outbound,United States,SaaS
+2024-05-18,Tide Systems,tidesystems.io,900,inbound,Canada,Fintech
+2024-05-19,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-05-19,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-05-19,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-05-21,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-05-21,Shade Solutions,shadesolutions.io,600,outbound,Canada,Healthcare
+2024-05-23,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-05-24,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-05-25,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-05-26,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-05-26,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-05-28,Path Platform,pathplatform.io,1000,inbound,Germany,Logistics
+2024-06-02,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-06-02,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-06-02,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-06-03,Frame Pay,framepay.io,900,inbound,United States,Enterprise
+2024-06-03,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-06-04,Level Solutions,levelsolutions.io,1200,inbound,Canada,Logistics
+2024-06-04,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-06-05,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-06-05,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-06-05,Lens Pro,lenspro.io,800,outbound,United States,SaaS
+2024-06-05,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-06-06,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-06-06,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-06-06,Quartz Yield,quartzyield.io,2000,inbound,United States,Fintech
+2024-06-07,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-06-07,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-06-08,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-06-09,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-06-11,Ember IO,emberio.io,600,outbound,Germany,Fintech
+2024-06-12,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-06-12,Helm Cloud,helmcloud.io,4500,outbound,Australia,SaaS
+2024-06-14,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-06-14,Icon Code,iconcode.io,600,inbound,France,SaaS
+2024-06-14,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-06-15,Cedar Link,cedarlink.io,1200,outbound,France,Fintech
+2024-06-15,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-06-16,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-06-16,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-06-17,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-06-17,Hive Yield,hiveyield.io,1500,outbound,United States,Fintech
+2024-06-18,Wire Code,wirecode.io,800,inbound,United States,SaaS
+2024-06-19,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-06-20,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-06-21,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-06-22,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-06-22,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-06-22,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-06-23,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-06-25,Cedar Systems,cedarsystems.io,1800,outbound,Australia,Fintech
+2024-06-25,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-06-25,Opal X,opalx.io,2200,inbound,United States,Fintech
+2024-06-25,Path Platform,pathplatform.io,1000,inbound,Germany,Logistics
+2024-06-27,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-06-28,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-06-28,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-06-28,Stage Solutions,stagesolutions.io,2500,inbound,United States,Healthcare
+2024-07-01,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-07-02,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-07-02,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-07-02,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-07-03,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-07-03,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-07-04,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-07-04,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-07-05,Ember IO,emberio.io,600,outbound,Germany,Fintech
+2024-07-05,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-07-06,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-07-06,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-07-06,Hull Platform,hullplatform.io,1000,inbound,United Kingdom,Fintech
+2024-07-06,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2024-07-06,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-07-07,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-07-07,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-07-07,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-07-08,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-07-08,Iris Pro,irispro.io,4000,outbound,Australia,Fintech
+2024-07-09,Helm Cloud,helmcloud.io,4500,outbound,Australia,SaaS
+2024-07-09,Icon Code,iconcode.io,600,inbound,France,SaaS
+2024-07-11,Lens Pro,lenspro.io,800,outbound,United States,SaaS
+2024-07-12,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-07-13,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2024-07-13,Level Solutions,levelsolutions.io,1200,inbound,Canada,Logistics
+2024-07-14,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2024-07-14,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-07-15,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2024-07-17,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2024-07-18,Dart Analytics,dartanalytics.io,2500,inbound,United Kingdom,Fintech
+2024-07-18,Path Platform,pathplatform.io,1000,inbound,Germany,Logistics
+2024-07-19,Cedar Systems,cedarsystems.io,1800,outbound,Australia,Fintech
+2024-07-19,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-07-19,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-07-19,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-07-20,Cedar Link,cedarlink.io,1200,outbound,France,Fintech
+2024-07-20,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-07-20,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-07-21,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2024-07-21,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-07-21,Stage Solutions,stagesolutions.io,2500,inbound,United States,Healthcare
+2024-07-23,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-07-23,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-07-23,Pilot Hub,pilothub.io,700,inbound,United States,Fintech
+2024-07-24,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-07-24,Opal X,opalx.io,2200,inbound,United States,Fintech
+2024-07-25,Helix Labs,helixlabs.io,900,inbound,United Kingdom,Enterprise
+2024-07-25,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-07-25,Quartz Yield,quartzyield.io,2000,inbound,United States,Fintech
+2024-07-25,Wire Code,wirecode.io,800,inbound,United States,SaaS
+2024-07-26,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-07-26,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-07-27,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-07-27,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-07-28,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2024-08-01,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-08-01,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2024-08-01,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2024-08-01,Wire Code,wirecode.io,800,inbound,United States,SaaS
+2024-08-02,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2024-08-02,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-08-02,Ember IO,emberio.io,600,outbound,Germany,Fintech
+2024-08-02,Icon Code,iconcode.io,600,inbound,France,SaaS
+2024-08-02,Shore Security,shoresecurity.io,1400,outbound,United States,Healthcare
+2024-08-02,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2024-08-02,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-08-03,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-08-03,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2024-08-03,Stage Solutions,stagesolutions.io,3900,inbound,United States,Healthcare
+2024-08-04,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-08-04,Route Pay,routepay.io,600,inbound,United States,SaaS
+2024-08-05,Frame Labs,framelabs.io,3500,inbound,Germany,SaaS
+2024-08-05,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-08-06,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2024-08-06,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-08-07,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-08-07,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-08-07,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-08-08,Hull Platform,hullplatform.io,1000,inbound,United Kingdom,Fintech
+2024-08-09,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-08-09,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-08-09,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-08-10,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-08-10,Dart Analytics,dartanalytics.io,2500,inbound,United Kingdom,Fintech
+2024-08-10,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2024-08-11,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-08-11,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2024-08-11,Quartz Yield,quartzyield.io,2000,inbound,United States,Fintech
+2024-08-11,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-08-11,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-08-12,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2024-08-13,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-08-15,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-08-15,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-08-15,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-08-15,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-08-16,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-08-16,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2024-08-16,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2024-08-16,West Pro,westpro.io,1400,inbound,France,Fintech
+2024-08-17,Helm Cloud,helmcloud.io,4500,outbound,Australia,SaaS
+2024-08-18,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-08-18,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2024-08-19,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2024-08-22,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-08-23,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-08-23,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-08-24,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-08-24,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2024-08-24,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-08-25,Opal X,opalx.io,2200,inbound,United States,Fintech
+2024-08-26,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-08-26,Link Works,linkworks.io,900,inbound,United Kingdom,Fintech
+2024-08-26,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2024-08-27,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-08-27,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2024-08-27,Iris Pro,irispro.io,4000,outbound,Australia,Fintech
+2024-08-27,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2024-08-28,Cedar Systems,cedarsystems.io,1800,outbound,Australia,Fintech
+2024-09-01,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-09-01,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-09-02,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-09-02,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-09-02,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-09-03,Icon Code,iconcode.io,600,inbound,France,SaaS
+2024-09-03,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-09-03,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-09-04,Hull Platform,hullplatform.io,1000,inbound,United Kingdom,Fintech
+2024-09-04,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-09-05,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-09-05,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2024-09-05,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2024-09-06,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2024-09-06,Dart Analytics,dartanalytics.io,2500,inbound,United Kingdom,Fintech
+2024-09-06,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-09-06,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2024-09-06,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2024-09-06,Wave Zero,wavezero.io,2200,outbound,United Kingdom,Fintech
+2024-09-07,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2024-09-07,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2024-09-08,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-09-08,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-09-08,Opal X,opalx.io,2200,inbound,United States,Fintech
+2024-09-08,Quartz Yield,quartzyield.io,2000,inbound,United States,Fintech
+2024-09-09,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2024-09-09,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2024-09-09,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2024-09-10,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2024-09-10,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-09-10,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2024-09-10,Route Pay,routepay.io,600,inbound,United States,SaaS
+2024-09-10,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-09-11,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2024-09-11,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2024-09-11,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2024-09-12,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2024-09-12,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-09-12,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-09-13,Stage Solutions,stagesolutions.io,3900,inbound,United States,Healthcare
+2024-09-14,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-09-14,Birch Code,birchcode.io,1400,inbound,United States,SaaS
+2024-09-14,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-09-14,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-09-14,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-09-14,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-09-15,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2024-09-15,Frame Labs,framelabs.io,3500,inbound,Germany,SaaS
+2024-09-15,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2024-09-16,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-09-17,Iris Pro,irispro.io,4000,outbound,Australia,Fintech
+2024-09-17,Mode Networks,modenetworks.io,900,outbound,France,SaaS
+2024-09-17,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-09-18,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2024-09-19,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2024-09-19,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-09-19,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2024-09-19,Ridge Data,ridgedata.io,3000,inbound,France,Fintech
+2024-09-21,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-09-21,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2024-09-21,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-09-21,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-09-21,Sphere X,spherex.io,500,inbound,Australia,Fintech
+2024-09-21,Wire Solutions,wiresolutions.io,1400,outbound,United Kingdom,Fintech
+2024-09-22,Helm Cloud,helmcloud.io,4500,outbound,Australia,SaaS
+2024-09-23,Cedar Systems,cedarsystems.io,1800,outbound,Australia,Fintech
+2024-09-23,Ember IO,emberio.io,600,outbound,Germany,Fintech
+2024-09-23,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2024-09-23,Spring Hub,springhub.io,700,inbound,United States,Fintech
+2024-09-23,Wire Code,wirecode.io,800,inbound,United States,SaaS
+2024-09-24,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2024-09-25,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2024-09-25,Link Works,linkworks.io,900,inbound,United Kingdom,Fintech
+2024-09-25,West Pro,westpro.io,1400,inbound,France,Fintech
+2024-09-26,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2024-09-26,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2024-09-26,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-09-26,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-09-27,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2024-09-28,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-09-28,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2024-10-01,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2024-10-01,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2024-10-01,Pixel Tech,pixeltech.io,600,inbound,United States,Fintech
+2024-10-01,Route Pay,routepay.io,600,inbound,United States,SaaS
+2024-10-02,Hull Platform,hullplatform.io,1000,inbound,United Kingdom,Fintech
+2024-10-02,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-10-02,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2024-10-02,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-10-03,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-10-03,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-10-03,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2024-10-04,Link Pay,linkpay.io,7000,outbound,United Kingdom,Enterprise
+2024-10-04,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-10-04,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2024-10-04,Quartz Tech,quartztech.io,2800,inbound,Australia,Fintech
+2024-10-04,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2024-10-06,Dart Analytics,dartanalytics.io,2500,inbound,United Kingdom,Fintech
+2024-10-07,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-10-07,Cedar Systems,cedarsystems.io,1800,outbound,Australia,Fintech
+2024-10-07,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2024-10-07,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-10-08,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2024-10-08,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2024-10-08,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2024-10-09,Link Works,linkworks.io,900,inbound,United Kingdom,Fintech
+2024-10-10,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2024-10-10,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2024-10-10,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-10-11,Frame Labs,framelabs.io,3500,inbound,Germany,SaaS
+2024-10-11,Maple Systems,maplesystems.io,1400,inbound,United States,SaaS
+2024-10-11,Mode Networks,modenetworks.io,900,outbound,France,SaaS
+2024-10-11,Opal X,opalx.io,2200,inbound,United States,Fintech
+2024-10-11,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2024-10-11,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-10-12,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2024-10-12,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2024-10-12,Cedar Pro,cedarpro.io,600,inbound,Canada,Fintech
+2024-10-12,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-10-12,Core Labs,corelabs.io,3500,inbound,United States,Fintech
+2024-10-12,Shore Works,shoreworks.io,900,inbound,United States,Enterprise
+2024-10-12,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2024-10-12,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-10-12,Wedge Link,wedgelink.io,700,outbound,United States,Fintech
+2024-10-14,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-10-14,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2024-10-14,Mint Pro,mintpro.io,2800,outbound,United States,Fintech
+2024-10-14,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2024-10-14,Ridge Data,ridgedata.io,3000,inbound,France,Fintech
+2024-10-15,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2024-10-15,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-10-15,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-10-15,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2024-10-16,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2024-10-16,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2024-10-17,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-10-17,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2024-10-18,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2024-10-18,Dune Intelligence,duneintelligence.io,600,inbound,Canada,Fintech
+2024-10-18,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2024-10-18,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2024-10-18,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-10-18,Wave Zero,wavezero.io,2200,outbound,United Kingdom,Fintech
+2024-10-19,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2024-10-19,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2024-10-19,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-10-19,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2024-10-19,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-10-20,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2024-10-20,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-10-20,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2024-10-21,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2024-10-21,Glint Systems,glintsystems.io,700,outbound,United States,Enterprise
+2024-10-21,Iris Pro,irispro.io,4000,outbound,Australia,Fintech
+2024-10-21,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2024-10-22,Dart Link,dartlink.io,2500,outbound,France,Healthcare
+2024-10-22,Wire Solutions,wiresolutions.io,1400,outbound,United Kingdom,Fintech
+2024-10-23,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-10-23,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-10-23,Stage Solutions,stagesolutions.io,3900,inbound,United States,Healthcare
+2024-10-23,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2024-10-24,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-10-24,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-10-24,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2024-10-25,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-10-25,Clay Hub,clayhub.io,700,outbound,Australia,SaaS
+2024-10-25,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2024-10-26,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-10-26,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2024-10-26,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2024-10-27,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2024-10-27,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2024-10-27,Quartz Platform,quartzplatform.io,7000,inbound,United States,Enterprise
+2024-10-27,Sphere X,spherex.io,500,inbound,Australia,Fintech
+2024-10-27,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-10-28,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-10-28,Facet Logic,facetlogic.io,500,inbound,Germany,Enterprise
+2024-10-28,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-11-01,Silo Tech,silotech.io,2000,outbound,United States,Enterprise
+2024-11-01,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2024-11-01,Zinc Finance,zincfinance.io,500,inbound,Canada,SaaS
+2024-11-02,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2024-11-02,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-11-02,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2024-11-03,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2024-11-03,Echo Yield,echoyield.io,700,inbound,Germany,Fintech
+2024-11-03,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2024-11-03,Mode Networks,modenetworks.io,900,outbound,France,SaaS
+2024-11-03,Sphere Works,sphereworks.io,2500,outbound,United Kingdom,Fintech
+2024-11-04,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-11-04,Core Labs,corelabs.io,3500,inbound,United States,Fintech
+2024-11-05,Epoch Zero,epochzero.io,800,outbound,United Kingdom,Fintech
+2024-11-05,Frame Labs,framelabs.io,3500,inbound,Germany,SaaS
+2024-11-05,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-11-05,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2024-11-05,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-11-06,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2024-11-06,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2024-11-06,Maple Systems,maplesystems.io,1400,inbound,United States,SaaS
+2024-11-06,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-11-06,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2024-11-06,Rise ML,riseml.io,500,outbound,United Kingdom,SaaS
+2024-11-06,Route Ops,routeops.io,900,inbound,Canada,Fintech
+2024-11-06,Shore Works,shoreworks.io,900,inbound,United States,Enterprise
+2024-11-07,Link Works,linkworks.io,900,inbound,United Kingdom,Fintech
+2024-11-07,Shore Dynamics,shoredynamics.io,1400,inbound,United Kingdom,Healthcare
+2024-11-07,Stem Labs,stemlabs.io,500,outbound,Australia,Enterprise
+2024-11-08,Clay Dynamics,claydynamics.io,2200,inbound,United States,Enterprise
+2024-11-08,Maple Tech,mapletech.io,3500,inbound,Germany,Healthcare
+2024-11-08,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-11-08,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-11-08,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2024-11-08,Vale Data,valedata.io,900,inbound,United States,Healthcare
+2024-11-08,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-11-09,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-11-10,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2024-11-10,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-11-10,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2024-11-10,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-11-10,Wire Solutions,wiresolutions.io,1400,outbound,United Kingdom,Fintech
+2024-11-11,Facet Logic,facetlogic.io,500,inbound,Germany,Enterprise
+2024-11-11,Hull Platform,hullplatform.io,1000,inbound,United Kingdom,Fintech
+2024-11-11,Iris Pro,irispro.io,4000,outbound,Australia,Fintech
+2024-11-11,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-11-11,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-11-12,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2024-11-12,Shift Yield,shiftyield.io,700,inbound,United Kingdom,SaaS
+2024-11-13,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2024-11-13,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2024-11-13,Route Pay,routepay.io,600,inbound,United States,SaaS
+2024-11-13,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-11-14,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-11-14,Link Pay,linkpay.io,7000,outbound,United Kingdom,Enterprise
+2024-11-14,Pace AI,paceai.io,900,inbound,United States,SaaS
+2024-11-14,Pixel Logic,pixellogic.io,2000,inbound,United States,Enterprise
+2024-11-15,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2024-11-15,Layer Solutions,layersolutions.io,1400,outbound,United States,Logistics
+2024-11-15,Quartz Hub,quartzhub.io,600,inbound,United Kingdom,Fintech
+2024-11-15,Quartz Platform,quartzplatform.io,7000,inbound,United States,Enterprise
+2024-11-15,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2024-11-15,Wave Zero,wavezero.io,2900,outbound,United Kingdom,Fintech
+2024-11-16,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2024-11-16,Pixel Tech,pixeltech.io,600,inbound,United States,Fintech
+2024-11-17,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-11-17,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-11-17,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2024-11-17,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2024-11-17,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2024-11-18,Mesa Dynamics,mesadynamics.io,1500,outbound,Australia,SaaS
+2024-11-19,Arrow Systems,arrowsystems.io,600,outbound,United States,Fintech
+2024-11-19,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-11-19,Rail Tech,railtech.io,4500,inbound,United States,SaaS
+2024-11-19,Root Tech,roottech.io,8000,outbound,United Kingdom,Fintech
+2024-11-20,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2024-11-20,Quartz Tech,quartztech.io,2800,inbound,Australia,Fintech
+2024-11-20,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2024-11-20,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-11-20,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2024-11-21,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-11-21,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2024-11-21,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2024-11-21,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-11-21,Sphere X,spherex.io,500,inbound,Australia,Fintech
+2024-11-22,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2024-11-22,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2024-11-22,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2024-11-22,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2024-11-23,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2024-11-23,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2024-11-23,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2024-11-24,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-11-24,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2024-11-24,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2024-11-24,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2024-11-24,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-11-24,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-11-25,Dart Tech,darttech.io,600,outbound,United Kingdom,Fintech
+2024-11-25,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2024-11-26,Clay Hub,clayhub.io,700,outbound,Australia,SaaS
+2024-11-26,Dart Link,dartlink.io,2500,outbound,France,Healthcare
+2024-11-26,Scale Link,scalelink.io,600,inbound,United States,Fintech
+2024-11-27,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-11-27,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2024-11-27,Dart Analytics,dartanalytics.io,2500,inbound,United Kingdom,Fintech
+2024-11-27,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2024-11-27,Mesa IO,mesaio.io,500,inbound,United Kingdom,Fintech
+2024-11-27,Wedge Link,wedgelink.io,700,outbound,United States,Fintech
+2024-11-28,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-11-28,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-11-28,Layer Dynamics,layerdynamics.io,1000,inbound,United States,Enterprise
+2024-11-28,Ledge Link,ledgelink.io,700,inbound,United States,Enterprise
+2024-11-28,Ridge Data,ridgedata.io,3000,inbound,France,Fintech
+2024-11-28,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2024-12-01,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2024-12-01,Dart Zero,dartzero.io,1800,inbound,Canada,Fintech
+2024-12-01,Link Works,linkworks.io,900,inbound,United Kingdom,Fintech
+2024-12-01,Mesa Dynamics,mesadynamics.io,1500,outbound,Australia,SaaS
+2024-12-02,Arrow Systems,arrowsystems.io,600,outbound,United States,Fintech
+2024-12-02,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2024-12-02,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2024-12-02,Shore Works,shoreworks.io,900,inbound,United States,Enterprise
+2024-12-02,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2024-12-03,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2024-12-03,Sail ML,sailml.io,1500,outbound,United States,Enterprise
+2024-12-03,Spark Zero,sparkzero.io,1500,inbound,United Kingdom,SaaS
+2024-12-04,Crown HQ,crownhq.io,1800,outbound,United States,Fintech
+2024-12-04,Maple Systems,maplesystems.io,1400,inbound,United States,SaaS
+2024-12-04,Scale Link,scalelink.io,600,inbound,United States,Fintech
+2024-12-04,Stem Labs,stemlabs.io,500,outbound,Australia,Enterprise
+2024-12-05,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2024-12-05,Birch Data,birchdata.io,1000,inbound,United States,SaaS
+2024-12-05,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2024-12-05,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2024-12-05,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2024-12-05,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2024-12-05,Wedge Link,wedgelink.io,700,outbound,United States,Fintech
+2024-12-06,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2024-12-06,Orbit HQ,orbithq.io,2800,inbound,Canada,Enterprise
+2024-12-06,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2024-12-06,Root Tech,roottech.io,8000,outbound,United Kingdom,Fintech
+2024-12-06,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2024-12-07,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2024-12-07,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2024-12-07,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2024-12-07,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2024-12-07,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2024-12-08,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2024-12-08,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2024-12-08,Index Code,indexcode.io,500,inbound,United Kingdom,Healthcare
+2024-12-08,Layer Solutions,layersolutions.io,1400,outbound,United States,Logistics
+2024-12-09,Arrow Labs,arrowlabs.io,900,outbound,United States,SaaS
+2024-12-09,Atlas Yield,atlasyield.io,600,inbound,Australia,SaaS
+2024-12-09,Dart Ops,dartops.io,1800,inbound,United States,SaaS
+2024-12-09,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2024-12-09,Spark Platform,sparkplatform.io,2200,outbound,Canada,Fintech
+2024-12-10,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2024-12-10,Clay Dynamics,claydynamics.io,2200,inbound,United States,Enterprise
+2024-12-10,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2024-12-10,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2024-12-10,Dart Link,dartlink.io,2500,outbound,France,Healthcare
+2024-12-10,Echo Yield,echoyield.io,700,inbound,Germany,Fintech
+2024-12-10,Level Ops,levelops.io,1400,inbound,Canada,Fintech
+2024-12-11,Dart Tech,darttech.io,600,outbound,United Kingdom,Fintech
+2024-12-11,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2024-12-11,Sphere Works,sphereworks.io,2500,outbound,United Kingdom,Fintech
+2024-12-12,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2024-12-12,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2024-12-12,Mesa IO,mesaio.io,500,inbound,United Kingdom,Fintech
+2024-12-12,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2024-12-12,Pixel Tech,pixeltech.io,600,inbound,United States,Fintech
+2024-12-12,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2024-12-13,Level Platform,levelplatform.io,500,outbound,United Kingdom,Fintech
+2024-12-14,Glint Yield,glintyield.io,5000,inbound,United Kingdom,Healthcare
+2024-12-14,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2024-12-14,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2024-12-14,Quartz Flow,quartzflow.io,1500,outbound,Australia,Enterprise
+2024-12-14,Vale Data,valedata.io,900,inbound,United States,Healthcare
+2024-12-14,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2024-12-14,Wire Solutions,wiresolutions.io,1400,outbound,United Kingdom,Fintech
+2024-12-15,Link Pay,linkpay.io,7000,outbound,United Kingdom,Enterprise
+2024-12-15,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2024-12-16,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2024-12-16,Epoch Zero,epochzero.io,800,outbound,United Kingdom,Fintech
+2024-12-16,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2024-12-16,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2024-12-16,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2024-12-16,Sphere X,spherex.io,500,inbound,Australia,Fintech
+2024-12-16,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2024-12-17,Maple Tech,mapletech.io,3500,inbound,Germany,Healthcare
+2024-12-17,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2024-12-17,Silo Tech,silotech.io,2000,outbound,United States,Enterprise
+2024-12-17,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2024-12-18,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2024-12-18,Core Labs,corelabs.io,3500,inbound,United States,Fintech
+2024-12-18,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2024-12-18,Plume Intelligence,plumeintelligence.io,2000,outbound,Germany,Fintech
+2024-12-18,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2024-12-19,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2024-12-19,Hull Platform,hullplatform.io,1000,inbound,United Kingdom,Fintech
+2024-12-19,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2024-12-19,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2024-12-20,Cedar Tech,cedartech.io,500,outbound,United States,Healthcare
+2024-12-20,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2024-12-20,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2024-12-20,Quartz Hub,quartzhub.io,600,inbound,United Kingdom,Fintech
+2024-12-20,Quartz Platform,quartzplatform.io,7000,inbound,United States,Enterprise
+2024-12-20,Route Pay,routepay.io,600,inbound,United States,SaaS
+2024-12-21,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2024-12-21,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2024-12-21,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2024-12-21,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2024-12-22,Rise ML,riseml.io,500,outbound,United Kingdom,SaaS
+2024-12-22,Signal ML,signalml.io,500,inbound,France,Enterprise
+2024-12-22,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2024-12-22,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2024-12-22,Zinc Platform,zincplatform.io,3000,inbound,Canada,Fintech
+2024-12-23,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2024-12-23,Dart Analytics,dartanalytics.io,2500,inbound,United Kingdom,Fintech
+2024-12-23,Ledge Link,ledgelink.io,700,inbound,United States,Enterprise
+2024-12-23,Pace AI,paceai.io,900,inbound,United States,SaaS
+2024-12-23,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2024-12-23,Shift Yield,shiftyield.io,700,inbound,United Kingdom,SaaS
+2024-12-23,Shore Dynamics,shoredynamics.io,1400,inbound,United Kingdom,Healthcare
+2024-12-23,Vista Pro,vistapro.io,500,outbound,United Kingdom,Enterprise
+2024-12-23,Wave Zero,wavezero.io,2900,outbound,United Kingdom,Fintech
+2024-12-24,Layer Dynamics,layerdynamics.io,1000,inbound,United States,Enterprise
+2024-12-24,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2024-12-24,Mode Analytics,modeanalytics.io,1400,inbound,United States,Healthcare
+2024-12-24,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2024-12-24,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2024-12-25,Haven Software,havensoftware.io,700,outbound,United States,Enterprise
+2024-12-25,Nova Security,novasecurity.io,600,inbound,United States,Healthcare
+2024-12-25,Quartz Tech,quartztech.io,2800,inbound,Australia,Fintech
+2024-12-25,Rail Tech,railtech.io,4500,inbound,United States,SaaS
+2024-12-25,Route Link,routelink.io,1800,inbound,Germany,Logistics
+2024-12-25,Zinc Finance,zincfinance.io,500,inbound,Canada,SaaS
+2024-12-26,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2024-12-26,Dart Yield,dartyield.io,600,outbound,United Kingdom,Healthcare
+2024-12-26,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2024-12-26,Port Data,portdata.io,3000,outbound,United States,SaaS
+2024-12-26,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2024-12-27,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2024-12-27,Bolt Platform,boltplatform.io,800,inbound,United Kingdom,Fintech
+2024-12-27,Clay Works,clayworks.io,1400,outbound,Germany,Logistics
+2024-12-27,Facet Logic,facetlogic.io,500,inbound,Germany,Enterprise
+2024-12-27,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2024-12-27,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2024-12-28,Plume Security,plumesecurity.io,1400,outbound,United States,SaaS
+2024-12-28,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2024-12-28,Route Ops,routeops.io,900,inbound,Canada,Fintech
+2025-01-01,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2025-01-01,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2025-01-01,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2025-01-01,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2025-01-01,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2025-01-02,Cobalt Dynamics,cobaltdynamics.io,600,outbound,United States,SaaS
+2025-01-02,Glint Works,glintworks.io,1200,outbound,United Kingdom,Fintech
+2025-01-02,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2025-01-02,Mode Analytics,modeanalytics.io,1400,inbound,United States,Healthcare
+2025-01-02,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2025-01-02,Stem Labs,stemlabs.io,500,outbound,Australia,Enterprise
+2025-01-02,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2025-01-02,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2025-01-03,Clay Works,clayworks.io,1400,outbound,Germany,Logistics
+2025-01-03,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2025-01-03,Haven Software,havensoftware.io,700,outbound,United States,Enterprise
+2025-01-03,Ledge Tech,ledgetech.io,1000,outbound,United States,Fintech
+2025-01-03,Link Pay,linkpay.io,7000,outbound,United Kingdom,Enterprise
+2025-01-03,Link Works,linkworks.io,900,inbound,United Kingdom,Fintech
+2025-01-03,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2025-01-03,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2025-01-04,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2025-01-04,Dart Tech,darttech.io,600,outbound,United Kingdom,Fintech
+2025-01-04,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2025-01-04,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2025-01-04,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2025-01-04,Quartz Flow,quartzflow.io,1500,outbound,Australia,Enterprise
+2025-01-04,Sail ML,sailml.io,1500,outbound,United States,Enterprise
+2025-01-04,Sphere X,spherex.io,500,inbound,Australia,Fintech
+2025-01-04,Track Ops,trackops.io,500,inbound,France,SaaS
+2025-01-04,Vale Data,valedata.io,900,inbound,United States,Healthcare
+2025-01-05,Arrow Labs,arrowlabs.io,900,outbound,United States,SaaS
+2025-01-05,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2025-01-05,Clay Dynamics,claydynamics.io,3000,inbound,United States,Enterprise
+2025-01-05,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2025-01-05,Hull Platform,hullplatform.io,1600,inbound,United Kingdom,Fintech
+2025-01-05,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2025-01-05,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2025-01-06,Quartz Tech,quartztech.io,2800,inbound,Australia,Fintech
+2025-01-06,Shade Zero,shadezero.io,5000,inbound,United Kingdom,SaaS
+2025-01-06,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2025-01-07,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2025-01-07,Glint Yield,glintyield.io,5000,inbound,United Kingdom,Healthcare
+2025-01-07,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2025-01-07,Maple Systems,maplesystems.io,1400,inbound,United States,SaaS
+2025-01-07,Shore Dynamics,shoredynamics.io,1400,inbound,United Kingdom,Healthcare
+2025-01-08,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2025-01-08,Frame HQ,framehq.io,2500,outbound,United Kingdom,SaaS
+2025-01-08,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2025-01-09,Dart Link,dartlink.io,2500,outbound,France,Healthcare
+2025-01-09,Layer Dynamics,layerdynamics.io,1000,inbound,United States,Enterprise
+2025-01-09,Nova Labs,novalabs.io,900,outbound,United Kingdom,SaaS
+2025-01-09,Shore Works,shoreworks.io,900,inbound,United States,Enterprise
+2025-01-10,Birch Data,birchdata.io,1000,inbound,United States,SaaS
+2025-01-10,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2025-01-10,Frost Zero,frostzero.io,500,outbound,United States,Healthcare
+2025-01-10,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2025-01-10,Mesa Zero,mesazero.io,1400,inbound,United Kingdom,Fintech
+2025-01-10,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2025-01-10,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2025-01-10,Pixel Tech,pixeltech.io,600,inbound,United States,Fintech
+2025-01-10,Rush ML,rushml.io,3500,inbound,United States,SaaS
+2025-01-10,Shift Yield,shiftyield.io,700,inbound,United Kingdom,SaaS
+2025-01-10,Slope Security,slopesecurity.io,1500,inbound,United States,SaaS
+2025-01-10,Track Yield,trackyield.io,600,inbound,United States,Fintech
+2025-01-11,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2025-01-11,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2025-01-11,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2025-01-11,Token IO,tokenio.io,1400,outbound,United Kingdom,Logistics
+2025-01-12,Helix Hub,helixhub.io,1000,outbound,Australia,Fintech
+2025-01-12,Rise ML,riseml.io,500,outbound,United Kingdom,SaaS
+2025-01-12,Shell Link,shelllink.io,500,inbound,United Kingdom,Healthcare
+2025-01-12,Spark Zero,sparkzero.io,1500,inbound,United Kingdom,SaaS
+2025-01-12,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2025-01-12,Wing HQ,winghq.io,900,outbound,France,SaaS
+2025-01-13,Mast HQ,masthq.io,1000,outbound,United Kingdom,Enterprise
+2025-01-13,Mesa IO,mesaio.io,500,inbound,United Kingdom,Fintech
+2025-01-13,Orbit HQ,orbithq.io,2800,inbound,Canada,Enterprise
+2025-01-13,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2025-01-13,Plume Security,plumesecurity.io,1400,outbound,United States,SaaS
+2025-01-13,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2025-01-14,Bolt Platform,boltplatform.io,800,inbound,United Kingdom,Fintech
+2025-01-14,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2025-01-14,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2025-01-14,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2025-01-15,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2025-01-15,Level Platform,levelplatform.io,500,outbound,United Kingdom,Fintech
+2025-01-15,Root Tech,roottech.io,8000,outbound,United Kingdom,Fintech
+2025-01-16,Arrow Systems,arrowsystems.io,600,outbound,United States,Fintech
+2025-01-16,Dart Yield,dartyield.io,600,outbound,United Kingdom,Healthcare
+2025-01-16,Hive Data,hivedata.io,1200,outbound,United States,SaaS
+2025-01-16,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2025-01-16,Kelp IO,kelpio.io,2200,inbound,United States,SaaS
+2025-01-16,Ledge Link,ledgelink.io,700,inbound,United States,Enterprise
+2025-01-16,Mode Logic,modelogic.io,2800,outbound,Australia,Enterprise
+2025-01-16,Route Link,routelink.io,1800,inbound,Germany,Logistics
+2025-01-16,Spark Platform,sparkplatform.io,2200,outbound,Canada,Fintech
+2025-01-16,Sphere Works,sphereworks.io,2500,outbound,United Kingdom,Fintech
+2025-01-16,Zinc Finance,zincfinance.io,500,inbound,Canada,SaaS
+2025-01-17,Arc Logic,arclogic.io,1400,outbound,United Kingdom,Enterprise
+2025-01-17,Quartz Platform,quartzplatform.io,7000,inbound,United States,Enterprise
+2025-01-17,Route Ops,routeops.io,900,inbound,Canada,Fintech
+2025-01-17,Scale X,scalex.io,4500,outbound,United States,Healthcare
+2025-01-18,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2025-01-18,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2025-01-18,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2025-01-18,Dart Ops,dartops.io,1800,inbound,United States,SaaS
+2025-01-18,Helm Intelligence,helmintelligence.io,1200,inbound,United Kingdom,Healthcare
+2025-01-18,Layer Solutions,layersolutions.io,1400,outbound,United States,Logistics
+2025-01-18,Pilot Cloud,pilotcloud.io,500,outbound,United States,Healthcare
+2025-01-18,Plume Intelligence,plumeintelligence.io,2000,outbound,Germany,Fintech
+2025-01-18,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2025-01-19,Birch Analytics,birchanalytics.io,1400,inbound,United States,Enterprise
+2025-01-19,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2025-01-19,Core Labs,corelabs.io,3500,inbound,United States,Fintech
+2025-01-19,Flux Software,fluxsoftware.io,2000,inbound,United Kingdom,SaaS
+2025-01-19,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2025-01-19,Maple Tech,mapletech.io,3500,inbound,Germany,Healthcare
+2025-01-19,Path Dynamics,pathdynamics.io,1800,inbound,United States,Enterprise
+2025-01-19,Quartz Software,quartzsoftware.io,700,inbound,United Kingdom,Enterprise
+2025-01-19,Timber Cloud,timbercloud.io,800,outbound,Australia,Enterprise
+2025-01-19,Vista Pro,vistapro.io,500,outbound,United Kingdom,Enterprise
+2025-01-19,Wave Zero,wavezero.io,2900,outbound,United Kingdom,Fintech
+2025-01-20,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2025-01-20,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2025-01-20,Scale Link,scalelink.io,600,inbound,United States,Fintech
+2025-01-20,Signal ML,signalml.io,500,inbound,France,Enterprise
+2025-01-21,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2025-01-21,Index Code,indexcode.io,500,inbound,United Kingdom,Healthcare
+2025-01-21,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2025-01-21,Port Data,portdata.io,3000,outbound,United States,SaaS
+2025-01-22,Dart Zero,dartzero.io,1800,inbound,Canada,Fintech
+2025-01-22,Echo Yield,echoyield.io,700,inbound,Germany,Fintech
+2025-01-22,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2025-01-22,Lens Hub,lenshub.io,2000,inbound,United Kingdom,Enterprise
+2025-01-22,Level Ops,levelops.io,1400,inbound,Canada,Fintech
+2025-01-23,Dart Analytics,dartanalytics.io,4100,inbound,United Kingdom,Fintech
+2025-01-23,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2025-01-23,Nova Security,novasecurity.io,600,inbound,United States,Healthcare
+2025-01-23,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2025-01-23,Shell Flow,shellflow.io,1000,inbound,United States,Logistics
+2025-01-24,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2025-01-24,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2025-01-24,Mesa Dynamics,mesadynamics.io,1500,outbound,Australia,SaaS
+2025-01-24,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2025-01-24,Quartz Hub,quartzhub.io,600,inbound,United Kingdom,Fintech
+2025-01-25,Atlas Yield,atlasyield.io,600,inbound,Australia,SaaS
+2025-01-25,Epoch Zero,epochzero.io,800,outbound,United Kingdom,Fintech
+2025-01-25,Pace AI,paceai.io,900,inbound,United States,SaaS
+2025-01-25,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2025-01-26,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2025-01-26,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2025-01-26,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2025-01-26,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2025-01-26,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2025-01-27,Route Pay,routepay.io,600,inbound,United States,SaaS
+2025-01-28,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2025-01-28,Cedar Tech,cedartech.io,500,outbound,United States,Healthcare
+2025-01-28,Depth Networks,depthnetworks.io,500,inbound,United Kingdom,Fintech
+2025-01-28,Facet Logic,facetlogic.io,500,inbound,Germany,Enterprise
+2025-01-28,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2025-02-01,Echo Yield,echoyield.io,700,inbound,Germany,Fintech
+2025-02-01,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2025-02-01,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2025-02-01,Nova Labs,novalabs.io,900,outbound,United Kingdom,SaaS
+2025-02-01,Path Dynamics,pathdynamics.io,1800,inbound,United States,Enterprise
+2025-02-01,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2025-02-01,Plume Intelligence,plumeintelligence.io,2000,outbound,Germany,Fintech
+2025-02-01,Quartz Software,quartzsoftware.io,700,inbound,United Kingdom,Enterprise
+2025-02-01,Rise ML,riseml.io,500,outbound,United Kingdom,SaaS
+2025-02-01,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2025-02-01,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2025-02-02,Scale X,scalex.io,4500,outbound,United States,Healthcare
+2025-02-02,Timber Cloud,timbercloud.io,800,outbound,Australia,Enterprise
+2025-02-03,Lumen Yield,lumenyield.io,500,outbound,United States,Enterprise
+2025-02-03,Maple Tech,mapletech.io,3500,inbound,Germany,Healthcare
+2025-02-04,Arrow Systems,arrowsystems.io,600,outbound,United States,Fintech
+2025-02-04,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2025-02-04,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2025-02-04,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2025-02-04,Link Pay,linkpay.io,7000,outbound,United Kingdom,Enterprise
+2025-02-04,Mast Software,mastsoftware.io,1500,inbound,France,Logistics
+2025-02-04,Mesa Dynamics,mesadynamics.io,1500,outbound,Australia,SaaS
+2025-02-04,Sphere Works,sphereworks.io,2500,outbound,United Kingdom,Fintech
+2025-02-04,Vista Pro,vistapro.io,500,outbound,United Kingdom,Enterprise
+2025-02-05,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2025-02-05,Index Code,indexcode.io,800,inbound,United Kingdom,Healthcare
+2025-02-05,Maple Systems,maplesystems.io,1400,inbound,United States,SaaS
+2025-02-05,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2025-02-05,Sail ML,sailml.io,1500,outbound,United States,Enterprise
+2025-02-05,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2025-02-06,Acorn IO,acornio.io,1800,outbound,United States,Enterprise
+2025-02-06,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2025-02-06,Glint Works,glintworks.io,1200,outbound,United Kingdom,Fintech
+2025-02-06,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2025-02-06,Stream IO,streamio.io,4000,inbound,United States,SaaS
+2025-02-07,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2025-02-07,Clay Dynamics,claydynamics.io,3000,inbound,United States,Enterprise
+2025-02-07,Scale Link,scalelink.io,600,inbound,United States,Fintech
+2025-02-07,Spark Zero,sparkzero.io,2200,inbound,United Kingdom,SaaS
+2025-02-07,Timber Zero,timberzero.io,800,outbound,Canada,Fintech
+2025-02-08,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2025-02-08,Route Pay,routepay.io,600,inbound,United States,SaaS
+2025-02-09,Shell Software,shellsoftware.io,1800,outbound,United States,Enterprise
+2025-02-09,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2025-02-09,Track Pro,trackpro.io,2200,outbound,United Kingdom,Fintech
+2025-02-10,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2025-02-10,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2025-02-10,Quartz Hub,quartzhub.io,600,inbound,United Kingdom,Fintech
+2025-02-10,Seam Software,seamsoftware.io,1800,outbound,Australia,Logistics
+2025-02-10,Shore Dynamics,shoredynamics.io,1400,inbound,United Kingdom,Healthcare
+2025-02-10,Silo Pay,silopay.io,800,inbound,Germany,Healthcare
+2025-02-11,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2025-02-11,Dart Ops,dartops.io,1800,inbound,United States,SaaS
+2025-02-11,Frost Zero,frostzero.io,500,outbound,United States,Healthcare
+2025-02-11,Helm Intelligence,helmintelligence.io,1200,inbound,United Kingdom,Healthcare
+2025-02-11,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2025-02-11,Spin X,spinx.io,2200,inbound,United States,Healthcare
+2025-02-11,Track Ops,trackops.io,500,inbound,France,SaaS
+2025-02-12,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2025-02-12,Ledge Link,ledgelink.io,700,inbound,United States,Enterprise
+2025-02-12,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2025-02-12,Shell Link,shelllink.io,500,inbound,United Kingdom,Healthcare
+2025-02-12,Shore Works,shoreworks.io,900,inbound,United States,Enterprise
+2025-02-12,Wing HQ,winghq.io,900,outbound,France,SaaS
+2025-02-13,Birch Analytics,birchanalytics.io,1400,inbound,United States,Enterprise
+2025-02-13,Cedar Tech,cedartech.io,500,outbound,United States,Healthcare
+2025-02-13,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2025-02-13,Port Data,portdata.io,3000,outbound,United States,SaaS
+2025-02-13,Quartz Flow,quartzflow.io,1500,outbound,Australia,Enterprise
+2025-02-13,Signal ML,signalml.io,500,inbound,France,Enterprise
+2025-02-13,Token IO,tokenio.io,1400,outbound,United Kingdom,Logistics
+2025-02-13,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2025-02-14,Arc Logic,arclogic.io,1400,outbound,United Kingdom,Enterprise
+2025-02-14,Dawn Zero,dawnzero.io,1800,outbound,Germany,Fintech
+2025-02-14,Flint IO,flintio.io,2800,outbound,United States,SaaS
+2025-02-14,Layer Solutions,layersolutions.io,1400,outbound,United States,Logistics
+2025-02-14,Lens Dynamics,lensdynamics.io,700,outbound,France,Healthcare
+2025-02-14,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2025-02-14,Mesa IO,mesaio.io,500,inbound,United Kingdom,Fintech
+2025-02-14,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2025-02-15,Dart Tech,darttech.io,600,outbound,United Kingdom,Fintech
+2025-02-15,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2025-02-15,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2025-02-15,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2025-02-15,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2025-02-15,Hull Platform,hullplatform.io,1600,inbound,United Kingdom,Fintech
+2025-02-15,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2025-02-15,Plume Security,plumesecurity.io,1400,outbound,United States,SaaS
+2025-02-16,Clay Works,clayworks.io,1400,outbound,Germany,Logistics
+2025-02-16,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2025-02-16,Dart Zero,dartzero.io,1800,inbound,Canada,Fintech
+2025-02-16,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2025-02-16,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2025-02-16,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2025-02-16,Level Ops,levelops.io,1400,inbound,Canada,Fintech
+2025-02-16,Lumen Platform,lumenplatform.io,800,outbound,Germany,Enterprise
+2025-02-16,Mast HQ,masthq.io,1000,outbound,United Kingdom,Enterprise
+2025-02-16,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2025-02-16,Shade Zero,shadezero.io,5000,inbound,United Kingdom,SaaS
+2025-02-16,Spark Platform,sparkplatform.io,2200,outbound,Canada,Fintech
+2025-02-17,Level Platform,levelplatform.io,500,outbound,United Kingdom,Fintech
+2025-02-17,Timber Ops,timberops.io,1500,inbound,United Kingdom,Healthcare
+2025-02-17,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2025-02-17,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2025-02-18,Arc Yield,arcyield.io,600,inbound,United States,SaaS
+2025-02-18,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2025-02-18,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2025-02-18,Hive Data,hivedata.io,1200,outbound,United States,SaaS
+2025-02-18,Keystone Hub,keystonehub.io,700,outbound,Germany,Healthcare
+2025-02-18,Quartz Tech,quartztech.io,2800,inbound,Australia,Fintech
+2025-02-18,Shift Yield,shiftyield.io,700,inbound,United Kingdom,SaaS
+2025-02-19,Forge Platform,forgeplatform.io,600,outbound,United States,SaaS
+2025-02-19,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2025-02-19,Layer Dynamics,layerdynamics.io,1000,inbound,United States,Enterprise
+2025-02-19,Lime Tech,limetech.io,2000,inbound,United Kingdom,Fintech
+2025-02-19,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2025-02-20,Birch Data,birchdata.io,1000,inbound,United States,SaaS
+2025-02-20,Ember Dynamics,emberdynamics.io,500,outbound,United Kingdom,Fintech
+2025-02-20,Orbit HQ,orbithq.io,2800,inbound,Canada,Enterprise
+2025-02-20,Route Finance,routefinance.io,1200,outbound,Australia,Logistics
+2025-02-20,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2025-02-21,Frame HQ,framehq.io,2500,outbound,United Kingdom,SaaS
+2025-02-21,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2025-02-21,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2025-02-21,Wind HQ,windhq.io,1200,inbound,United States,SaaS
+2025-02-22,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2025-02-22,Cobalt Dynamics,cobaltdynamics.io,600,outbound,United States,SaaS
+2025-02-22,Dart Analytics,dartanalytics.io,4100,inbound,United Kingdom,Fintech
+2025-02-22,Dart Link,dartlink.io,2500,outbound,France,Healthcare
+2025-02-22,Dart Yield,dartyield.io,600,outbound,United Kingdom,Healthcare
+2025-02-22,Flux Software,fluxsoftware.io,2000,inbound,United Kingdom,SaaS
+2025-02-22,Gem Pay,gempay.io,700,inbound,Canada,SaaS
+2025-02-22,Haven Software,havensoftware.io,700,outbound,United States,Enterprise
+2025-02-22,Lumen Analytics,lumenanalytics.io,500,inbound,United States,Enterprise
+2025-02-22,Mast Tech,masttech.io,1500,outbound,United Kingdom,Enterprise
+2025-02-22,Pilot Cloud,pilotcloud.io,500,outbound,United States,Healthcare
+2025-02-22,Root Tech,roottech.io,8000,outbound,United Kingdom,Fintech
+2025-02-22,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2025-02-22,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2025-02-23,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2025-02-23,Crest Software,crestsoftware.io,900,inbound,United Kingdom,Enterprise
+2025-02-23,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2025-02-23,Ledge Tech,ledgetech.io,1000,outbound,United States,Fintech
+2025-02-23,Pixel Tech,pixeltech.io,600,inbound,United States,Fintech
+2025-02-23,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2025-02-23,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2025-02-23,Wedge Cloud,wedgecloud.io,2200,inbound,Germany,Healthcare
+2025-02-24,Bolt Platform,boltplatform.io,800,inbound,United Kingdom,Fintech
+2025-02-24,West Systems,westsystems.io,2000,outbound,Germany,SaaS
+2025-02-25,Arrow Labs,arrowlabs.io,900,outbound,United States,SaaS
+2025-02-25,Depth Networks,depthnetworks.io,500,inbound,United Kingdom,Fintech
+2025-02-25,Helix Hub,helixhub.io,1000,outbound,Australia,Fintech
+2025-02-25,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2025-02-25,Nova Security,novasecurity.io,600,inbound,United States,Healthcare
+2025-02-25,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2025-02-25,Quartz Platform,quartzplatform.io,7000,inbound,United States,Enterprise
+2025-02-25,Route Ops,routeops.io,900,inbound,Canada,Fintech
+2025-02-25,Wave Zero,wavezero.io,2900,outbound,United Kingdom,Fintech
+2025-02-25,Zinc Finance,zincfinance.io,500,inbound,Canada,SaaS
+2025-02-26,Atlas Yield,atlasyield.io,600,inbound,Australia,SaaS
+2025-02-26,Crown Cloud,crowncloud.io,500,inbound,United States,Healthcare
+2025-02-26,Dune Tech,dunetech.io,5000,inbound,United States,Fintech
+2025-02-26,Layer Hub,layerhub.io,1800,outbound,Australia,SaaS
+2025-02-26,Lime Software,limesoftware.io,2500,outbound,United States,Fintech
+2025-02-26,Pace AI,paceai.io,900,inbound,United States,SaaS
+2025-02-26,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2025-02-26,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2025-02-26,Route Link,routelink.io,1800,inbound,Germany,Logistics
+2025-02-26,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2025-02-26,Stem Labs,stemlabs.io,500,outbound,Australia,Enterprise
+2025-02-26,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2025-02-27,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2025-02-27,Trail Yield,trailyield.io,1200,outbound,United States,SaaS
+2025-02-28,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2025-02-28,Glint Yield,glintyield.io,5000,inbound,United Kingdom,Healthcare
+2025-02-28,Lens Hub,lenshub.io,2000,inbound,United Kingdom,Enterprise
+2025-02-28,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2025-02-28,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2025-02-28,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2025-03-01,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2025-03-01,Index Code,indexcode.io,800,inbound,United Kingdom,Healthcare
+2025-03-01,Stream IO,streamio.io,4000,inbound,United States,SaaS
+2025-03-02,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2025-03-02,Frost Zero,frostzero.io,500,outbound,United States,Healthcare
+2025-03-02,Helm Intelligence,helmintelligence.io,1200,inbound,United Kingdom,Healthcare
+2025-03-02,Path Finance,pathfinance.io,1200,inbound,United Kingdom,Fintech
+2025-03-02,Scale Hub,scalehub.io,4500,inbound,United States,Logistics
+2025-03-02,Shell Software,shellsoftware.io,1800,outbound,United States,Enterprise
+2025-03-03,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2025-03-03,Dawn Software,dawnsoftware.io,500,inbound,Canada,Enterprise
+2025-03-03,Glint Yield,glintyield.io,5000,inbound,United Kingdom,Healthcare
+2025-03-03,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2025-03-03,Layer Hub,layerhub.io,1800,outbound,Australia,SaaS
+2025-03-03,Ledge Tech,ledgetech.io,1000,outbound,United States,Fintech
+2025-03-03,Rise ML,riseml.io,500,outbound,United Kingdom,SaaS
+2025-03-03,Track Pro,trackpro.io,2200,outbound,United Kingdom,Fintech
+2025-03-03,West Systems,westsystems.io,2000,outbound,Germany,SaaS
+2025-03-04,Cedar Tech,cedartech.io,500,outbound,United States,Healthcare
+2025-03-04,Dart Tech,darttech.io,600,outbound,United Kingdom,Fintech
+2025-03-04,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2025-03-04,Lime Tech,limetech.io,2000,inbound,United Kingdom,Fintech
+2025-03-04,Lumen Platform,lumenplatform.io,800,outbound,Germany,Enterprise
+2025-03-04,Maple Tech,mapletech.io,3500,inbound,Germany,Healthcare
+2025-03-04,Pace AI,paceai.io,900,inbound,United States,SaaS
+2025-03-04,Root Tech,roottech.io,8000,outbound,United Kingdom,Fintech
+2025-03-04,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2025-03-04,Token IO,tokenio.io,1400,outbound,United Kingdom,Logistics
+2025-03-04,Wave Tech,wavetech.io,800,inbound,France,SaaS
+2025-03-05,Clay Dynamics,claydynamics.io,3000,inbound,United States,Enterprise
+2025-03-05,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2025-03-05,Shell AI,shellai.io,3500,inbound,Canada,Enterprise
+2025-03-05,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2025-03-05,Timber Cloud,timbercloud.io,800,outbound,Australia,Enterprise
+2025-03-05,Wave Zero,wavezero.io,2900,outbound,United Kingdom,Fintech
+2025-03-06,Beacon Link,beaconlink.io,2000,inbound,Germany,Enterprise
+2025-03-06,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2025-03-06,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2025-03-06,Shore Dynamics,shoredynamics.io,1400,inbound,United Kingdom,Healthcare
+2025-03-06,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2025-03-06,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2025-03-06,Track Ops,trackops.io,500,inbound,France,SaaS
+2025-03-07,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2025-03-07,Dawn Zero,dawnzero.io,1800,outbound,Germany,Fintech
+2025-03-07,Flint IO,flintio.io,2800,outbound,United States,SaaS
+2025-03-07,Keystone Hub,keystonehub.io,700,outbound,Germany,Healthcare
+2025-03-07,Mesa Dynamics,mesadynamics.io,1500,outbound,Australia,SaaS
+2025-03-07,Mesa IO,mesaio.io,800,inbound,United Kingdom,Fintech
+2025-03-07,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2025-03-07,Mesa Systems,mesasystems.io,1500,inbound,Germany,Fintech
+2025-03-07,Plume Works,plumeworks.io,1200,inbound,Germany,Fintech
+2025-03-07,Slate Cloud,slatecloud.io,800,inbound,France,Enterprise
+2025-03-07,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2025-03-07,Zenith Software,zenithsoftware.io,500,inbound,United States,Healthcare
+2025-03-08,Cobalt Dynamics,cobaltdynamics.io,600,outbound,United States,SaaS
+2025-03-08,Forge Cloud,forgecloud.io,600,inbound,Germany,SaaS
+2025-03-08,Lime Software,limesoftware.io,2500,outbound,United States,Fintech
+2025-03-08,Track Hub,trackhub.io,3000,inbound,United Kingdom,Logistics
+2025-03-09,Arrow Systems,arrowsystems.io,600,outbound,United States,Fintech
+2025-03-09,Hull Platform,hullplatform.io,1600,inbound,United Kingdom,Fintech
+2025-03-09,Ledge Logic,ledgelogic.io,1800,outbound,Australia,SaaS
+2025-03-09,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2025-03-09,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2025-03-10,Depth Networks,depthnetworks.io,700,inbound,United Kingdom,Fintech
+2025-03-10,Frame HQ,framehq.io,2500,outbound,United Kingdom,SaaS
+2025-03-10,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2025-03-10,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2025-03-10,Layer Solutions,layersolutions.io,1400,outbound,United States,Logistics
+2025-03-10,Route Finance,routefinance.io,1200,outbound,Australia,Logistics
+2025-03-10,Trail Yield,trailyield.io,1200,outbound,United States,SaaS
+2025-03-11,Arc Yield,arcyield.io,600,inbound,United States,SaaS
+2025-03-11,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2025-03-11,Mast Tech,masttech.io,1500,outbound,United Kingdom,Enterprise
+2025-03-11,Quartz Software,quartzsoftware.io,700,inbound,United Kingdom,Enterprise
+2025-03-11,Quartz Tech,quartztech.io,2800,inbound,Australia,Fintech
+2025-03-11,Spark Zero,sparkzero.io,2200,inbound,United Kingdom,SaaS
+2025-03-11,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2025-03-11,Timber Zero,timberzero.io,800,outbound,Canada,Fintech
+2025-03-12,Dart Yield,dartyield.io,600,outbound,United Kingdom,Healthcare
+2025-03-12,Layer Dynamics,layerdynamics.io,1000,inbound,United States,Enterprise
+2025-03-12,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2025-03-12,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2025-03-12,Pixel Tech,pixeltech.io,600,inbound,United States,Fintech
+2025-03-12,Port Data,portdata.io,3000,outbound,United States,SaaS
+2025-03-12,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2025-03-12,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2025-03-13,Forge Platform,forgeplatform.io,600,outbound,United States,SaaS
+2025-03-13,Lens Dynamics,lensdynamics.io,700,outbound,France,Healthcare
+2025-03-13,Sail ML,sailml.io,1500,outbound,United States,Enterprise
+2025-03-13,Scale X,scalex.io,4500,outbound,United States,Healthcare
+2025-03-13,Sphere Works,sphereworks.io,2500,outbound,United Kingdom,Fintech
+2025-03-13,Trace Finance,tracefinance.io,600,outbound,United Kingdom,Fintech
+2025-03-13,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2025-03-14,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2025-03-14,Kelp Networks,kelpnetworks.io,700,outbound,Germany,Fintech
+2025-03-14,Lens Hub,lenshub.io,2000,inbound,United Kingdom,Enterprise
+2025-03-14,Nexus Intelligence,nexusintelligence.io,500,inbound,United States,Logistics
+2025-03-14,Nexus ML,nexusml.io,1400,outbound,United States,SaaS
+2025-03-14,Seam Software,seamsoftware.io,1800,outbound,Australia,Logistics
+2025-03-14,Shade Zero,shadezero.io,5000,inbound,United Kingdom,SaaS
+2025-03-14,Stone AI,stoneai.io,1400,inbound,United States,SaaS
+2025-03-14,Wing HQ,winghq.io,900,outbound,France,SaaS
+2025-03-14,Zinc Finance,zincfinance.io,500,inbound,Canada,SaaS
+2025-03-15,Arrow Labs,arrowlabs.io,900,outbound,United States,SaaS
+2025-03-15,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2025-03-15,Grove Logic,grovelogic.io,700,inbound,Canada,Enterprise
+2025-03-15,Lens Systems,lenssystems.io,5000,inbound,United States,Enterprise
+2025-03-15,Opal Ops,opalops.io,2200,inbound,United States,SaaS
+2025-03-15,Plume Security,plumesecurity.io,1400,outbound,United States,SaaS
+2025-03-15,Quartz Flow,quartzflow.io,1500,outbound,Australia,Enterprise
+2025-03-15,Route Link,routelink.io,1800,inbound,Germany,Logistics
+2025-03-15,Route Pay,routepay.io,600,inbound,United States,SaaS
+2025-03-15,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2025-03-16,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2025-03-16,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2025-03-16,Bolt Platform,boltplatform.io,800,inbound,United Kingdom,Fintech
+2025-03-16,Flux Software,fluxsoftware.io,2000,inbound,United Kingdom,SaaS
+2025-03-16,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2025-03-16,Level Ops,levelops.io,1400,inbound,Canada,Fintech
+2025-03-16,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2025-03-16,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2025-03-16,Signal ML,signalml.io,500,inbound,France,Enterprise
+2025-03-16,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2025-03-17,Crown Cloud,crowncloud.io,500,inbound,United States,Healthcare
+2025-03-17,Ember Dynamics,emberdynamics.io,500,outbound,United Kingdom,Fintech
+2025-03-17,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2025-03-17,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2025-03-17,Maple Systems,maplesystems.io,1400,inbound,United States,SaaS
+2025-03-17,Wedge Cloud,wedgecloud.io,2200,inbound,Germany,Healthcare
+2025-03-18,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2025-03-18,Glint Works,glintworks.io,1200,outbound,United Kingdom,Fintech
+2025-03-18,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2025-03-18,Pilot Cloud,pilotcloud.io,500,outbound,United States,Healthcare
+2025-03-18,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2025-03-18,Zone Data,zonedata.io,4500,inbound,Germany,Healthcare
+2025-03-19,Acorn IO,acornio.io,1800,outbound,United States,Enterprise
+2025-03-19,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2025-03-19,Bridge ML,bridgeml.io,1800,outbound,United States,Fintech
+2025-03-19,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2025-03-19,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2025-03-19,Mast Software,mastsoftware.io,1500,inbound,France,Logistics
+2025-03-19,Nova Security,novasecurity.io,600,inbound,United States,Healthcare
+2025-03-19,Scale Link,scalelink.io,600,inbound,United States,Fintech
+2025-03-19,Silo Pay,silopay.io,800,inbound,Germany,Healthcare
+2025-03-20,Birch Analytics,birchanalytics.io,1400,inbound,United States,Enterprise
+2025-03-20,Birch Data,birchdata.io,1000,inbound,United States,SaaS
+2025-03-20,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2025-03-20,Ridge Networks,ridgenetworks.io,500,outbound,Germany,Fintech
+2025-03-21,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2025-03-21,Flint Data,flintdata.io,900,inbound,Canada,Enterprise
+2025-03-21,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2025-03-21,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2025-03-21,Zone Code,zonecode.io,700,inbound,United States,Healthcare
+2025-03-22,Clay Works,clayworks.io,1400,outbound,Germany,Logistics
+2025-03-22,Dart Zero,dartzero.io,1800,inbound,Canada,Fintech
+2025-03-22,Level Platform,levelplatform.io,500,outbound,United Kingdom,Fintech
+2025-03-22,Orbit HQ,orbithq.io,2800,inbound,Canada,Enterprise
+2025-03-22,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2025-03-22,Quartz Hub,quartzhub.io,600,inbound,United Kingdom,Fintech
+2025-03-22,Stem Labs,stemlabs.io,500,outbound,Australia,Enterprise
+2025-03-22,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2025-03-23,Dart Link,dartlink.io,4000,outbound,France,Healthcare
+2025-03-23,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2025-03-23,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2025-03-23,Ledge Link,ledgelink.io,700,inbound,United States,Enterprise
+2025-03-23,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2025-03-23,Nova Labs,novalabs.io,900,outbound,United Kingdom,SaaS
+2025-03-23,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2025-03-24,Core Zero,corezero.io,4500,inbound,France,Healthcare
+2025-03-24,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2025-03-24,Lumen Pro,lumenpro.io,1800,outbound,France,Enterprise
+2025-03-24,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2025-03-24,Route Ops,routeops.io,900,inbound,Canada,Fintech
+2025-03-24,Shift Yield,shiftyield.io,700,inbound,United Kingdom,SaaS
+2025-03-24,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2025-03-24,Vista Pro,vistapro.io,500,outbound,United Kingdom,Enterprise
+2025-03-25,Echo Yield,echoyield.io,700,inbound,Germany,Fintech
+2025-03-25,Haven Software,havensoftware.io,700,outbound,United States,Enterprise
+2025-03-25,Hive Platform,hiveplatform.io,500,outbound,United States,SaaS
+2025-03-25,Lumen Analytics,lumenanalytics.io,500,inbound,United States,Enterprise
+2025-03-25,Mast HQ,masthq.io,1000,outbound,United Kingdom,Enterprise
+2025-03-25,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2025-03-25,Path Dynamics,pathdynamics.io,1800,inbound,United States,Enterprise
+2025-03-25,Plume Intelligence,plumeintelligence.io,2000,outbound,Germany,Fintech
+2025-03-26,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2025-03-26,Crown X,crownx.io,8000,inbound,United States,Healthcare
+2025-03-26,Dart Analytics,dartanalytics.io,4100,inbound,United Kingdom,Fintech
+2025-03-26,Dart Ops,dartops.io,1800,inbound,United States,SaaS
+2025-03-26,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2025-03-26,Shell Link,shelllink.io,500,inbound,United Kingdom,Healthcare
+2025-03-26,Timber Ops,timberops.io,1500,inbound,United Kingdom,Healthcare
+2025-03-27,Dawn Logic,dawnlogic.io,1000,inbound,United States,SaaS
+2025-03-27,Gem Logic,gemlogic.io,1200,inbound,Germany,Fintech
+2025-03-27,Link Pay,linkpay.io,11400,outbound,United Kingdom,Enterprise
+2025-03-27,Lumen Yield,lumenyield.io,500,outbound,United States,Enterprise
+2025-03-27,Zone Zero,zonezero.io,1500,outbound,United States,Fintech
+2025-03-28,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2025-03-28,Crest Software,crestsoftware.io,900,inbound,United Kingdom,Enterprise
+2025-03-28,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2025-03-28,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2025-03-28,Haven Logic,havenlogic.io,2200,outbound,United States,Fintech
+2025-03-28,Hive Data,hivedata.io,1200,outbound,United States,SaaS
+2025-03-28,Jade Logic,jadelogic.io,1500,outbound,Germany,Fintech
+2025-03-28,Stream Dynamics,streamdynamics.io,1500,outbound,United States,SaaS
+2025-03-28,Wind HQ,windhq.io,1200,inbound,United States,SaaS
+2025-04-01,Clay Works,clayworks.io,1400,outbound,Germany,Logistics
+2025-04-01,Frost Zero,frostzero.io,500,outbound,United States,Healthcare
+2025-04-01,Mesa Systems,mesasystems.io,1500,inbound,Germany,Fintech
+2025-04-01,Peak Logic,peaklogic.io,500,inbound,United Kingdom,Enterprise
+2025-04-01,Sail Security,sailsecurity.io,2200,inbound,Germany,Fintech
+2025-04-01,Shell AI,shellai.io,3500,inbound,Canada,Enterprise
+2025-04-01,Track Ops,trackops.io,700,inbound,France,SaaS
+2025-04-01,Vine X,vinex.io,1000,inbound,Germany,Healthcare
+2025-04-02,Arrow Systems,arrowsystems.io,600,outbound,United States,Fintech
+2025-04-02,Crest ML,crestml.io,2500,outbound,United Kingdom,Logistics
+2025-04-02,Dune Link,dunelink.io,800,inbound,Australia,SaaS
+2025-04-02,Index Labs,indexlabs.io,1000,inbound,United States,Fintech
+2025-04-02,Plume Intelligence,plumeintelligence.io,2000,outbound,Germany,Fintech
+2025-04-02,Plume Security,plumesecurity.io,1400,outbound,United States,SaaS
+2025-04-02,Quartz HQ,quartzhq.io,1500,outbound,United States,Fintech
+2025-04-02,Shift Yield,shiftyield.io,700,inbound,United Kingdom,SaaS
+2025-04-02,Tide Systems,tidesystems.io,1200,inbound,Canada,Fintech
+2025-04-02,Zinc Finance,zincfinance.io,500,inbound,Canada,SaaS
+2025-04-03,Bolt Tech,bolttech.io,2500,outbound,Germany,SaaS
+2025-04-03,Clay Dynamics,claydynamics.io,3000,inbound,United States,Enterprise
+2025-04-03,Crown Hub,crownhub.io,900,inbound,France,SaaS
+2025-04-03,Lens Pro,lenspro.io,1200,outbound,United States,SaaS
+2025-04-03,Nova Systems,novasystems.io,3000,inbound,Canada,Fintech
+2025-04-03,Pace AI,paceai.io,900,inbound,United States,SaaS
+2025-04-03,Stack Labs,stacklabs.io,4500,outbound,Canada,Fintech
+2025-04-04,Arrow Labs,arrowlabs.io,900,outbound,United States,SaaS
+2025-04-04,Birch Data,birchdata.io,1000,inbound,United States,SaaS
+2025-04-04,Clay Labs,claylabs.io,2200,inbound,United States,Enterprise
+2025-04-04,Dart Zero,dartzero.io,1800,inbound,Canada,Fintech
+2025-04-04,Echo Yield,echoyield.io,700,inbound,Germany,Fintech
+2025-04-04,Index Code,indexcode.io,800,inbound,United Kingdom,Healthcare
+2025-04-04,Mast HQ,masthq.io,1000,outbound,United Kingdom,Enterprise
+2025-04-05,Dart Analytics,dartanalytics.io,4100,inbound,United Kingdom,Fintech
+2025-04-05,Ledge Labs,ledgelabs.io,2800,outbound,United Kingdom,Enterprise
+2025-04-05,Link Pay,linkpay.io,11400,outbound,United Kingdom,Enterprise
+2025-04-05,Mesa Yield,mesayield.io,1000,outbound,United States,Fintech
+2025-04-05,Opal Ops,opalops.io,2200,inbound,United States,SaaS
+2025-04-05,Pixel Tech,pixeltech.io,1000,inbound,United States,Fintech
+2025-04-05,Rise ML,riseml.io,500,outbound,United Kingdom,SaaS
+2025-04-05,Shade Zero,shadezero.io,5000,inbound,United Kingdom,SaaS
+2025-04-05,Track Hub,trackhub.io,3000,inbound,United Kingdom,Logistics
+2025-04-05,Volt Platform,voltplatform.io,500,inbound,Canada,SaaS
+2025-04-05,Wave Tech,wavetech.io,800,inbound,France,SaaS
+2025-04-06,Dart Yield,dartyield.io,600,outbound,United Kingdom,Healthcare
+2025-04-06,Flint Data,flintdata.io,900,inbound,Canada,Enterprise
+2025-04-06,Hive Data,hivedata.io,1200,outbound,United States,SaaS
+2025-04-06,Lynx Dynamics,lynxdynamics.io,800,inbound,France,Fintech
+2025-04-06,Mast Tech,masttech.io,1500,outbound,United Kingdom,Enterprise
+2025-04-06,Range Labs,rangelabs.io,800,inbound,Canada,Enterprise
+2025-04-06,Root Tech,roottech.io,8000,outbound,United Kingdom,Fintech
+2025-04-06,Vista Pro,vistapro.io,500,outbound,United Kingdom,Enterprise
+2025-04-07,Arc Yield,arcyield.io,600,inbound,United States,SaaS
+2025-04-07,Path Finance,pathfinance.io,1200,inbound,United Kingdom,Fintech
+2025-04-07,Route Link,routelink.io,1800,inbound,Germany,Logistics
+2025-04-07,Scale Link,scalelink.io,600,inbound,United States,Fintech
+2025-04-07,Spark Zero,sparkzero.io,2200,inbound,United Kingdom,SaaS
+2025-04-07,Wave Zero,wavezero.io,2900,outbound,United Kingdom,Fintech
+2025-04-07,Wedge Analytics,wedgeanalytics.io,3500,inbound,United States,Fintech
+2025-04-08,Acorn Zero,acornzero.io,5000,outbound,United States,SaaS
+2025-04-08,Cedar Tech,cedartech.io,500,outbound,United States,Healthcare
+2025-04-08,Cobalt Dynamics,cobaltdynamics.io,600,outbound,United States,SaaS
+2025-04-08,Hive Yield,hiveyield.io,2300,outbound,United States,Fintech
+2025-04-08,Maple AI,mapleai.io,1000,inbound,United Kingdom,Healthcare
+2025-04-08,Ridge Networks,ridgenetworks.io,500,outbound,Germany,Fintech
+2025-04-08,Trace Finance,tracefinance.io,600,outbound,United Kingdom,Fintech
+2025-04-09,Beacon Link,beaconlink.io,2000,inbound,Germany,Enterprise
+2025-04-09,Bolt Platform,boltplatform.io,800,inbound,United Kingdom,Fintech
+2025-04-09,Epoch Pro,epochpro.io,500,inbound,United States,Fintech
+2025-04-09,Grove Logic,grovelogic.io,700,inbound,Canada,Enterprise
+2025-04-09,Lens Dynamics,lensdynamics.io,700,outbound,France,Healthcare
+2025-04-09,Level Systems,levelsystems.io,1800,outbound,Canada,Fintech
+2025-04-09,Scale X,scalex.io,4500,outbound,United States,Healthcare
+2025-04-09,Shift Security,shiftsecurity.io,700,inbound,France,SaaS
+2025-04-09,Stone AI,stoneai.io,1400,inbound,United States,SaaS
+2025-04-10,Clay Platform,clayplatform.io,1000,inbound,United States,Healthcare
+2025-04-10,Dawn Logic,dawnlogic.io,1000,inbound,United States,SaaS
+2025-04-10,Forge IO,forgeio.io,3500,inbound,United States,Healthcare
+2025-04-10,Hive Platform,hiveplatform.io,500,outbound,United States,SaaS
+2025-04-10,Keystone Hub,keystonehub.io,700,outbound,Germany,Healthcare
+2025-04-10,Shore Pro,shorepro.io,500,inbound,France,SaaS
+2025-04-10,Sphere Works,sphereworks.io,2500,outbound,United Kingdom,Fintech
+2025-04-10,Wave Security,wavesecurity.io,1200,inbound,United States,SaaS
+2025-04-10,Zone Zero,zonezero.io,1500,outbound,United States,Fintech
+2025-04-11,Forge Platform,forgeplatform.io,600,outbound,United States,SaaS
+2025-04-11,Kelp Networks,kelpnetworks.io,700,outbound,Germany,Fintech
+2025-04-11,Mast Software,mastsoftware.io,2100,inbound,France,Logistics
+2025-04-11,North HQ,northhq.io,500,inbound,United States,Fintech
+2025-04-11,Orbit HQ,orbithq.io,2800,inbound,Canada,Enterprise
+2025-04-11,Quartz Flow,quartzflow.io,1500,outbound,Australia,Enterprise
+2025-04-12,Flint IO,flintio.io,2800,outbound,United States,SaaS
+2025-04-12,Flint Solutions,flintsolutions.io,500,inbound,United Kingdom,Healthcare
+2025-04-12,Hull Platform,hullplatform.io,1600,inbound,United Kingdom,Fintech
+2025-04-12,Keel Labs,keellabs.io,2200,inbound,United States,SaaS
+2025-04-12,Layer Dynamics,layerdynamics.io,1000,inbound,United States,Enterprise
+2025-04-12,Route Finance,routefinance.io,1200,outbound,Australia,Logistics
+2025-04-12,Route Pay,routepay.io,600,inbound,United States,SaaS
+2025-04-12,Slate Cloud,slatecloud.io,800,inbound,France,Enterprise
+2025-04-12,Trace Cloud,tracecloud.io,2500,inbound,Australia,SaaS
+2025-04-12,Wing HQ,winghq.io,900,outbound,France,SaaS
+2025-04-13,Bolt Code,boltcode.io,1000,inbound,United States,Healthcare
+2025-04-13,Coast Data,coastdata.io,1000,outbound,United States,Enterprise
+2025-04-13,Helix X,helixx.io,4500,outbound,United States,Healthcare
+2025-04-13,Mesa Solutions,mesasolutions.io,1400,inbound,United Kingdom,Fintech
+2025-04-13,Quartz Software,quartzsoftware.io,700,inbound,United Kingdom,Enterprise
+2025-04-13,Sail ML,sailml.io,1500,outbound,United States,Enterprise
+2025-04-13,Silo Pay,silopay.io,800,inbound,Germany,Healthcare
+2025-04-13,Vine Solutions,vinesolutions.io,1000,outbound,Australia,SaaS
+2025-04-14,Haven Logic,havenlogic.io,2200,outbound,United States,Fintech
+2025-04-14,Mist Code,mistcode.io,1200,inbound,United Kingdom,SaaS
+2025-04-14,Spring Dynamics,springdynamics.io,2800,inbound,United States,Enterprise
+2025-04-14,Token IO,tokenio.io,2300,outbound,United Kingdom,Logistics
+2025-04-14,Zone Data,zonedata.io,4500,inbound,Germany,Healthcare
+2025-04-15,Ember Dynamics,emberdynamics.io,500,outbound,United Kingdom,Fintech
+2025-04-15,Ember IO,emberio.io,1000,outbound,Germany,Fintech
+2025-04-15,Glint Software,glintsoftware.io,600,inbound,United Kingdom,Fintech
+2025-04-15,Helm Intelligence,helmintelligence.io,1200,inbound,United Kingdom,Healthcare
+2025-04-16,Acorn IO,acornio.io,1800,outbound,United States,Enterprise
+2025-04-16,Acorn Systems,acornsystems.io,2500,inbound,United States,Enterprise
+2025-04-16,Atlas Dynamics,atlasdynamics.io,1800,inbound,United States,Healthcare
+2025-04-16,Crown Cloud,crowncloud.io,500,inbound,United States,Healthcare
+2025-04-16,Dawn Zero,dawnzero.io,1800,outbound,Germany,Fintech
+2025-04-16,Iris IO,irisio.io,1200,inbound,United States,Healthcare
+2025-04-16,Keel Analytics,keelanalytics.io,2800,outbound,United States,SaaS
+2025-04-16,Lens Systems,lenssystems.io,5000,inbound,United States,Enterprise
+2025-04-16,Mist Finance,mistfinance.io,800,inbound,France,SaaS
+2025-04-16,Nova Labs,novalabs.io,900,outbound,United Kingdom,SaaS
+2025-04-16,Port Data,portdata.io,3000,outbound,United States,SaaS
+2025-04-16,Timber Zero,timberzero.io,800,outbound,Canada,Fintech
+2025-04-16,Track Flow,trackflow.io,900,outbound,Canada,Healthcare
+2025-04-17,Dart Tech,darttech.io,900,outbound,United Kingdom,Fintech
+2025-04-17,Haven Software,havensoftware.io,700,outbound,United States,Enterprise
+2025-04-17,Hull Hub,hullhub.io,8000,outbound,Germany,Logistics
+2025-04-17,Level Ops,levelops.io,1400,inbound,Canada,Fintech
+2025-04-17,Mesa Dynamics,mesadynamics.io,1500,outbound,Australia,SaaS
+2025-04-17,Mesa IO,mesaio.io,800,inbound,United Kingdom,Fintech
+2025-04-17,Mist X,mistx.io,4500,inbound,Germany,Fintech
+2025-04-17,Scale Hub,scalehub.io,4500,inbound,United States,Logistics
+2025-04-17,Signal ML,signalml.io,500,inbound,France,Enterprise
+2025-04-17,Spring Security,springsecurity.io,3500,outbound,United Kingdom,SaaS
+2025-04-17,Stem Labs,stemlabs.io,500,outbound,Australia,Enterprise
+2025-04-17,Trail Yield,trailyield.io,1600,outbound,United States,SaaS
+2025-04-18,Cedar Link,cedarlink.io,1800,outbound,France,Fintech
+2025-04-18,Field Solutions,fieldsolutions.io,900,inbound,United States,Fintech
+2025-04-18,Lumen Analytics,lumenanalytics.io,500,inbound,United States,Enterprise
+2025-04-18,Path Networks,pathnetworks.io,600,inbound,Australia,Enterprise
+2025-04-18,Summit Analytics,summitanalytics.io,800,inbound,United States,Fintech
+2025-04-18,Zone Code,zonecode.io,700,inbound,United States,Healthcare
+2025-04-19,Birch Software,birchsoftware.io,900,outbound,United States,Fintech
+2025-04-19,Crest Software,crestsoftware.io,900,inbound,United Kingdom,Enterprise
+2025-04-19,Frame HQ,framehq.io,2500,outbound,United Kingdom,SaaS
+2025-04-19,Lens Hub,lenshub.io,2000,inbound,United Kingdom,Enterprise
+2025-04-19,Nexus ML,nexusml.io,1400,outbound,United States,SaaS
+2025-04-19,Nova Security,novasecurity.io,600,inbound,United States,Healthcare
+2025-04-19,Pilot Cloud,pilotcloud.io,500,outbound,United States,Healthcare
+2025-04-19,Track Pro,trackpro.io,2200,outbound,United Kingdom,Fintech
+2025-04-20,Bolt Ops,boltops.io,800,inbound,Canada,Healthcare
+2025-04-20,Crown X,crownx.io,8000,inbound,United States,Healthcare
+2025-04-20,Lime Software,limesoftware.io,2500,outbound,United States,Fintech
+2025-04-20,Quartz Yield,quartzyield.io,2900,inbound,United States,Fintech
+2025-04-20,Route Ops,routeops.io,900,inbound,Canada,Fintech
+2025-04-20,Sphere Tech,spheretech.io,2800,inbound,United States,Fintech
+2025-04-20,Wing Security,wingsecurity.io,1400,inbound,France,SaaS
+2025-04-21,Arrow Pro,arrowpro.io,1000,inbound,United States,SaaS
+2025-04-21,Dawn Software,dawnsoftware.io,500,inbound,Canada,Enterprise
+2025-04-21,Drift Labs,driftlabs.io,500,inbound,United States,SaaS
+2025-04-21,Layer Hub,layerhub.io,1800,outbound,Australia,SaaS
+2025-04-21,Lumen Pro,lumenpro.io,1800,outbound,France,Enterprise
+2025-04-21,Nexus Intelligence,nexusintelligence.io,500,inbound,United States,Logistics
+2025-04-21,Path Dynamics,pathdynamics.io,1800,inbound,United States,Enterprise
+2025-04-21,Stream IO,streamio.io,4000,inbound,United States,SaaS
+2025-04-22,Birch Analytics,birchanalytics.io,1400,inbound,United States,Enterprise
+2025-04-22,Core Zero,corezero.io,4500,inbound,France,Healthcare
+2025-04-22,Echo Dynamics,echodynamics.io,2200,outbound,Germany,Enterprise
+2025-04-22,Flux Software,fluxsoftware.io,2000,inbound,United Kingdom,SaaS
+2025-04-22,Glint Logic,glintlogic.io,1200,inbound,Germany,SaaS
+2025-04-22,Glint Works,glintworks.io,1900,outbound,United Kingdom,Fintech
+2025-04-22,Ledge Logic,ledgelogic.io,1800,outbound,Australia,SaaS
+2025-04-22,Level Platform,levelplatform.io,500,outbound,United Kingdom,Fintech
+2025-04-22,Plume Works,plumeworks.io,1200,inbound,Germany,Fintech
+2025-04-22,Rail Works,railworks.io,700,inbound,United Kingdom,SaaS
+2025-04-22,Seam Software,seamsoftware.io,1800,outbound,Australia,Logistics
+2025-04-22,Track AI,trackai.io,700,outbound,United States,Logistics
+2025-04-22,Vine IO,vineio.io,1500,inbound,United States,Fintech
+2025-04-23,Core Intelligence,coreintelligence.io,700,inbound,United States,Enterprise
+2025-04-23,Dart Link,dartlink.io,4000,outbound,France,Healthcare
+2025-04-23,Depth Networks,depthnetworks.io,700,inbound,United Kingdom,Fintech
+2025-04-23,Lumen Platform,lumenplatform.io,800,outbound,Germany,Enterprise
+2025-04-23,Port Software,portsoftware.io,800,inbound,Germany,SaaS
+2025-04-23,Slope Tech,slopetech.io,2000,inbound,Australia,Fintech
+2025-04-23,Stack Security,stacksecurity.io,1400,outbound,United Kingdom,Healthcare
+2025-04-24,Coast Link,coastlink.io,700,outbound,United Kingdom,SaaS
+2025-04-24,Gem Logic,gemlogic.io,1200,inbound,Germany,Fintech
+2025-04-24,Helm X,helmx.io,500,outbound,Canada,SaaS
+2025-04-24,Inlet Zero,inletzero.io,1000,inbound,United States,SaaS
+2025-04-24,Prism Pay,prismpay.io,1000,outbound,United States,Fintech
+2025-04-24,Shell Link,shelllink.io,500,inbound,United Kingdom,Healthcare
+2025-04-25,Grove Hub,grovehub.io,600,inbound,Australia,Logistics
+2025-04-25,Prism Tech,prismtech.io,3000,outbound,United Kingdom,Fintech
+2025-04-25,Shore Dynamics,shoredynamics.io,1400,inbound,United Kingdom,Healthcare
+2025-04-25,Silo Flow,siloflow.io,1000,outbound,United States,Enterprise
+2025-04-25,Stream Dynamics,streamdynamics.io,1500,outbound,United States,SaaS
+2025-04-25,Stream Intelligence,streamintelligence.io,3500,inbound,Germany,Fintech
+2025-04-25,Timber Ops,timberops.io,2200,inbound,United Kingdom,Healthcare
+2025-04-26,Ember Networks,embernetworks.io,600,outbound,France,SaaS
+2025-04-26,Forge Cloud,forgecloud.io,600,inbound,Germany,SaaS
+2025-04-26,Hull Flow,hullflow.io,5000,outbound,United Kingdom,Healthcare
+2025-04-26,Icon Analytics,iconanalytics.io,1500,outbound,United States,Healthcare
+2025-04-26,Lime Tech,limetech.io,2000,inbound,United Kingdom,Fintech
+2025-04-26,Pixel ML,pixelml.io,4000,outbound,United States,Healthcare
+2025-04-26,Quartz AI,quartzai.io,800,inbound,United States,Fintech
+2025-04-26,Token Software,tokensoftware.io,2500,inbound,United States,Enterprise
+2025-04-26,Wind HQ,windhq.io,1200,inbound,United States,SaaS
+2025-04-27,Coda Hub,codahub.io,1500,outbound,Australia,SaaS
+2025-04-27,Glint Yield,glintyield.io,5000,inbound,United Kingdom,Healthcare
+2025-04-27,Jade Logic,jadelogic.io,1500,outbound,Germany,Fintech
+2025-04-27,Maple Tech,mapletech.io,5100,inbound,Germany,Healthcare
+2025-04-27,Node IO,nodeio.io,2800,outbound,United States,Logistics
+2025-04-27,Palm Link,palmlink.io,1000,inbound,United States,SaaS
+2025-04-27,Pine Intelligence,pineintelligence.io,1000,outbound,Australia,SaaS
+2025-04-27,Quartz Hub,quartzhub.io,600,inbound,United Kingdom,Fintech
+2025-04-27,Timber Cloud,timbercloud.io,800,outbound,Australia,Enterprise
+2025-04-27,Trace Tech,tracetech.io,800,outbound,United States,Fintech
+2025-04-28,Acorn Cloud,acorncloud.io,1500,inbound,United States,Fintech
+2025-04-28,Dart Ops,dartops.io,1800,inbound,United States,SaaS
+2025-04-28,Layer Solutions,layersolutions.io,1800,outbound,United States,Logistics
+2025-04-28,Ledge Tech,ledgetech.io,1000,outbound,United States,Fintech
+2025-04-28,Lumen X,lumenx.io,1400,inbound,Australia,Healthcare
+2025-04-28,Lumen Yield,lumenyield.io,600,outbound,United States,Enterprise
+2025-04-28,Shift Dynamics,shiftdynamics.io,8000,outbound,United States,Fintech
+2025-04-28,Vault Systems,vaultsystems.io,600,inbound,United States,Enterprise
+2025-04-28,Wedge Cloud,wedgecloud.io,2200,inbound,Germany,Healthcare
+2025-04-28,Zenith Software,zenithsoftware.io,500,inbound,United States,Healthcare

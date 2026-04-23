@@ -21,11 +21,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 from metrics import (
     arr_waterfall, cohort_retention, geography_mix_by_month,
     industry_mix_by_month, icp_snapshot, load_and_clean,
-    logo_highlights, summary_kpis,
+    load_pipeline, logo_highlights, pipeline_summary, summary_kpis,
 )
 from charts import (
     plot_arr_trend, plot_arr_waterfall, plot_cohort_heatmap,
-    plot_geography_mix, plot_industry_mix,
+    plot_geography_mix, plot_industry_mix, plot_pipeline_funnel,
 )
 
 # ---------------------------------------------------------------------------
@@ -313,11 +313,16 @@ def _section_waterfall(story: list, wf: dict, chart_path: str) -> None:
         _data_table(
             ["Movement", "ARR (USD)"],
             [
-                ["Starting ARR",  f"${wf['starting_arr']:,.0f}"],
-                ["+ New",         f"${wf['new_arr']:,.0f}"],
-                ["+ Expansion",   f"${wf['expansion_arr']:,.0f}"],
-                ["- Churn",       f"${wf['churn_arr']:,.0f}"],
-                ["= Ending ARR",  f"${wf['ending_arr']:,.0f}"],
+                ["Starting ARR",
+                    f"${wf['starting_arr']:,.0f}"],
+                ["+ New",
+                    f"${wf['new_arr']:,.0f}"],
+                [("+ Net expansion" if wf["net_expansion_arr"] >= 0 else "- Net expansion"),
+                    f"${abs(wf['net_expansion_arr']):,.0f}"],
+                ["- Churn",
+                    f"${wf['churn_arr']:,.0f}"],
+                ["= Ending ARR",
+                    f"${wf['ending_arr']:,.0f}"],
             ],
             [CONTENT_W * 0.55, CONTENT_W * 0.45],
         ),
@@ -377,6 +382,41 @@ def _section_logos(story: list, logos: list, notes: dict = None) -> None:
     story.append(tbl)
 
 
+def _section_pipeline(story: list, pipe: dict, chart_path: str) -> None:
+    """Sales pipeline — 5 KPIs, funnel chart, top 5 deals table."""
+    def _fmt(v: float) -> str:
+        if v >= 1_000_000:
+            return f"${v/1e6:.2f}M"
+        return f"${v/1e3:.0f}K"
+
+    story += [
+        _kpi_row([
+            ("Total pipeline",     _fmt(pipe["total_pipeline_arr"]),         ""),
+            ("Weighted pipeline",  _fmt(pipe["weighted_pipeline_arr"]),      ""),
+            ("Open opps",          str(pipe["open_opportunities"]),          ""),
+            ("Avg deal size",      f"${pipe['avg_deal_size']:,.0f}/mo",      ""),
+            ("Coverage",           f"{pipe['coverage_ratio']:.2f}x",         ""),
+        ]),
+        _gap(12),
+        _chart(chart_path, max_h=CONTENT_H * 0.38),
+        _gap(10),
+        Paragraph("Top 5 open deals", S_SUBHEAD),
+    ]
+
+    if pipe["top_5_deals"]:
+        rows = [
+            [d["company"], d["stage"], f"${d['mrr']:,.0f}/mo", d["close_date"] or "-"]
+            for d in pipe["top_5_deals"]
+        ]
+        story.append(_data_table(
+            ["Company", "Stage", "MRR", "Expected close"],
+            rows,
+            [CONTENT_W * 0.35, CONTENT_W * 0.25, CONTENT_W * 0.17, CONTENT_W * 0.23],
+        ))
+    else:
+        story.append(Paragraph("No open opportunities.", S_BODY))
+
+
 def _section_icp(story: list, icp: dict) -> None:
     dominant = "inbound" if icp["inbound_pct"] >= icp["outbound_pct"] else "outbound"
     pct      = max(icp["inbound_pct"], icp["outbound_pct"])
@@ -412,7 +452,8 @@ def _section_icp(story: list, icp: dict) -> None:
 
 def build_report(csv_path: str, as_of_month: str,
                  output_path: str = "output/report.pdf",
-                 commentary: str = "", logo_notes: dict = None) -> str:
+                 commentary: str = "", logo_notes: dict = None,
+                 pipeline_csv_path: str = None) -> str:
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
     chart_dir = os.path.join(
         os.path.dirname(os.path.abspath(output_path)), "charts"
@@ -427,6 +468,14 @@ def build_report(csv_path: str, as_of_month: str,
     ind_df = industry_mix_by_month(df, as_of_month)
     logos  = logo_highlights(df, as_of_month, n=5)
     icp    = icp_snapshot(df, as_of_month)
+
+    # Optional: sales pipeline
+    pipe         = None
+    pipeline_png = None
+    if pipeline_csv_path:
+        pipe_df       = load_pipeline(pipeline_csv_path)
+        pipe          = pipeline_summary(pipe_df, current_arr=kpis["current_arr"])
+        pipeline_png  = plot_pipeline_funnel(pipe["by_stage"], chart_dir)
 
     # Charts
     arr_png   = plot_arr_trend(df, as_of_month, chart_dir)
@@ -489,6 +538,12 @@ def build_report(csv_path: str, as_of_month: str,
     story.append(PageBreak())
     story += _section_header(7, "ICP snapshot")
     _section_icp(story, icp)
+
+    # Page 9 — Sales Pipeline (optional)
+    if pipe is not None:
+        story.append(PageBreak())
+        story += _section_header(8, "Sales pipeline")
+        _section_pipeline(story, pipe, pipeline_png)
 
     cover_fn = lambda c, d: _draw_cover(c, month_label, prepared_str)
     doc.build(
