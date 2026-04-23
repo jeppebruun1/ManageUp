@@ -1,20 +1,14 @@
 """
 PDF report builder for ManageUp — editorial layout.
+All visual constants live in design.py; this file only arranges content.
 Entry point: build_report(csv_path, as_of_month, output_path)
 """
 import os
 import sys
 from datetime import date, datetime
 
-from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_LEFT
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.pdfgen import canvas as rl_canvas
 from reportlab.platypus import (
-    HRFlowable, Image, PageBreak, Paragraph,
-    SimpleDocTemplate, Spacer, Table, TableStyle,
+    KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Table, TableStyle,
 )
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -27,158 +21,60 @@ from charts import (
     plot_arr_trend, plot_arr_waterfall, plot_cohort_heatmap,
     plot_geography_mix, plot_industry_mix, plot_pipeline_funnel,
 )
-
-# ---------------------------------------------------------------------------
-# Page geometry
-# ---------------------------------------------------------------------------
-PAGE_W, PAGE_H = letter       # 612 x 792 pts
-MARGIN    = 0.75 * inch       # 54 pts
-CONTENT_W = PAGE_W - 2 * MARGIN   # 504 pts
-CONTENT_H = PAGE_H - 2 * MARGIN   # 684 pts
-
-# ---------------------------------------------------------------------------
-# Colours
-# ---------------------------------------------------------------------------
-C_INK   = colors.HexColor("#0F172A")
-C_SLATE = colors.HexColor("#334155")
-C_MUTED = colors.HexColor("#64748B")
-C_FAINT = colors.HexColor("#94A3B8")
-C_RULE  = colors.HexColor("#CBD5E1")
-C_BLUE  = colors.HexColor("#2E5FE8")
-C_BG    = colors.HexColor("#EFF6FF")
-C_BGB   = colors.HexColor("#BFDBFE")
-C_ROW   = colors.HexColor("#F8FAFC")
-
-# ---------------------------------------------------------------------------
-# Styles
-# ---------------------------------------------------------------------------
-_ss = getSampleStyleSheet()
-
-def _s(name, **kw):
-    return ParagraphStyle(name, parent=_ss["Normal"], **kw)
-
-S_SECT_NUM   = _s("SN",  fontSize=9,  fontName="Helvetica",
-                   textColor=C_FAINT, spaceAfter=2)
-S_SECT_TITLE = _s("STi", fontSize=18, fontName="Helvetica-Bold",
-                   textColor=C_INK,   leading=22, spaceAfter=0)
-S_SUBHEAD    = _s("SH",  fontSize=14, fontName="Helvetica-Bold",
-                   textColor=C_INK,   leading=18, spaceBefore=10, spaceAfter=4)
-S_KPI_LABEL  = _s("KL",  fontSize=9,  fontName="Helvetica",
-                   textColor=C_FAINT, alignment=TA_CENTER)
-S_KPI_VALUE  = _s("KV",  fontSize=20, fontName="Helvetica-Bold",
-                   textColor=C_INK,   alignment=TA_CENTER, leading=24)
-S_KPI_DELTA  = _s("KD",  fontSize=9,  fontName="Helvetica",
-                   alignment=TA_CENTER, leading=12)
-S_BODY       = _s("BD",  fontSize=10, fontName="Helvetica",
-                   textColor=C_SLATE, leading=14, spaceAfter=4)
-S_LOREM      = _s("LR",  fontSize=10, fontName="Helvetica",
-                   textColor=C_SLATE, leading=14)
-S_CAPTION    = _s("CP",  fontSize=10, fontName="Helvetica-Oblique",
-                   textColor=C_SLATE, leading=14, spaceAfter=8)
-S_TH         = _s("TH",  fontSize=9,  fontName="Helvetica-Bold",
-                   textColor=colors.white, alignment=TA_CENTER)
-S_TD         = _s("TD",  fontSize=9,  fontName="Helvetica",
-                   textColor=C_INK,   leading=13)
-S_TD_C       = _s("TDC", fontSize=9,  fontName="Helvetica",
-                   textColor=C_INK,   alignment=TA_CENTER, leading=13)
-S_NOTE       = _s("NT",  fontSize=9,  fontName="Helvetica-Oblique",
-                   textColor=C_FAINT, leading=12)
+import design
+from design import (
+    BODY, BODY_MUTED, CAPTION, CONTENT_H, CONTENT_W, DISPLAY, H2,
+    INK, INK_FAINT, INK_MUTED, PAGE_H, PAGE_MARGIN, PAGE_W, RULE,
+    SURFACE, SURFACE_STRONG, RULE_WIDTH, TABLE_CELL,
+    data_table, draw_page_footer, gap, kpi_row, make_numbered_canvas,
+    section_header,
+)
+from reportlab.platypus import Image
 
 
 # ---------------------------------------------------------------------------
-# Numbered canvas — draws "Page N of M" footer on every page except the cover
-# ---------------------------------------------------------------------------
-
-def _make_canvas(month_label: str) -> type:
-    def _draw_footer(c, page_num: int, total: int) -> None:
-        c.saveState()
-        c.setStrokeColor(C_RULE)
-        c.setLineWidth(0.5)
-        c.line(MARGIN, MARGIN, PAGE_W - MARGIN, MARGIN)
-        c.setFont("Helvetica", 8)
-        c.setFillColor(C_FAINT)
-        txt = f"ManageUp  \xb7  {month_label}  \xb7  Page {page_num} of {total}"
-        c.drawCentredString(PAGE_W / 2, MARGIN - 12, txt)
-        c.restoreState()
-
-    class _NC(rl_canvas.Canvas):
-        def __init__(self, *args, **kwargs):
-            rl_canvas.Canvas.__init__(self, *args, **kwargs)
-            self._saved_page_states = []
-
-        def showPage(self):
-            self._saved_page_states.append(dict(self.__dict__))
-            self._startPage()
-
-        def save(self):
-            total = len(self._saved_page_states)
-            for n, state in enumerate(self._saved_page_states, 1):
-                self.__dict__.update(state)
-                if n > 1:
-                    _draw_footer(self, n, total)
-                rl_canvas.Canvas.showPage(self)
-            rl_canvas.Canvas.save(self)
-
-    return _NC
-
-
-# ---------------------------------------------------------------------------
-# Cover page — drawn directly onto the canvas via onFirstPage callback
+# Cover page
 # ---------------------------------------------------------------------------
 
 def _draw_cover(c, month_label: str, prepared_str: str) -> None:
     cx = PAGE_W / 2
 
-    # "ManageUp" — baseline at 40% from top of page
+    # Title — baseline at 60% from bottom
     title_y = PAGE_H * 0.60
-    c.setFont("Helvetica-Bold", 48)
-    c.setFillColor(C_INK)
+    c.setFont(DISPLAY.fontName, DISPLAY.fontSize)
+    c.setFillColor(INK)
     c.drawCentredString(cx, title_y, "ManageUp")
 
-    # Thin 200pt rule below title
-    rule_y = title_y - 66
-    c.setStrokeColor(C_RULE)
-    c.setLineWidth(0.5)
-    c.line(cx - 100, rule_y, cx + 100, rule_y)
+    # Thin rule below the title
+    rule_y = title_y - 30
+    c.setStrokeColor(RULE)
+    c.setLineWidth(RULE_WIDTH)
+    c.line(cx - 80, rule_y, cx + 80, rule_y)
 
-    # "Investor Update"
-    c.setFont("Helvetica", 18)
-    c.setFillColor(C_SLATE)
-    c.drawCentredString(cx, rule_y - 20, "Investor Update")
+    # Subtitle
+    c.setFont("Helvetica", 14)
+    c.setFillColor(INK_MUTED)
+    c.drawCentredString(cx, rule_y - 22, "Investor Update")
 
-    # Reporting month  e.g. "October 2024"
-    c.setFont("Helvetica", 16)
-    c.setFillColor(C_MUTED)
-    c.drawCentredString(cx, rule_y - 48, month_label)
+    # Reporting month
+    c.setFont("Helvetica", 12)
+    c.setFillColor(INK_MUTED)
+    c.drawCentredString(cx, rule_y - 40, month_label)
 
-    # Prepared line at bottom of page
-    c.setFont("Helvetica", 9)
-    c.setFillColor(C_FAINT)
-    c.drawCentredString(cx, MARGIN - 12, prepared_str)
+    # Prepared line at bottom
+    c.setFont("Helvetica", 8)
+    c.setFillColor(INK_FAINT)
+    c.drawCentredString(cx, PAGE_MARGIN - 12, prepared_str)
 
 
 # ---------------------------------------------------------------------------
-# Shared helpers
+# Chart flowable helper
 # ---------------------------------------------------------------------------
-
-def _gap(pts: float = 12) -> Spacer:
-    return Spacer(1, pts)
-
-
-def _section_header(num: int, title: str) -> list:
-    return [
-        HRFlowable(width="100%", thickness=0.5, color=C_RULE,
-                   spaceBefore=0, spaceAfter=4),
-        Paragraph(f"SECTION {num}", S_SECT_NUM),
-        Paragraph(title, S_SECT_TITLE),
-        _gap(16),
-    ]
-
 
 def _chart(path: str, max_w: float = None, max_h: float = None) -> Image:
     from PIL import Image as PILImage
     max_w = max_w or CONTENT_W
-    max_h = max_h or (PAGE_H - 2.5 * inch)
+    max_h = max_h or (CONTENT_H - 160)
     with PILImage.open(path) as im:
         px_w, px_h = im.size
         dpi = im.info.get("dpi", (200, 200))[0] or 200
@@ -190,260 +86,216 @@ def _chart(path: str, max_w: float = None, max_h: float = None) -> Image:
     return img
 
 
-def _kpi_row(items: list, col_widths: list = None) -> Table:
-    n   = len(items)
-    cw  = col_widths if col_widths else [CONTENT_W / n] * n
-    tbl = Table(
-        [
-            [Paragraph(lbl, S_KPI_LABEL) for lbl, _, _ in items],
-            [Paragraph(val, S_KPI_VALUE) for _, val, _ in items],
-            [Paragraph(dlt, S_KPI_DELTA) for _, _, dlt in items],
-        ],
-        colWidths=cw,
-    )
-    tbl.setStyle(TableStyle([
-        ("BACKGROUND",    (0, 0), (-1, -1), C_BG),
-        ("BOX",           (0, 0), (-1, -1), 0.5, C_BGB),
-        ("LINEBEFORE",    (1, 0), (-1, -1), 0.5, C_BGB),
-        ("ALIGN",         (0, 0), (-1, -1), "CENTER"),
-        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING",    (0, 0), (-1, -1), 8),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
-    ]))
-    return tbl
-
-
-def _data_table(headers: list, rows: list, col_widths: list) -> Table:
-    data = [[Paragraph(h, S_TH) for h in headers]]
-    for row in rows:
-        data.append([
-            Paragraph(str(c), S_TD) if j == 0 else Paragraph(str(c), S_TD_C)
-            for j, c in enumerate(row)
-        ])
-    tbl = Table(data, colWidths=col_widths)
-    ts = TableStyle([
-        ("BACKGROUND",    (0, 0), (-1, 0),  C_BLUE),
-        ("VALIGN",        (0, 0), (-1, -1), "MIDDLE"),
-        ("TOPPADDING",    (0, 0), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
-        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-        ("BOX",           (0, 0), (-1, -1), 0.5, C_BGB),
-        ("LINEBELOW",     (0, 0), (-1, -1), 0.3, C_BGB),
-    ])
-    for i in range(1, len(data)):
-        ts.add("BACKGROUND", (0, i), (-1, i),
-               colors.white if i % 2 == 1 else C_ROW)
-    tbl.setStyle(ts)
-    return tbl
-
-
 # ---------------------------------------------------------------------------
 # Section builders
 # ---------------------------------------------------------------------------
 
-def _section_summary(story: list, kpis: dict, arr_chart_path: str,
-                     commentary: str = "") -> None:
+def _section_summary(story, kpis, arr_chart_path, commentary=""):
     arr     = kpis["current_arr"]
     arr_str = f"${arr/1e6:.2f}M" if arr >= 1_000_000 else f"${arr/1e3:.0f}K"
     dp      = kpis["arr_change_pct"]
     sign    = "+" if dp >= 0 else ""
-    col     = "#16A34A" if dp >= 0 else "#DC2626"
-    delta   = f'<font color="{col}">{sign}{dp:.1f}% MoM</font>'
-    cc      = "#DC2626" if kpis["churn_rate_pct"] > 5 else "#16A34A"
-    churn   = f'<font color="{cc}">{kpis["churn_rate_pct"]:.1f}%</font>'
+    delta   = f"{sign}{dp:.1f}% MoM"
+    churn   = f"{kpis['churn_rate_pct']:.1f}%"
+    churn_ok = kpis["churn_rate_pct"] <= 5
 
     story += [
-        _kpi_row([
-            ("Current ARR",        arr_str,                          delta),
-            ("Net New Customers",  str(kpis["net_new_customers"]),  ""),
-            ("Churned This Month", str(kpis["churned_this_month"]), ""),
-            ("Monthly Churn Rate", churn,                           ""),
+        kpi_row([
+            ("Current ARR",        arr_str, delta, dp >= 0),
+            ("Net new customers",  str(kpis["net_new_customers"])),
+            ("Churned this month", str(kpis["churned_this_month"])),
+            ("Monthly churn rate", churn, "", churn_ok),
         ]),
-        _gap(14),
+        gap(14),
         _chart(arr_chart_path, max_h=CONTENT_H * 0.30),
-        _gap(14),
-        Paragraph("Top 3 new signups this month", S_SUBHEAD),
+        gap(14),
+        Paragraph("Top 3 new signups this month", H2),
+        gap(4),
     ]
 
     top3 = kpis["top_3_new_signups"]
     if top3:
-        story.append(_data_table(
+        story.append(data_table(
             ["Company", "Industry", "MRR"],
             [[s["name"], s["industry"], f"${s['mrr']:,}/mo"] for s in top3],
-            [CONTENT_W * 0.50, CONTENT_W * 0.30, CONTENT_W * 0.20],
+            align=["L", "L", "R"],
         ))
     else:
-        story.append(Paragraph("No new signups this month.", S_BODY))
+        story.append(Paragraph("No new signups this month.", BODY))
 
     story += [
-        _gap(14),
-        Paragraph("Founder commentary", S_SUBHEAD),
+        gap(14),
+        Paragraph("Founder commentary", H2),
+        gap(4),
         Paragraph(
             commentary.strip() if commentary.strip() else (
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod "
-                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
-                "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. "
-                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore "
-                "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, "
-                "sunt in culpa qui officia deserunt mollit anim id est laborum."
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do "
+                "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut "
+                "enim ad minim veniam, quis nostrud exercitation ullamco laboris "
+                "nisi ut aliquip ex ea commodo. Duis aute irure dolor in "
+                "reprehenderit in voluptate velit esse cillum dolore eu fugiat "
+                "nulla pariatur."
             ),
-            S_LOREM,
+            BODY,
         ),
     ]
 
 
-def _section_cohort(story: list, chart_path: str) -> None:
+def _section_cohort(story, chart_path):
     story += [
         Paragraph(
             "Each row is a cohort of customers who signed up in the same month. "
-            "Cells show what share of that cohort was still active at 1, 3, 6, and "
-            "12 months. Gray cells mean the cohort is not yet old enough to measure.",
-            S_BODY,
+            "Cells show what share of that cohort was still active at the given "
+            "month milestone. Gray cells mean the cohort is not yet old enough "
+            "to measure.",
+            BODY,
         ),
-        _gap(12),
-        _chart(chart_path, max_h=CONTENT_H * 0.74),
+        gap(12),
+        _chart(chart_path, max_h=CONTENT_H * 0.72),
     ]
 
 
-def _section_waterfall(story: list, wf: dict, chart_path: str) -> None:
+def _section_waterfall(story, wf, chart_path):
+    net_exp = wf["net_expansion_arr"]
+    net_lbl = "+ Net expansion" if net_exp >= 0 else "- Net expansion"
     story += [
-        _chart(chart_path, max_h=CONTENT_H * 0.52),
-        _gap(14),
-        _data_table(
+        _chart(chart_path, max_h=CONTENT_H * 0.50),
+        gap(14),
+        data_table(
             ["Movement", "ARR (USD)"],
             [
-                ["Starting ARR",
-                    f"${wf['starting_arr']:,.0f}"],
-                ["+ New",
-                    f"${wf['new_arr']:,.0f}"],
-                [("+ Net expansion" if wf["net_expansion_arr"] >= 0 else "- Net expansion"),
-                    f"${abs(wf['net_expansion_arr']):,.0f}"],
-                ["- Churn",
-                    f"${wf['churn_arr']:,.0f}"],
-                ["= Ending ARR",
-                    f"${wf['ending_arr']:,.0f}"],
+                ["Starting ARR",    f"${wf['starting_arr']:,.0f}"],
+                ["+ New",           f"${wf['new_arr']:,.0f}"],
+                [net_lbl,           f"${abs(net_exp):,.0f}"],
+                ["- Churn",         f"${wf['churn_arr']:,.0f}"],
+                ["= Ending ARR",    f"${wf['ending_arr']:,.0f}"],
             ],
-            [CONTENT_W * 0.55, CONTENT_W * 0.45],
+            align=["L", "R"],
         ),
     ]
 
 
-def _section_logos(story: list, logos: list, notes: dict = None) -> None:
+def _section_logos(story, logos, notes=None):
+    """Logos table — uses design.data_table with HTML-in-cell for the
+    multi-line Company and Industry/Country cells."""
     if not logos:
-        story.append(Paragraph("No new customers signed up this month.", S_BODY))
+        story.append(Paragraph("No new customers signed up this month.", BODY))
         return
 
-    notes   = notes or {}
-    col_w   = [28, 190, 80, CONTENT_W - 28 - 190 - 80]   # last col = 206
-
-    data    = [[Paragraph(h, S_TH) for h in
-                ["#", "Company", "MRR", "Industry / Country"]]]
-
+    notes = notes or {}
+    rows  = []
     for i, lg in enumerate(logos, 1):
-        data.append([
-            Paragraph(str(i), S_TD_C),
-            Paragraph(
-                f'<b>{lg["name"]}</b><br/>'
-                f'<font color="#64748B" size="8">{lg["domain"]}</font>',
-                S_TD,
-            ),
-            Paragraph(f'${lg["mrr"]:,}/mo', S_TD_C),
-            Paragraph(
-                f'{lg["industry"]}<br/>'
-                f'<font color="#64748B" size="8">{lg["country"]}</font>',
-                S_TD,
-            ),
-        ])
+        name_cell = (
+            f'<b>{lg["name"]}</b><br/>'
+            f'<font color="#64748B" size="8">{lg["domain"]}</font>'
+        )
         note = notes.get(lg["name"], "")
         if note:
-            data.append([
-                Paragraph("", S_TD),
-                Paragraph(note, S_NOTE),
-                Paragraph("", S_TD),
-                Paragraph("", S_TD),
-            ])
+            name_cell += f'<br/><font color="#64748B" size="8">{note}</font>'
+        industry_cell = (
+            f'{lg["industry"]}<br/>'
+            f'<font color="#64748B" size="8">{lg["country"]}</font>'
+        )
+        rows.append([
+            str(i), name_cell, f'${lg["mrr"]:,}/mo', industry_cell,
+        ])
 
-    tbl = Table(data, colWidths=col_w)
-    ts  = TableStyle([
-        ("BACKGROUND",    (0, 0), (-1, 0),  C_BLUE),
-        ("VALIGN",        (0, 0), (-1, -1), "TOP"),
-        ("TOPPADDING",    (0, 0), (-1, -1), 7),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
-        ("LEFTPADDING",   (0, 0), (-1, -1), 6),
-        ("RIGHTPADDING",  (0, 0), (-1, -1), 6),
-        ("BOX",           (0, 0), (-1, -1), 0.5, C_BGB),
-        ("LINEBELOW",     (0, 0), (-1, -1), 0.3, C_BGB),
-    ])
-    for i in range(1, len(data)):
-        ts.add("BACKGROUND", (0, i), (-1, i),
-               colors.white if i % 2 == 1 else C_ROW)
-    tbl.setStyle(ts)
-    story.append(tbl)
+    story.append(data_table(
+        ["#", "Company", "MRR", "Industry / Country"],
+        rows,
+        align=["C", "L", "R", "L"],
+        widths=[28, 220, 80, CONTENT_W - 28 - 220 - 80],
+    ))
 
 
-def _section_pipeline(story: list, pipe: dict, chart_path: str) -> None:
-    """Sales pipeline — 5 KPIs, funnel chart, top 5 deals table."""
-    def _fmt(v: float) -> str:
-        if v >= 1_000_000:
-            return f"${v/1e6:.2f}M"
-        return f"${v/1e3:.0f}K"
-
-    story += [
-        _kpi_row([
-            ("Total pipeline",     _fmt(pipe["total_pipeline_arr"]),         ""),
-            ("Weighted pipeline",  _fmt(pipe["weighted_pipeline_arr"]),      ""),
-            ("Open opps",          str(pipe["open_opportunities"]),          ""),
-            ("Avg deal size",      f"${pipe['avg_deal_size']:,.0f}/mo",      ""),
-            ("Coverage",           f"{pipe['coverage_ratio']:.2f}x",         ""),
-        ]),
-        _gap(12),
-        _chart(chart_path, max_h=CONTENT_H * 0.38),
-        _gap(10),
-        Paragraph("Top 5 open deals", S_SUBHEAD),
-    ]
-
-    if pipe["top_5_deals"]:
-        rows = [
-            [d["company"], d["stage"], f"${d['mrr']:,.0f}/mo", d["close_date"] or "-"]
-            for d in pipe["top_5_deals"]
-        ]
-        story.append(_data_table(
-            ["Company", "Stage", "MRR", "Expected close"],
-            rows,
-            [CONTENT_W * 0.35, CONTENT_W * 0.25, CONTENT_W * 0.17, CONTENT_W * 0.23],
-        ))
-    else:
-        story.append(Paragraph("No open opportunities.", S_BODY))
-
-
-def _section_icp(story: list, icp: dict) -> None:
+def _section_icp(story, icp):
     dominant = "inbound" if icp["inbound_pct"] >= icp["outbound_pct"] else "outbound"
     pct      = max(icp["inbound_pct"], icp["outbound_pct"])
     caption  = (
         f"Your highest-MRR customers skew toward {icp['top_industry']} companies "
         f"in {icp['top_country']}, acquired mostly via {dominant} ({pct:.0f}%)."
     )
-    # Column widths: MRR values are short; industry/country can be long.
-    # 87 + 87 + 155 + 175 = 504 = CONTENT_W
-    icp_cw = [87, 87, 155, 175]
     story += [
-        Paragraph(caption, S_CAPTION),
-        _gap(12),
-        _kpi_row([
-            ("Avg MRR",      f"${icp['avg_mrr']:,.0f}",   ""),
-            ("Median MRR",   f"${icp['median_mrr']:,.0f}", ""),
-            ("Top industry", icp["top_industry"] or "-",   ""),
-            ("Top country",  icp["top_country"]  or "-",   ""),
-        ], col_widths=icp_cw),
-        _gap(12),
-        _kpi_row([
-            ("Inbound",      f"{icp['inbound_pct']:.0f}%",  ""),
-            ("Outbound",     f"{icp['outbound_pct']:.0f}%", ""),
-            ("Sample size",  str(icp["sample_size"]),        ""),
-            ("",             "",                             ""),
-        ], col_widths=icp_cw),
+        Paragraph(caption, BODY_MUTED),
+        gap(14),
+        kpi_row([
+            ("Avg MRR",      f"${icp['avg_mrr']:,.0f}"),
+            ("Median MRR",   f"${icp['median_mrr']:,.0f}"),
+            ("Top industry", icp["top_industry"] or "-"),
+            ("Top country",  icp["top_country"]  or "-"),
+        ]),
+        gap(12),
+        kpi_row([
+            ("Inbound",      f"{icp['inbound_pct']:.0f}%"),
+            ("Outbound",     f"{icp['outbound_pct']:.0f}%"),
+            ("Sample size",  str(icp["sample_size"])),
+        ]),
     ]
+
+
+def _section_pipeline(story, pipe, chart_path):
+    def _fmt(v):
+        return f"${v/1e6:.2f}M" if v >= 1_000_000 else f"${v/1e3:.0f}K"
+
+    intro = (
+        "<b>Total pipeline</b> is the annualised value of every open deal. "
+        "<b>Weighted pipeline</b> applies a close probability to each stage "
+        "(Discovery 10%, Demo 25%, Proposal 50%, Negotiation 75%, "
+        "Verbal Agreement 90%). <b>Open opps</b> is the count of deals not yet "
+        "closed. <b>Avg deal size</b> is the mean monthly contract value across "
+        "open opps. <b>Coverage</b> is total pipeline divided by current ARR — "
+        "a rough guide to how much pipeline is in play relative to the book."
+    )
+
+    story += [
+        Paragraph(intro, BODY_MUTED),
+        gap(12),
+        kpi_row([
+            ("Total pipeline",    _fmt(pipe["total_pipeline_arr"])),
+            ("Weighted pipeline", _fmt(pipe["weighted_pipeline_arr"])),
+            ("Open opps",         str(pipe["open_opportunities"])),
+            ("Avg deal size",     f"${pipe['avg_deal_size']:,.0f}/mo"),
+            ("Coverage",          f"{pipe['coverage_ratio']:.2f}x"),
+        ]),
+        gap(14),
+        Paragraph(
+            "Each bar shows the annualised value of open deals at that stage. "
+            "Deals move top-to-bottom as they progress toward close.",
+            CAPTION,
+        ),
+        gap(4),
+        _chart(chart_path, max_h=CONTENT_H * 0.34),
+        gap(14),
+    ]
+
+    if pipe["top_5_deals"]:
+        rows = [
+            [d["company"], d["stage"], f"${d['mrr']:,.0f}/mo",
+             d["close_date"] or "-"]
+            for d in pipe["top_5_deals"]
+        ]
+        top5_block = KeepTogether([
+            Paragraph("Top 5 open deals", H2),
+            gap(2),
+            Paragraph(
+                "The five largest open deals by monthly contract value, "
+                "regardless of stage.",
+                BODY_MUTED,
+            ),
+            gap(6),
+            data_table(
+                ["Company", "Stage", "MRR", "Expected close"],
+                rows,
+                align=["L", "L", "R", "C"],
+            ),
+        ])
+        story.append(top5_block)
+    else:
+        story += [
+            Paragraph("Top 5 open deals", H2),
+            gap(6),
+            Paragraph("No open opportunities.", BODY),
+        ]
 
 
 # ---------------------------------------------------------------------------
@@ -469,80 +321,65 @@ def build_report(csv_path: str, as_of_month: str,
     logos  = logo_highlights(df, as_of_month, n=5)
     icp    = icp_snapshot(df, as_of_month)
 
-    # Optional: sales pipeline
     pipe         = None
     pipeline_png = None
     if pipeline_csv_path:
-        pipe_df       = load_pipeline(pipeline_csv_path)
-        pipe          = pipeline_summary(pipe_df, current_arr=kpis["current_arr"])
-        pipeline_png  = plot_pipeline_funnel(pipe["by_stage"], chart_dir)
+        pipe_df      = load_pipeline(pipeline_csv_path)
+        pipe         = pipeline_summary(pipe_df, current_arr=kpis["current_arr"])
+        pipeline_png = plot_pipeline_funnel(pipe["by_stage"], chart_dir)
 
-    # Charts
     arr_png   = plot_arr_trend(df, as_of_month, chart_dir)
     wfall_png = plot_arr_waterfall(wf, as_of_month, chart_dir)
     coh_png   = plot_cohort_heatmap(ret_df, chart_dir)
     geo_png   = plot_geography_mix(geo_df, chart_dir)
     ind_png   = plot_industry_mix(ind_df, chart_dir)
 
-    # Labels
     dt           = datetime.strptime(as_of_month, "%Y-%m")
-    month_label  = dt.strftime("%B %Y")          # "October 2024"
+    month_label  = dt.strftime("%B %Y")
     today        = date.today()
     prepared_str = f"Prepared {today.day} {today.strftime('%B %Y')}"
 
-    # Document
     doc = SimpleDocTemplate(
         output_path,
-        pagesize=letter,
-        leftMargin=MARGIN, rightMargin=MARGIN,
-        topMargin=MARGIN,  bottomMargin=MARGIN,
+        pagesize=(PAGE_W, PAGE_H),
+        leftMargin=PAGE_MARGIN, rightMargin=PAGE_MARGIN,
+        topMargin=PAGE_MARGIN,  bottomMargin=PAGE_MARGIN,
     )
-    NC = _make_canvas(month_label)
+    NC = make_numbered_canvas(month_label)
 
-    # Story
     story = []
+    story.append(PageBreak())                          # past cover
 
-    # Page 1 — cover (onFirstPage draws it; PageBreak moves past it)
-    story.append(PageBreak())
-
-    # Page 2 — Executive Summary
-    story += _section_header(1, "Executive summary")
+    story += section_header(1, "Executive summary")
     _section_summary(story, kpis, arr_png, commentary=commentary)
 
-    # Page 3 — Cohort Retention
     story.append(PageBreak())
-    story += _section_header(2, "Cohort retention")
+    story += section_header(2, "Cohort retention")
     _section_cohort(story, coh_png)
 
-    # Page 4 — ARR Waterfall
     story.append(PageBreak())
-    story += _section_header(3, "ARR waterfall")
+    story += section_header(3, "ARR waterfall")
     _section_waterfall(story, wf, wfall_png)
 
-    # Page 5 — Geography Mix
     story.append(PageBreak())
-    story += _section_header(4, "Geography mix")
-    story.append(_chart(geo_png, max_h=CONTENT_H * 0.78))
+    story += section_header(4, "Geography mix")
+    story.append(_chart(geo_png, max_h=CONTENT_H * 0.76))
 
-    # Page 6 — Industry Mix
     story.append(PageBreak())
-    story += _section_header(5, "Industry mix")
-    story.append(_chart(ind_png, max_h=CONTENT_H * 0.78))
+    story += section_header(5, "Industry mix")
+    story.append(_chart(ind_png, max_h=CONTENT_H * 0.76))
 
-    # Page 7 — Logo Highlights
     story.append(PageBreak())
-    story += _section_header(6, "Logo highlights")
+    story += section_header(6, "Logo highlights")
     _section_logos(story, logos, notes=logo_notes)
 
-    # Page 8 — ICP Snapshot
     story.append(PageBreak())
-    story += _section_header(7, "ICP snapshot")
+    story += section_header(7, "ICP snapshot")
     _section_icp(story, icp)
 
-    # Page 9 — Sales Pipeline (optional)
     if pipe is not None:
         story.append(PageBreak())
-        story += _section_header(8, "Sales pipeline")
+        story += section_header(8, "Sales pipeline")
         _section_pipeline(story, pipe, pipeline_png)
 
     cover_fn = lambda c, d: _draw_cover(c, month_label, prepared_str)
