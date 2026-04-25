@@ -68,31 +68,36 @@ html, body, [class*="css"], .stApp, [data-testid="stMarkdownContainer"] {
     max-width: 780px;
 }
 
-/* Logo */
+/* Logo (lives inside hero, top-left) */
 .mu-logo {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.5rem;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 1.25rem 0 0.75rem 0;
-    font-weight: 800;
-    font-size: 20px;
-    letter-spacing: -0.02em;
-    color: #0F172A;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    z-index: 2;
 }
 .mu-logo-mark {
-    width: 28px; height: 28px;
-    border-radius: 8px;
+    width: 26px; height: 26px;
+    border-radius: 7px;
     background: linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
-    font-weight: 800;
-    font-size: 15px;
-    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.25);
+    box-shadow: 0 2px 10px rgba(139, 92, 246, 0.4);
 }
-.mu-logo-mark svg { width: 16px; height: 16px; stroke: #FFFFFF; }
-.mu-logo span.mu-logo-up { color: #8B5CF6; }
+.mu-logo-mark svg { width: 15px; height: 15px; stroke: #FFFFFF; }
+.mu-logo span.mu-logo-up {
+    background: linear-gradient(135deg, #C4B5FD 0%, #67E8F9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
 
 /* Hero */
 .mu-hero {
@@ -445,6 +450,7 @@ def _checklist(present: set, required: list):
 # Hero
 # ---------------------------------------------------------------------------
 st.markdown(
+    '<div class="mu-hero">'
     '<div class="mu-logo">'
     '<span class="mu-logo-mark">'
     '<svg viewBox="0 0 24 24" fill="none" stroke-width="3" '
@@ -454,12 +460,7 @@ st.markdown(
     '</svg>'
     '</span>'
     'Manage<span class="mu-logo-up">Up</span>'
-    '</div>',
-    unsafe_allow_html=True,
-)
-
-st.markdown(
-    '<div class="mu-hero">'
+    '</div>'
     '<h1>Investor updates,<br>on autopilot.</h1>'
     '<p>Consistent monthly reporting your investors actually read — '
     'same numbers, same format, every month. Upload a CSV, get a polished '

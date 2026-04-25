@@ -28,10 +28,10 @@ def _save(fig: plt.Figure, output_dir: str, filename: str) -> str:
 
 
 def _arr_formatter(max_val: float):
-    """$2.5M style for large values, $800K for smaller."""
+    """$2.5M / $800K with thousands separators (e.g. $1,250K)."""
     if max_val >= 1_000_000:
-        return mticker.FuncFormatter(lambda x, _: f"${x/1e6:.1f}M")
-    return mticker.FuncFormatter(lambda x, _: f"${x/1e3:.0f}K")
+        return mticker.FuncFormatter(lambda x, _: f"${x/1e6:,.1f}M")
+    return mticker.FuncFormatter(lambda x, _: f"${x/1e3:,.0f}K")
 
 
 # ---------------------------------------------------------------------------
@@ -142,7 +142,7 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
             continue
         ax.bar(i, height, bottom=bottom, color=color, width=0.5, zorder=3)
         top = bottom + height
-        label_str = f"{sign}${height/1e3:.0f}K"
+        label_str = f"{sign}${height:,.0f}"
         ax.text(
             i, top + peak * 0.012,
             label_str,
@@ -170,8 +170,36 @@ def plot_arr_waterfall(wf: dict, as_of_month: str,
     ax.set_xticks(range(len(segments)))
     ax.set_xticklabels([s[0] for s in segments], fontsize=10)
     ax.yaxis.set_major_formatter(_arr_formatter(peak))
-    ax.set_ylim(0, peak * 1.22)
+    ax.set_ylim(0, peak * 1.30)
     ax.grid(axis="y")
+
+    # Growth arrow: Starting ARR → Ending ARR
+    start = wf["starting_arr"]
+    end   = wf["ending_arr"]
+    if start > 0:
+        pct = (end - start) / start * 100
+        arrow_y = peak * 1.18
+        arrow_color = "#17A583" if pct >= 0 else "#E24B4A"
+        ax.annotate(
+            "",
+            xy=(4, arrow_y), xytext=(0, arrow_y),
+            arrowprops=dict(
+                arrowstyle="->,head_width=0.4,head_length=0.6",
+                color=arrow_color,
+                lw=1.4,
+                shrinkA=2, shrinkB=2,
+            ),
+            zorder=4,
+        )
+        sign = "+" if pct >= 0 else ""
+        ax.text(
+            2, arrow_y + peak * 0.018,
+            f"{sign}{pct:.1f}% MoM",
+            ha="center", va="bottom",
+            fontsize=10, fontweight=600,
+            color=arrow_color,
+            zorder=5,
+        )
 
     fig.tight_layout()
     return _save(fig, output_dir, "arr_waterfall.png")
