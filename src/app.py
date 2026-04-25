@@ -464,7 +464,7 @@ st.markdown(
     '<h1>Investor updates,<br>on autopilot.</h1>'
     '<p>Consistent monthly reporting your investors actually read — '
     'same numbers, same format, every month. Upload a CSV, get a polished '
-    'PDF or PPTX in under a minute.</p>'
+    'PDF in under a minute.</p>'
     '<div class="mu-feature-row">'
     '<span class="mu-feature">📊 ARR &amp; retention</span>'
     '<span class="mu-feature">🧊 Cohort triangles</span>'
